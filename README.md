@@ -1,3 +1,2 @@
-Clone this repo
-Got to front folder
-Run npm install && npm run start
+Database structure
+![image](https://user-images.githubusercontent.com/30046232/180787434-90a18ed3-5cb8-4389-93b4-c2f018bcee38.png)
