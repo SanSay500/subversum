@@ -47,7 +47,7 @@ class PlanetController extends Controller
      */
     public function show(Planet $planet)
     {
-        //
+        return Planet::find($planet->id);
     }
 
     /**
