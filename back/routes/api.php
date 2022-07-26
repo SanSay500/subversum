@@ -19,7 +19,7 @@ use App\Models\User;
 Route::get('/users', function (Request $request) {
      return User::get();
 });
-Route::resource('workers',\App\Http\Controllers\WorkerController::class);
+Route::resource('workers',\App\Http\Controllers\WorkerController::class)->middleware('auth:sanctum');
 Route::resource('planets',\App\Http\Controllers\PlanetController::class);
 Route::resource('resources',\App\Http\Controllers\ResourceController::class);
 Route::resource('buildings',\App\Http\Controllers\BuildingController::class);
