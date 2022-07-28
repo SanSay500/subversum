@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Models\Region;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -15,18 +17,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::get();
+       return UserResource::collection(User::get());
     }
 
     public function select_regions(User $user)
     {
-        return DB::table('users')
-            ->where('users.id', $user->id)
-            ->join('regions','users.id','=','regions.user_id')
-            ->leftJoin('resource_maps', 'regions.id', '=', 'resource_maps.region_id')
-            ->leftJoin('worker_maps', 'regions.id', '=', 'worker_maps.region_id')
-            ->leftJoin('building_maps', 'regions.id', '=', 'building_maps.region_id')
-            ->get();
+       return new UserResource(User::find($user->id));
     }
 
     /**

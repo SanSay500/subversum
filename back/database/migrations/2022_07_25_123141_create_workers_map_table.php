@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('building_maps', function (Blueprint $table) {
+        Schema::create('workers_map', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('building_id')->constrained()->onDelete('cascade');
+            $table->foreignId('worker_id')->constrained()->onDelete('cascade');
             $table->foreignId('region_id')->constrained()->onDelete('cascade');
+            $table->integer('mood');
+            $table->float('salary');
+            $table->integer('total_count');
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('building_maps');
+        Schema::dropIfExists('workers_map');
     }
 };

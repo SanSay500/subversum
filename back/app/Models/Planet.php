@@ -11,4 +11,8 @@ class Planet extends Model
     protected $fillable = ['name'];
     public $timestamps = false;
 
+    public function continents()
+    {
+        return $this->hasMany(Continent::class);
+    }
 }

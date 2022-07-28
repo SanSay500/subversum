@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('worker_maps', function (Blueprint $table) {
+        Schema::create('resources_map', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('worker_id')->constrained()->onDelete('cascade');
+            $table->foreignId('resource_id')->constrained()->onDelete('cascade');
             $table->foreignId('region_id')->constrained()->onDelete('cascade');
-            $table->integer('mood');
-            $table->float('salary');
+            $table->float('short_storage_value');
+            $table->float('overall_storage_value');
             $table->integer('total_count');
+            $table->integer('mining_level');
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('worker_maps');
+        Schema::dropIfExists('resources_map');
     }
 };

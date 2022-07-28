@@ -11,5 +11,9 @@ class Resource extends Model
     protected $fillable = ['type'];
     public $timestamps = false;
 
+    public function resources_map()
+    {
+        return $this->belongsTo(ResourceMap::class);
+    }
 
 }

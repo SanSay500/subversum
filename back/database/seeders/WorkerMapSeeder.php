@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\WorkerMap;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class WorkerMapSeeder extends Seeder
      */
     public function run()
     {
-        //
+        WorkerMap::factory(20)->create();
     }
 }

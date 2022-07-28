@@ -9,4 +9,14 @@ class WorkerMap extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function regions()
+    {
+        return $this->belongsTo(Region::class);
+    }
+
+    public function workers()
+    {
+        return $this->hasMany(Worker::class);
+    }
 }

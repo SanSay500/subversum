@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePlanetRequest;
 use App\Http\Requests\UpdatePlanetRequest;
+use App\Http\Resources\PlanetCollection;
 use App\Models\Planet;
 
 class PlanetController extends Controller
@@ -15,7 +16,8 @@ class PlanetController extends Controller
      */
     public function index()
     {
-        return Planet::get();
+
+        return new PlanetCollection(Planet::all());
     }
 
     /**
@@ -47,7 +49,7 @@ class PlanetController extends Controller
      */
     public function show(Planet $planet)
     {
-        return Planet::find($planet->id);
+            //
     }
 
     /**

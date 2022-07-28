@@ -12,4 +12,9 @@ class Building extends Model
     protected $fillable = ['type'];
     public $timestamps = false;
 
+    public function buldings_map()
+    {
+        return $this->hasMany(BuildingMap::class);
+    }
+
 }

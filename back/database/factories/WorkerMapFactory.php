@@ -17,7 +17,11 @@ class WorkerMapFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'worker_id' => random_int(1,4),
+            'region_id' => random_int(1,10),
+            'mood' => random_int(1,100),
+            'salary' => random_int(20000,60000),
+            'total_count' => random_int(1,5000),
         ];
     }
 }

@@ -16,7 +16,7 @@ use App\Models\User;
 */
 
 Route::resource('workers',\App\Http\Controllers\WorkerController::class)->middleware('auth:sanctum');
-Route::resource('users',\App\Http\Controllers\UserController::class)->middleware('auth:sanctum');
+Route::resource('users',\App\Http\Controllers\UserController::class);
 Route::resource('planets',\App\Http\Controllers\PlanetController::class);
 Route::resource('resources',\App\Http\Controllers\ResourceController::class);
 Route::resource('buildings',\App\Http\Controllers\BuildingController::class);
@@ -26,3 +26,7 @@ Route::resource('res_map',\App\Http\Controllers\ResourceMapController::class);
 Route::resource('buildings_map',\App\Http\Controllers\BuildingMapController::class);
 Route::resource('workers_map',\App\Http\Controllers\WorkerMapController::class);
 Route::get('/user_regions/{user}',[\App\Http\Controllers\UserController::class, 'select_regions']);
+
+Route::get('/',function(){
+    return view ('welcome');
+});

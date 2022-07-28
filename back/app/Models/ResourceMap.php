@@ -10,4 +10,14 @@ class ResourceMap extends Model
     use HasFactory;
     public $timestamps = false;
 
+    public function regions()
+    {
+        return $this->belongsTo(Region::class);
+    }
+
+    public function resources()
+    {
+        return $this->hasMany(Resource::class);
+    }
+
 }

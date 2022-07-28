@@ -11,4 +11,9 @@ class Worker extends Model
     protected $fillable = ['type'];
     public $timestamps = false;
 
+    public function workers_map()
+    {
+       return $this->belongsTo(WorkerMap::class);
+    }
+
 }
