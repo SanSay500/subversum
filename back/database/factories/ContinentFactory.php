@@ -18,7 +18,7 @@ class ContinentFactory extends Factory
     {
         return [
             'name' => $this->faker->lastName(),
-            'planet_id' => $this->faker->numberBetween(1,10),
+            'planet_id' => random_int(1,10),
             'longitude' => $this->faker->randomNumber(),
             'latitude' => $this->faker->randomNumber(),
         ];

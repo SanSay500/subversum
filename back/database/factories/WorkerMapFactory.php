@@ -18,7 +18,7 @@ class WorkerMapFactory extends Factory
     {
         return [
             'worker_id' => random_int(1,4),
-            'region_id' => random_int(1,10),
+            'region_id' => random_int(1,20),
             'mood' => random_int(1,100),
             'salary' => random_int(20000,60000),
             'total_count' => random_int(1,5000),

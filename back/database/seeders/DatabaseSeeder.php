@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             BuildingMapSeeder::class,
             ResourceMapSeeder::class,
             WorkerMapSeeder::class,
+            TokenSeeder::class,
         ]);
+
     }
 }

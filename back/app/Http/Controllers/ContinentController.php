@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreContinentRequest;
 use App\Http\Requests\UpdateContinentRequest;
 use App\Models\Continent;
+use App\Http\Resources\ContinentResource;
 
 class ContinentController extends Controller
 {
@@ -15,7 +16,7 @@ class ContinentController extends Controller
      */
     public function index()
     {
-        return Continent::get();
+        return ContinentResource::collection(Continent::get());
     }
 
     /**

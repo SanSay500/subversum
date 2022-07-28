@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBuildingRequest;
 use App\Http\Requests\UpdateBuildingRequest;
+use App\Http\Resources\BuildingResource;
 use App\Models\Building;
 
 class BuildingController extends Controller
@@ -15,7 +16,7 @@ class BuildingController extends Controller
      */
     public function index()
     {
-        return Building::get();
+        return BuildingResource::collection(Building::get());
     }
 
     /**

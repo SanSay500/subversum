@@ -14,7 +14,7 @@ class Building extends Model
 
     public function buldings_map()
     {
-        return $this->hasMany(BuildingMap::class);
+        return $this->belongsTo(BuildingMap::class);
     }
 
 }

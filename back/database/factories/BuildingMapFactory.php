@@ -13,12 +13,13 @@ class BuildingMapFactory extends Factory
      * Define the model's default state.
      *
      * @return array<string, mixed>
+     * @throws \Exception
      */
     public function definition()
     {
         return [
-            'building_id'=>$this->faker->numberBetween(1,4),
-            'region_id'=>$this->faker->numberBetween(1,10),
+            'building_id'=>random_int(1,5),
+            'region_id'=>random_int(1,20),
         ];
     }
 }

@@ -11,7 +11,7 @@ API calls (add to subversum.space/api):<br>
 /buildings_map<br>
 /workers_map<br>
 /user_regions/{user} - get users regions with resources<br>
-Token Bearer: 1|vGbDvrBRev10rzQXJnoMCRLrjRPakbrqa62cXnkO<br>
+Token Bearer: 1|TKs9DCANgCIzNLZFTYfzifpNv41WsitYNhJYpd5v<br>
 
 <br>
 Database structure <br>

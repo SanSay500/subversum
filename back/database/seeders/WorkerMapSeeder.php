@@ -15,6 +15,6 @@ class WorkerMapSeeder extends Seeder
      */
     public function run()
     {
-        WorkerMap::factory(20)->create();
+        WorkerMap::factory(30)->create();
     }
 }

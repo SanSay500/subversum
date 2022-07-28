@@ -15,6 +15,6 @@ class BuildingMapSeeder extends Seeder
      */
     public function run()
     {
-        BuildingMap::factory(20)->create();
+        BuildingMap::factory(30)->create();
     }
 }

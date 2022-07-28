@@ -16,6 +16,7 @@ class ResourceSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('resources')->truncate();
         $resources = ['Oil', 'Gold', 'Steel', 'Diamonds'];
 
         foreach ($resources as $resource) {

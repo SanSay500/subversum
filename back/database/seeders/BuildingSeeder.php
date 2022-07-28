@@ -16,8 +16,8 @@ class BuildingSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('buildings')->truncate();
         $buildings = ['Steel factory', 'Oil Refinery', 'Gold Mine', 'Tech Lab Facility', 'Diamond mine'];
-
         foreach ($buildings as $building) {
             DB::table('buildings')->insert(values: [
                 'type' => $building,

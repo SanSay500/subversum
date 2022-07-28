@@ -16,6 +16,7 @@ class WorkerSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('workers')->truncate();
         $workers = ['Builder', 'Carrier', 'Scientist', 'Overseer'];
 
         foreach ($workers as $worker) {

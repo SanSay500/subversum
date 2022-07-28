@@ -9,6 +9,7 @@ class BuildingMap extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "buildings_map";
 
     public function regions()
     {
@@ -17,6 +18,6 @@ class BuildingMap extends Model
 
     public function buildings()
     {
-        return $this->belongsTo(Building::class);
+        return $this->hasOne(Building::class);
     }
 }

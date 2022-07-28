@@ -9,6 +9,7 @@ class ResourceMap extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "resources_map";
 
     public function regions()
     {

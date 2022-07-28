@@ -9,6 +9,7 @@ class WorkerMap extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "workers_map";
 
     public function regions()
     {

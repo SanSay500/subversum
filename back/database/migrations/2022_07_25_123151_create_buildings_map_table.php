@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('buildings_map', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('building_id')->constrained()->onDelete('cascade');
+            $table->bigInteger('building_id');
+            $table->foreign('building_id')->references('id')->on('buildings');
             $table->foreignId('region_id')->constrained()->onDelete('cascade');
         });
     }

@@ -14,13 +14,14 @@ class RegionFactory extends Factory
      * Define the model's default state.
      *
      * @return array<string, mixed>
+     * @throws \Exception
      */
     public function definition()
     {
         return [
             'name' => $this->faker->word(),
-            'user_id' => $this->faker->numberBetween(1,10),
-            'continent_id' => $this->faker->numberBetween(1,10),
+            'user_id' => random_int(1,10),
+            'continent_id' => random_int(1,10),
             'longitude' => $this->faker->randomNumber(),
             'latitude' => $this->faker->randomNumber(),
         ];
