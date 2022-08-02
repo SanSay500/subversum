@@ -13,9 +13,8 @@ API calls (add to subversum.space/api):<br>
 /user_regions/{user} - get users regions with resources<br>
 \
 POST methods\
-/login\
+/api/login\
 body:\
-'name'='Prof. Percy Bayer'\
 'email'='wmarvin@example.net'\
 'password'='password'\
 
