@@ -11,12 +11,12 @@ API calls (add to subversum.space/api):<br>
 /buildings_map<br>
 /workers_map<br>
 /user_regions/{user} - get users regions with resources<br>
-\
-POST methods\
-/api/login\
-body:\
-'email'='lgrimes@example.net'\
-'password'='password'\
+<br>
+POST methods<br>
+/api/login<br>
+body:<br>
+'email'='lgrimes@example.net'<br>
+'password'='password'<br>
 
 Token Bearer: 1|TKs9DCANgCIzNLZFTYfzifpNv41WsitYNhJYpd5v<br>
 
