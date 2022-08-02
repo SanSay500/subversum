@@ -15,7 +15,7 @@ API calls (add to subversum.space/api):<br>
 POST methods\
 /api/login\
 body:\
-'email'='wmarvin@example.net'\
+'email'='lgrimes@example.net'\
 'password'='password'\
 
 Token Bearer: 1|TKs9DCANgCIzNLZFTYfzifpNv41WsitYNhJYpd5v<br>
