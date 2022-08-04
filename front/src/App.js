@@ -102,9 +102,8 @@ const App = () => {
         <>
         <div style={appStyle}>
             <Form onSubmit={handleSubmit} />
-
         </div>
-            <button onClick={buildings}>Buildings</button>
+            <button style={submitStyle} onClick={buildings}>Buildings</button>
        </> 
     );
 };
