@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
-
+use App\Http\Responses\LogoutResponse;
+use Laravel\Fortify\Contracts\LogoutResponse as LogoutResponseContract;
+use App\Http\Responses\RegisterResponse;
+use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
+use App\Http\Responses\LoginResponse;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 
 
 class FortifyServiceProvider extends ServiceProvider
@@ -25,28 +30,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // register new LoginResponse
-//        $this->app->singleton(
-//            \Laravel\Fortify\Contracts\LoginResponse::class,
-//            \App\Http\Responses\LoginResponse::class
-//        );
-
-//        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
-//            public function toResponse($request)
-//            {
-//                return response('Bye Bye');
-//            }
-//        });
-
-//        $this->app->singleton(
-//            \Laravel\Fortify\Contracts\LogoutResponse::class,
-//            \App\Http\Responses\LogoutResponse::class
-//        );
-
-//        $this->app->singleton(
-//            \Laravel\Fortify\Contracts\RegisterResponse::class,
-//            \App\Http\Responses\RegisterResponse::class
-//        );
+        //
     }
 
     /**
@@ -57,15 +41,18 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        $this->app->singleton(LogoutResponseContract::class, LogoutResponse::class);
+        $this->app->singleton(RegisterResponseContract::class,RegisterResponse::class);
+        $this->app->singleton(LoginResponseContract::class,LoginResponse::class);
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
         RateLimiter::for('login', function (Request $request) {
-            $email = (string) $request->email;
+            $email = (string)$request->email;
 
-            return Limit::perMinute(5)->by($email.$request->ip());
+            return Limit::perMinute(5)->by($email . $request->ip());
         });
 
         RateLimiter::for('two-factor', function (Request $request) {
