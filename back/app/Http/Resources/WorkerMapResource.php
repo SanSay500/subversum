@@ -14,6 +14,11 @@ class WorkerMapResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'worker_id'=>$this->worker_id,
+            'mood'=>$this->mood,
+            'salary'=>$this->salary,
+         ];
+
     }
 }

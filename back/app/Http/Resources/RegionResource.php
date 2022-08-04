@@ -18,7 +18,7 @@ class RegionResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->name,
               'buildings' => BuildingMapResource::collection($this->buildings_map),
-              'workes' => WorkerMapResource::collection($this->workers_map),
+              'workers' => WorkerMapResource::collection($this->workers_map),
               'resources' => ResourceMapResource::collection($this->resources_map),
         ];
     }

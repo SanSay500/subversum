@@ -13,12 +13,17 @@ API calls (add to subversum.space/api):<br>
 /user_regions/{user} - get users regions with resources<br>
 <br>
 POST methods<br>
-/api/login<br>
+<b>/api/login</b><br>
 body:<br>
-'email'='lgrimes@example.net'<br>
-'password'='password'<br>
-
-Token Bearer: 1|TKs9DCANgCIzNLZFTYfzifpNv41WsitYNhJYpd5v<br>
+    email=lgrimes@example.net<br>
+    password=password<br>
+<b>/api/logout</b><br>
+<b>/api/register</b><br>
+body:<br>
+    name=name<br>
+    email=lgrimes@example.net<br>
+    password=password<br>
+    password_confirmation=password<br>
 
 <br>
 Database structure <br>
