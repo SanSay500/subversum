@@ -2,6 +2,8 @@
 
 namespace App\Http\Responses;
 
+use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
 
@@ -10,7 +12,10 @@ class RegisterResponse implements RegisterResponseContract
 
     public function toResponse($request)
     {
-        return new JsonResponse('You are Registered and Logged In', 201);
+        $user = User::where('email', $request->email)->first();
+        $token = $user->createToken('api-token')->plainTextToken;
+
+        return response(['data' => $user, 'token'=> $token]);
     }
 
 
