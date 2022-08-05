@@ -16,7 +16,9 @@ class UserResource extends JsonResource
     public function toArray($request)
     {
         return [
-             'regions' => RegionResource::collection($this->regions),
+            'name'=>$this->name,
+            'email'=>$this->email,
+            'regions' => RegionResource::collection($this->regions),
         ];
     }
 }

@@ -14,8 +14,8 @@ class RegisterResponse implements RegisterResponseContract
     {
         $user = User::where('email', $request->email)->first();
         $token = $user->createToken('api-token')->plainTextToken;
-
-        return response(['data' => $user, 'token'=> $token]);
+        $user_regions = new UserResource(User::find($user->id));
+        return response(['data' => $user, 'token'=> $token, $user_regions]);
     }
 
 
