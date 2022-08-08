@@ -30,3 +30,4 @@ Route::get('/user_regions/{user}',[\App\Http\Controllers\UserController::class, 
 Route::get('/',function(){
     return view ('welcome');
 });
+Route::post('/buy_region',[\App\Http\Controllers\RegionController::class, 'buy']);

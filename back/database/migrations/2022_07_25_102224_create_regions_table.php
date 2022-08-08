@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null')->onUpdate('cascade');
             $table->string('name');
             $table->foreignId('continent_id')->constrained()->onDelete('cascade');
             $table->float('longitude');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRegionRequest;
 use App\Http\Requests\UpdateRegionRequest;
 use App\Models\Region;
+use Illuminate\Http\Response;
 
 class RegionController extends Controller
 {
