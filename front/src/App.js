@@ -84,6 +84,7 @@ const Form = ({setLogin, setDataLogin}) => {
         fetch('https://subversum.space/api/logout', {
             method: 'POST',
             headers: {
+                'Authorization': 'Bearer 1|TKs9DCANgCIzNLZFTYfzifpNv41WsitYNhJYpd5v',
                 'Content-Type': 'application/json',
             },
         })
@@ -266,7 +267,7 @@ const App = () => {
             {buildings_ar === undefined ? (
                 <></>
             ) : (
-                buildings_ar.map((el, i) => <div key={i}>{el.type}</div>)
+                buildings_ar.map((el, i) => <div key={i}>{el.type} - id: {el.id}</div>)
             )}
 
             <button style={submitStyle} onClick={workers}>
@@ -276,7 +277,7 @@ const App = () => {
             {workers_ar === undefined ? (
                 <></>
             ) : (
-                workers_ar.map((el, i) => <div key={i}>{el.type}</div>)
+                workers_ar.map((el, i) => <div key={i}>{el.type} - id: {el.id}</div>)
             )}
 
             <button style={submitStyle} onClick={resources}>
@@ -286,7 +287,7 @@ const App = () => {
             {resources_ar === undefined ? (
                 <></>
             ) : (
-                resources_ar.map((el, i) => <div key={i}>{el.type}</div>)
+                resources_ar.map((el, i) => <div key={i}>{el.type} - id: {el.id}</div>)
             )}
 
 

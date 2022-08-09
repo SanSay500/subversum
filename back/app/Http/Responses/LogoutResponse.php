@@ -12,8 +12,9 @@ class LogoutResponse implements LogoutResponseContract
 
     public function toResponse($request)
     {
-//            $user = User::where('email', $request->email)->first();
-//            $user->tokens()->delete();
+        //$user = auth()->user();
+        //$user->currentAccessToken()>delete();
+        //dd($request);
         return new JsonResponse('Bye bye, come back soon!', 200);
     }
 
