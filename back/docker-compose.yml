@@ -55,17 +55,13 @@ services:
             test: ["CMD", "redis-cli", "ping"]
             retries: 3
             timeout: 5s
-    pgadmin:
-        image: dpage/pgadmin4
-        environment:
-            PGADMIN_DEFAULT_EMAIL: borodachev@gmail.com
-            PGADMIN_DEFAULT_PASSWORD: spartak
-        volumes:
-            - './pgadmin:/root/.pgadmin'
-            - './pgadmin/servers.json:/pgadmin4/servers.json'
+    adminer:
+        image: adminer
+        restart: always
         ports:
-            - "${PGADMIN_PORT}:80"
-        restart: unless-stopped
+            - 8082:8080
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge

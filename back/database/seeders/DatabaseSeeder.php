@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
             ResourceMapSeeder::class,
             WorkerMapSeeder::class,
             TokenSeeder::class,
+            ItemSeeder::class,
+            DroneSeeder::class,
         ]);
 
     }

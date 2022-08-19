@@ -25,6 +25,10 @@ Route::resource('continents',\App\Http\Controllers\ContinentController::class);
 Route::resource('res_map',\App\Http\Controllers\ResourceMapController::class);
 Route::resource('buildings_map',\App\Http\Controllers\BuildingMapController::class);
 Route::resource('workers_map',\App\Http\Controllers\WorkerMapController::class);
+Route::resource('items',\App\Http\Controllers\ItemController::class);
+Route::resource('drones',\App\Http\Controllers\DroneController::class);
+
+
 Route::get('/user_regions/{user}',[\App\Http\Controllers\UserController::class, 'select_regions']);
 
 Route::get('/',function(){

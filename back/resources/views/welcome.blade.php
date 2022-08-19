@@ -23,7 +23,13 @@ body:<br>
     name=name<br>
     email=lgrimes@example.net<br>
     password=password<br>
-    password_confirmation=password<br>
+    password_confirmation=password<br><br>
+<b>DATABASE MANAGMENT</b> - <a href="https://subversum.space/adminer">https://subversum.space/adminer </a><br>
+system: PostgreSQL </br>
+server: pgsql</br>
+username: sail</br>
+password: password</br>
+database: back</br></br>
 
 <br>
 Database structure <br>
