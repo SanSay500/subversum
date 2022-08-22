@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDroneRequest;
 use App\Http\Requests\UpdateDroneRequest;
+use App\Http\Resources\DroneResource;
 use App\Models\Drone;
 
 class DroneController extends Controller
@@ -15,7 +16,7 @@ class DroneController extends Controller
      */
     public function index()
     {
-        return Drone::get();
+        return DroneResource::collection(Drone::get());
     }
 
     /**

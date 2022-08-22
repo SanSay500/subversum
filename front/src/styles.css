@@ -35,6 +35,20 @@ input[type="submit"]:hover {
     justify-content: center;
 }
 
+.container img{
+    margin: 0 auto;
+    display: flex;
+    max-width: 1000px;
+    border-radius: 50px;
+    justify-content: center;
+}
+
+.container p {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
 .login-form {
     background-color: white;
     padding: 2rem;

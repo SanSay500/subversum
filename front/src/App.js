@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import './styles.css';
 
 const appStyle = {
@@ -69,13 +69,13 @@ const Field = React.forwardRef(({label, type}, ref) => {
           //  const json = JSON.stringify(dataLogin, null, 4);
           //  console.log(json);
 
-            axios.post('http://localhost:83/api/login', dataLogin)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });   
+            // axios.post('http://localhost:83/api/login', dataLogin)
+            // .then(function (response) {
+            //     console.log(response);
+            // })
+            // .catch(function (error) {
+            //     console.log(error);
+            // });
 
 
 
@@ -219,15 +219,15 @@ const Field = React.forwardRef(({label, type}, ref) => {
             }
 
             function users() {
-                axios.get('http://localhost:83/api/users')
-                .then(response => console.log(response))
-                .catch(error => console.log(error));
-                // fetch('https://subversum.space/api/users')
-                // .then((response) => response.json())
-                // .then((d) => {
-                //     setUsers_ar(d.data);
-                //     console.log(users_ar);
-                // });
+                // axios.get('http://localhost:83/api/users')
+                // .then(response => console.log(response))
+                // .catch(error => console.log(error));
+                fetch('https://subversum.space/api/users')
+                .then((response) => response.json())
+                .then((d) => {
+                    setUsers_ar(d.data);
+                    // console.log(users_ar);
+                });
             }
 
             function planets() {

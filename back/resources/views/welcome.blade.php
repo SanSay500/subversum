@@ -1,7 +1,9 @@
 <?php
 ?>
-API calls (add to subversum.space/api):<br>
-/workers<br>
+<title>Api Subversum</title>
+
+API GET calls (add to subversum.space/api):<br>
+/workers<br> - tokenized
 /planets<br>
 /resources<br>
 /buildings<br>
@@ -11,6 +13,9 @@ API calls (add to subversum.space/api):<br>
 /buildings_map<br>
 /workers_map<br>
 /user_regions/{user} - get users regions with resources<br>
+/items<br>
+/drones</br
+
 <br>
 POST methods<br>
 <b>/api/login</b><br>

@@ -19,20 +19,21 @@ class DroneFactory extends Factory
      */
     public function definition()
     {
-        $users = User::all()->take(10);
-        foreach ($users as $user) {
-            $engine_item = Item::where('slot', 'engine')->where('user_id', $user->id)->value('id');
-            $analyzer_item = Item::where('slot', 'analyzer')->where('user_id', $user->id)->value('id');
-            $scanner_item = Item::where('slot', 'scanner')->where('user_id', $user->id)->value('id');
-            $storage_item = Item::where('slot', 'storage')->where('user_id', $user->id) ->value('id');
-            return [
-                'name' => $this->faker->colorName(),
-                'user_id' => $user->id,
-                'engine_slot_item_id' => $engine_item,
-                'analyzer_slot_item_id' => $analyzer_item,
-                'scanner_slot_item_id' => $scanner_item,
-                'storage_slot_item_id' => $storage_item,
-            ];
-        }
+//        $users = User::all()->take(10);
+//        foreach ($users as $user) {
+//            $engine_item = Item::where('slot', 'engine')->where('user_id', $user->id)->value('id');
+//            $analyzer_item = Item::where('slot', 'analyzer')->where('user_id', $user->id)->value('id');
+//            $scanner_item = Item::where('slot', 'scanner')->where('user_id', $user->id)->value('id');
+//            $storage_item = Item::where('slot', 'storage')->where('user_id', $user->id) ->value('id');
+//            $arr = [
+//                'name' => $this->faker->colorName(),
+//                'user_id' => $user->id,
+//                'engine_slot_item_id' => $engine_item,
+//                'analyzer_slot_item_id' => $analyzer_item,
+//                'scanner_slot_item_id' => $scanner_item,
+//                'storage_slot_item_id' => $storage_item,
+//            ];
+//        }
+//        return $arr;
     }
 }
