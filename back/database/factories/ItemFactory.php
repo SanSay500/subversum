@@ -32,6 +32,7 @@ class ItemFactory extends Factory
             'rarity' => random_int(1,10),
             'user_id' => random_int(1, 10),
             'primary_max_dollars' => random_int(1500,224000),
+            'image' => $this->faker->filePath(),
             'primary_critical_step_chance' => round($this->randomFloat(0.002, 0.20),4),
             'primary_critical_step_force' => round($this->randomFloat(0.011, 0.029),4),
             'primary_dollars_per_step' => random_int(1500, 15000),

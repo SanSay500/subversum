@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('slot',['engine', 'scanner', 'analyzer', 'storage']);
             $table->boolean('is_nft');
             $table->integer('rarity');
+            $table->string('image');
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->nullable();
             $table->integer('primary_max_dollars')->nullable();
             $table->float('primary_critical_step_chance')->nullable();
