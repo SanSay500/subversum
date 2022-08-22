@@ -10,4 +10,4 @@ API calls:\
 /workers_map
 
 Database structure
-![image](https://user-images.githubusercontent.com/30046232/180787434-90a18ed3-5cb8-4389-93b4-c2f018bcee38.png)
+![image](https://user-images.githubusercontent.com/30046232/185915998-966cdbed-11b2-4665-88c6-185b2fa2e3d8.png)
