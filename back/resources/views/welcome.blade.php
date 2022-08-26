@@ -3,7 +3,7 @@
 <title>Api Subversum</title>
 
 API GET calls (add to subversum.space/api):<br>
-/workers - tokenized <br>
+/workers<br> - tokenized
 /planets<br>
 /resources<br>
 /buildings<br>
@@ -38,5 +38,4 @@ database: back</br></br>
 
 <br>
 Database structure <br>
-
-<img style = "max-width: 100%; max-height: 100%" src='https://user-images.githubusercontent.com/30046232/185915998-966cdbed-11b2-4665-88c6-185b2fa2e3d8.png'></img>
+<img width="70%" height="90%" src='https://user-images.githubusercontent.com/30046232/180787434-90a18ed3-5cb8-4389-93b4-c2f018bcee38.png'></img>

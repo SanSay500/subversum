@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'domain' => env('TELESCOPE_DOMAIN', null),
+    'domain' => '',//'telescope',//'telescope', //env('TELESCOPE_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ return [
     */
 
     'driver' => env('TELESCOPE_DRIVER', 'database'),
-
+    //"asset_url" => "https://telescope.subversum.space/vendor/telescope",
     'storage' => [
         'database' => [
             'connection' => env('DB_CONNECTION', 'mysql'),

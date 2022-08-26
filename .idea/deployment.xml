@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="subversum (project level)">
+  <component name="PublishConfigData" autoUpload="Always" serverName="subversum">
     <serverData>
-      <paths name="subversum (project level)">
+      <paths name="subversum">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/root/subversum" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

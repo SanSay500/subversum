@@ -17,7 +17,7 @@ class ResourceSeeder extends Seeder
     public function run()
     {
         DB::table('resources')->truncate();
-        $resources = ['Oil', 'Gold', 'Steel', 'Diamonds'];
+        $resources = ['terra','hydro','air'];
 
         foreach ($resources as $resource) {
             DB::table('resources')->insert(values: [

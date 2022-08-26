@@ -24,6 +24,7 @@ class RegionFactory extends Factory
             'continent_id' => random_int(1,10),
             'longitude' => $this->faker->randomNumber(),
             'latitude' => $this->faker->randomNumber(),
+            'price' => random_int(10,1000),
         ];
     }
 }

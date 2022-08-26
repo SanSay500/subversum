@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Region;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class AuctionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,9 +14,6 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'name'=>$this->name,
-            'email'=>$this->email,
-        ];
+        return parent::toArray($request);
     }
 }

@@ -35,3 +35,5 @@ Route::get('/',function(){
     return view ('welcome');
 });
 Route::post('/buy_region',[\App\Http\Controllers\RegionController::class, 'buy']);
+Route::get('/auctions', [\App\Http\Controllers\AuctionController::class,'index']);
+Route::post('/auctions/store', [\App\Http\Controllers\AuctionController::class, 'store']);

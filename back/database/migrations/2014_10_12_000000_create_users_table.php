@@ -22,9 +22,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->float('dollars_count')->nullable();
-            $table->float('gold_count')->nullable();
-            $table->float('oil_count')->nullable();
-            $table->float('diamonds_count')->nullable();
+            $table->float('terra_count')->nullable();
+            $table->float('air_count')->nullable();
+            $table->float('hydro_count')->nullable();
             $table->float('critical_step_chance')->nullable();
             $table->float('critical_step_force')->nullable();
             $table->float('dollars_per_step')->nullable();

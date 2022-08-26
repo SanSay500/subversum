@@ -17,10 +17,17 @@ class BuildingSeeder extends Seeder
     public function run()
     {
         DB::table('buildings')->truncate();
-        $buildings = ['Steel factory', 'Oil Refinery', 'Gold Mine', 'Tech Lab Facility', 'Diamond mine'];
+        $buildings = [
+            ['Steel factory', 100],
+            ['Oil Refinery', 200],
+            ['Gold Mine', 300],
+            ['Tech Lab Facility', 500],
+            ['Diamond mine', 1000]
+        ];
         foreach ($buildings as $building) {
             DB::table('buildings')->insert(values: [
-                'type' => $building,
+                'type' => $building[0],
+                'price' => $building[1],
             ]);
         }
     }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('continent_id')->constrained()->onDelete('cascade');
             $table->float('longitude');
             $table->float('latitude');
+            $table->float('price');
         });
     }
 

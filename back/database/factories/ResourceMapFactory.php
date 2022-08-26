@@ -17,7 +17,7 @@ class ResourceMapFactory extends Factory
     public function definition()
     {
         return [
-            'resource_id' => random_int(1,4),
+            'resource_id' => random_int(1,3),
             'region_id' => random_int(1,20),
             'short_storage_value' => random_int(1,500),
             'overall_storage_value' => random_int(1,500),

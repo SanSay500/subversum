@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             TokenSeeder::class,
             ItemSeeder::class,
             DroneSeeder::class,
+            AuctionSeeder::class,
         ]);
 
     }
