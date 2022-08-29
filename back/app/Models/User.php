@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'hydro_count',
+        'terra_count',
+        'air_count',
+        'dollars_count',
     ];
 
     /**
@@ -45,6 +49,12 @@ class User extends Authenticatable
     public function regions()
     {
         return $this->hasMany(Region::class);
+    }
+
+    public function auctionStoreCalculations(User $user, $resource_name){
+//        $user->update([
+//            $resource_name.'_count'=>
+//        ]);
     }
 
 }

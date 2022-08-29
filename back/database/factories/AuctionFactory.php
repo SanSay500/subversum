@@ -23,6 +23,7 @@ class AuctionFactory extends Factory
         'resource_id' => Resource::find(random_int(1,3)),
         'res_quantity' => random_int(1, 50000),
         'lot_price' => random_int(1, 100000),
+        'lot_status' => $this->faker->randomElement(['Active', 'Sold']),
         ];
     }
 }

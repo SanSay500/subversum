@@ -29,8 +29,7 @@ return new class extends Migration
             $table->float('critical_step_force')->nullable();
             $table->float('dollars_per_step')->nullable();
             $table->integer('max_dollars')->nullable();
-
-
+            $table->integer('energy')->nullable();
         });
     }
 

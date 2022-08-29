@@ -6,6 +6,8 @@ use App\Http\Requests\StoreAuctionRequest;
 use App\Http\Requests\UpdateAuctionRequest;
 use App\Http\Resources\AuctionResource;
 use App\Models\Auction;
+use App\Models\Resource;
+use App\Models\User;
 
 class AuctionController extends Controller
 {
@@ -37,14 +39,20 @@ class AuctionController extends Controller
      */
     public function store(StoreAuctionRequest $request)
     {
-//        $user=User::find($request->user_id);
-    //
-//        ])
+        $resource = Resource::find($request->resource_id)->type;
+        $user=User::find($request->user_id);
+        $res_user = $resource.'_count';
+
+        $user->update([
+            $res_user => $user->$res_user - $request->res_quantity,
+        ]);
+
         Auction::create([
             'user_id' => $request->user_id,
             'resource_id' => $request->resource_id,
             'res_quantity' => $request->res_quantity,
             'lot_price' => $request->lot_price,
+            'lot_status' => 'Active',
         ]);
         return response ('New lot created!');
     }
@@ -80,7 +88,7 @@ class AuctionController extends Controller
      */
     public function update(UpdateAuctionRequest $request, Auction $auction)
     {
-        //
+
     }
 
     /**
@@ -93,4 +101,29 @@ class AuctionController extends Controller
     {
         //
     }
+
+    public function buy(UpdateAuctionRequest $request){
+
+        $auction = Auction::find($request->auction_id);
+        $resource = Resource::find($auction->resource_id)->type;
+        $buyer = User::find($request->user_id);
+        $res_string = $resource.'_count';
+
+        $buyer->update([
+            $res_string => $buyer->$res_string + $auction->res_quantity,
+            'dollars_count' => $buyer->dollars_count - $auction->lot_price,
+        ]);
+
+        $seller = User::find($auction->user_id);
+        $seller->update([
+           'dollars_count'=>$seller->dollars_count + $auction->lot_price,
+        ]);
+
+        $auction->update([
+            'status' => 'Sold',
+        ]);
+
+        return response(['You bought this lot!', 'buyer' => $buyer]);
+    }
+
 }

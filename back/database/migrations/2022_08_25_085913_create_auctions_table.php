@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('resource_id')->constrained()->onDelete('cascade');
             $table->integer('res_quantity');
             $table->float('lot_price');
+            $table->enum('lot_status',['Active', 'Sold']);
             $table->timestamps();
         });
     }

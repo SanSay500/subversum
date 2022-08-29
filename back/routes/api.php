@@ -27,6 +27,7 @@ Route::resource('buildings_map',\App\Http\Controllers\BuildingMapController::cla
 Route::resource('workers_map',\App\Http\Controllers\WorkerMapController::class);
 Route::resource('items',\App\Http\Controllers\ItemController::class);
 Route::resource('drones',\App\Http\Controllers\DroneController::class);
+Route::resource('auctions',\App\Http\Controllers\AuctionController::class);
 
 
 Route::get('/user_regions/{user}',[\App\Http\Controllers\UserController::class, 'select_regions']);
@@ -35,5 +36,6 @@ Route::get('/',function(){
     return view ('welcome');
 });
 Route::post('/buy_region',[\App\Http\Controllers\RegionController::class, 'buy']);
-Route::get('/auctions', [\App\Http\Controllers\AuctionController::class,'index']);
+//Route::get('/auctions', [\App\Http\Controllers\AuctionController::class,'index']s);
+Route::post('/auctions/buy', [\App\Http\Controllers\AuctionController::class,'buy']);
 Route::post('/auctions/store', [\App\Http\Controllers\AuctionController::class, 'store']);

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Auction extends Model
 {
     use HasFactory;
-    protected $fillable =['user_id', 'resource_id', 'res_quantity', 'lot_price'];
+    protected $fillable =['user_id', 'resource_id', 'res_quantity', 'lot_price', 'lot_status'];
 }

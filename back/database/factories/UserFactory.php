@@ -24,13 +24,14 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
             'dollars_count' => random_int(10, 100000),
-            'gold_count' => random_int(10, 100000),
-            'oil_count' => random_int(10, 100000),
-            'diamonds_count' => random_int(10, 10000),
+            'terra_count' => random_int(10, 100000),
+            'air_count' => random_int(10, 100000),
+            'hydro_count' => random_int(10, 10000),
             'critical_step_chance' => null,
             'critical_step_force' => 0.05,
             'dollars_per_step' => 1500,
             'max_dollars' => 3000,
+            'energy' => 100,
         ];
     }
 
