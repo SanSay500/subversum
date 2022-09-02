@@ -25,6 +25,12 @@ class User extends Authenticatable
         'terra_count',
         'air_count',
         'dollars_count',
+        'crystals',
+        'energy',
+        'critical_step_chance',
+        'critical_step_force',
+        'dollars_per_step',
+        'max_dollars',
     ];
 
     /**

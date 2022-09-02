@@ -16,11 +16,8 @@ return new class extends Migration
         Schema::create('resources_map', function (Blueprint $table) {
             $table->id();
             $table->foreignId('resource_id')->constrained()->onDelete('cascade');
-            $table->foreignId('region_id')->constrained()->onDelete('cascade');
-            $table->float('short_storage_value');
-            $table->float('overall_storage_value');
+            $table->foreignId('plot_id')->constrained()->onDelete('cascade');
             $table->integer('total_count');
-            $table->integer('mining_level');
         });
     }
 

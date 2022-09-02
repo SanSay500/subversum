@@ -15,6 +15,6 @@ class ResourceMapSeeder extends Seeder
      */
     public function run()
     {
-        ResourceMap::factory(30)->create();
+        ResourceMap::factory(500000)->create();
     }
 }

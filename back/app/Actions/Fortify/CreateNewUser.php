@@ -15,7 +15,7 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Validate and create a newly registered user.
      *
-     * @param  array  $input
+     * @param array $input
      * @return \App\Models\User
      */
     public function create(array $input)
@@ -36,6 +36,16 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'energy' => 100,
+            'hydro_count' => 1000,
+            'terra_count' => 1000,
+            'air_count' => 1000,
+            'dollars_count' => 500,
+            'crystals' => 10,
+            'critical_step_chance' => 1,
+            'critical_step_force' => 0.05,
+            'dollars_per_step' => 1500,
+            'max_dollars' => 3000,
         ]);
     }
 }

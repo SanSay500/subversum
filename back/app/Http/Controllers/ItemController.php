@@ -6,9 +6,15 @@ use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Models\Item;
 use App\Http\Resources\ItemResource;
+use GuzzleHttp\Psr7\Request;
 
 class ItemController extends Controller
 {
+    public function craft(Request $request){
+
+     return response('You made sword of Zuzanga');
+    }
+
     /**
      * Display a listing of the resource.
      *

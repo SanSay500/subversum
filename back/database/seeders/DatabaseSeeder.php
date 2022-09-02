@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             PlanetSeeder::class,
             ContinentSeeder::class,
             RegionSeeder::class,
+            PlotSeeder::class,
             BuildingSeeder::class,
             ResourceSeeder::class,
             WorkerSeeder::class,

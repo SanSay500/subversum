@@ -20,11 +20,9 @@ class RegionFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'user_id' => $this->faker->randomElement([NULL,1,2,3,8]),
             'continent_id' => random_int(1,10),
             'longitude' => $this->faker->randomNumber(),
             'latitude' => $this->faker->randomNumber(),
-            'price' => random_int(10,1000),
         ];
     }
 }

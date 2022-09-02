@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Building;
+use App\Models\Plot;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +20,8 @@ class BuildingMapFactory extends Factory
     public function definition()
     {
         return [
-            'building_id'=>random_int(1,5),
-            'region_id'=>random_int(1,20),
+            'building_id'=>random_int(1,Building::count()),
+            'plot_id'=>random_int(1,Plot::count()),
         ];
     }
 }

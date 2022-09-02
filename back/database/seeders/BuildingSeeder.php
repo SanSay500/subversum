@@ -18,11 +18,9 @@ class BuildingSeeder extends Seeder
     {
         DB::table('buildings')->truncate();
         $buildings = [
-            ['Steel factory', 100],
-            ['Oil Refinery', 200],
-            ['Gold Mine', 300],
-            ['Tech Lab Facility', 500],
-            ['Diamond mine', 1000]
+            ['Terra Station', 100],
+            ['Air Station', 200],
+            ['Hydro Station', 300],
         ];
         foreach ($buildings as $building) {
             DB::table('buildings')->insert(values: [

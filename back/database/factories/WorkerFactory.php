@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Region;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,10 +19,9 @@ class WorkerFactory extends Factory
     {
         return [
             'worker_id' => random_int(1,30),
-            'region_id' => random_int(1,20),
+            'region_id' => random_int(1,Region::count()),
             'mood' => random_int(1,100),
             'salary' => random_int(20000, 60000),
-            'total_count' => random_int(1,5000),
         ];
     }
 }

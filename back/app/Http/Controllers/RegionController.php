@@ -4,19 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRegionRequest;
 use App\Http\Requests\UpdateRegionRequest;
+use App\Http\Resources\RegionResource;
 use App\Models\Region;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
 class RegionController extends Controller
 {
+    public function buy (){
+
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return ResourceCollection
      */
     public function index()
     {
-        return Region::get();
+        return new ResourceCollection(Region::get());
     }
 
     /**
@@ -44,11 +51,11 @@ class RegionController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Region  $region
-     * @return \Illuminate\Http\Response
+     * @return RegionResource
      */
     public function show(Region $region)
     {
-        //
+        return new RegionResource($region);
     }
 
     /**

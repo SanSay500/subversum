@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Plot;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,11 +19,8 @@ class ResourceMapFactory extends Factory
     {
         return [
             'resource_id' => random_int(1,3),
-            'region_id' => random_int(1,20),
-            'short_storage_value' => random_int(1,500),
-            'overall_storage_value' => random_int(1,500),
-            'total_count' => random_int(1,500),
-            'mining_level' => random_int(1,10),
+            'plot_id' => random_int(1,Plot::count()),
+            'total_count' => random_int(1000,5000),
         ];
     }
 }

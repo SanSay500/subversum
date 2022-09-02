@@ -19,8 +19,8 @@ class AuctionFactory extends Factory
     public function definition()
     {
         return [
-        'user_id' => User::find(random_int(1,10)),
-        'resource_id' => Resource::find(random_int(1,3)),
+        'user_id' => User::find(random_int(1,User::count())),
+        'resource_id' => Resource::find(random_int(1,Resource::count())),
         'res_quantity' => random_int(1, 50000),
         'lot_price' => random_int(1, 100000),
         'lot_status' => $this->faker->randomElement(['Active', 'Sold']),

@@ -18,9 +18,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId("engine_slot_item_id")->nullable()->constrained('items')->onUpdate('cascade')->onDelete('set null');
-            $table->foreignId("storage_slot_item_id")->nullable()->constrained('items')->onUpdate('cascade')->onDelete('set null');
-            $table->foreignId("analyzer_slot_item_id")->nullable()->constrained('items')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId("core_slot_item_id")->nullable()->constrained('items')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId("data_storage_slot_item_id")->nullable()->constrained('items')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId("aiChip_slot_item_id")->nullable()->constrained('items')->onUpdate('cascade')->onDelete('set null');
             $table->foreignId("scanner_slot_item_id")->nullable()->constrained('items')->onUpdate('cascade')->onDelete('set null');
         });
     }

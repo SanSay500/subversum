@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\Plot;
+use App\Http\Resources\PlotResource;
 
 class RegionResource extends JsonResource
 {
@@ -17,9 +19,7 @@ class RegionResource extends JsonResource
         return [
             'id'=>$this->id,
             'name'=>$this->name,
-            'buildings' => BuildingMapResource::collection($this->buildings_map),
-            'workers' => WorkerMapResource::collection($this->workers_map),
-            'resources' => ResourceMapResource::collection($this->resources_map),
+               'plots' => PlotResource::collection(Plot::where('region_id',$this->id)->get()),
         ];
     }
 }

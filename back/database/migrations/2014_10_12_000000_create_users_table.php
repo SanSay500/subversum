@@ -30,6 +30,7 @@ return new class extends Migration
             $table->float('dollars_per_step')->nullable();
             $table->integer('max_dollars')->nullable();
             $table->integer('energy')->nullable();
+            $table->integer('crystals')->nullable();
         });
     }
 

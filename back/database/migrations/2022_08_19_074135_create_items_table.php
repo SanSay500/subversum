@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->enum('slot',['engine', 'scanner', 'analyzer', 'storage']);
+            $table->boolean('for_drone');
+            $table->string('slot')->nullable();
             $table->boolean('is_nft');
             $table->integer('rarity');
             $table->string('image');

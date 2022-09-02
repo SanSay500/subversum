@@ -27,11 +27,12 @@ class UserFactory extends Factory
             'terra_count' => random_int(10, 100000),
             'air_count' => random_int(10, 100000),
             'hydro_count' => random_int(10, 10000),
-            'critical_step_chance' => null,
+            'critical_step_chance' => 1,
             'critical_step_force' => 0.05,
             'dollars_per_step' => 1500,
             'max_dollars' => 3000,
             'energy' => 100,
+            'crystals' => 1,
         ];
     }
 

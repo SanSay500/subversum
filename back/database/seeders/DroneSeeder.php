@@ -40,17 +40,17 @@ class DroneSeeder extends Seeder
 
         $users = User::all()->take(10);
         foreach ($users as $user) {
-            $engine_item = Item::where('slot', 'engine')->where('user_id', $user->id)->value('id');
-            $analyzer_item = Item::where('slot', 'analyzer')->where('user_id', $user->id)->value('id');
+            $core_item = Item::where('slot', 'core')->where('user_id', $user->id)->value('id');
+            $aiChip_item = Item::where('slot', 'aiChip')->where('user_id', $user->id)->value('id');
             $scanner_item = Item::where('slot', 'scanner')->where('user_id', $user->id)->value('id');
-            $storage_item = Item::where('slot', 'storage')->where('user_id', $user->id) ->value('id');
+            $data_storage_item = Item::where('slot', 'data_storage')->where('user_id', $user->id) ->value('id');
             Drone::create ([
                 'name' => ucfirst($this->readable_random_string(random_int(3,9))),
                 'user_id' => $user->id,
-                'engine_slot_item_id' => $engine_item,
-                'analyzer_slot_item_id' => $analyzer_item,
+                'core_slot_item_id' => $core_item,
+                'aiChip_slot_item_id' => $aiChip_item,
                 'scanner_slot_item_id' => $scanner_item,
-                'storage_slot_item_id' => $storage_item,
+                'data_storage_slot_item_id' => $data_storage_item,
             ]);
         }
        //Drone::factory(10)->create();

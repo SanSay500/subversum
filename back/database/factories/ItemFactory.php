@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,10 +28,11 @@ class ItemFactory extends Factory
     {
         return [
             'name' => ucfirst($this->faker->word()).' '.ucfirst($this->faker->word()),
-            'slot' => $this->faker->randomElement(['analyzer','scanner','engine', 'storage']),
+            'slot' => $this->faker->randomElement(['aiChip','scanner','core', 'data_storage', '']),
+            'for_drone' => $this->faker->boolean(70),
             'is_nft' => $this->faker->boolean(10),
             'rarity' => random_int(1,10),
-            'user_id' => random_int(1, 10),
+            'user_id' => random_int(1, User::count()),
             'primary_max_dollars' => random_int(1500,224000),
             'image' => $this->faker->filePath(),
             'primary_critical_step_chance' => round($this->randomFloat(0.002, 0.20),4),

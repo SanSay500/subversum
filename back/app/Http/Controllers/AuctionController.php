@@ -104,9 +104,13 @@ class AuctionController extends Controller
 
     public function buy(UpdateAuctionRequest $request){
 
+
         $auction = Auction::find($request->auction_id);
         $resource = Resource::find($auction->resource_id)->type;
         $buyer = User::find($request->user_id);
+
+        if ($buyer->dollars_count < $auction->lot_price) return response('You have no enough money! Work harder!', 210);
+
         $res_string = $resource.'_count';
 
         $buyer->update([
@@ -115,6 +119,7 @@ class AuctionController extends Controller
         ]);
 
         $seller = User::find($auction->user_id);
+
         $seller->update([
            'dollars_count'=>$seller->dollars_count + $auction->lot_price,
         ]);

@@ -1,0 +1,5482 @@
+openapi: 3.0.3
+info:
+  title: Subversum
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'https://subversum.space/api'
+paths:
+  /api/login:
+    post:
+      summary: 'Attempt to authenticate a new session.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: ''
+                  example: vel
+                password:
+                  type: string
+                  description: ''
+                  example: occaecati
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: 'Destroy an authenticated session.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/forgot-password:
+    post:
+      summary: 'Send a reset link to the given user.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/reset-password:
+    post:
+      summary: "Reset the user's password."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: ''
+                  example: vel
+                password:
+                  type: string
+                  description: ''
+                  example: voluptate
+              required:
+                - token
+                - password
+      security: []
+  /api/register:
+    post:
+      summary: 'Create a new registered user.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/email/verify/{id}/{hash}':
+    get:
+      summary: "Mark the authenticated user's email address as verified."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the verify.'
+        example: in
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: hash
+        description: ''
+        example: suscipit
+        required: true
+        schema:
+          type: string
+  /api/email/verification-notification:
+    post:
+      summary: 'Send a new email verification notification.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/user/confirmed-password-status:
+    get:
+      summary: 'Get the password confirmation status.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/user/confirm-password:
+    post:
+      summary: "Confirm the user's password."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/workers:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/workers/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  '/api/workers/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the worker.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/workers/{worker_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: worker_id
+        description: 'The ID of the worker.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/users:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      name: 'Robb Batz'
+                      email: torp.anabelle@example.org
+                    -
+                      name: 'Willie Abernathy'
+                      email: fern.tremblay@example.org
+                    -
+                      name: 'Miss Phoebe Gerhold'
+                      email: maggio.raquel@example.org
+                    -
+                      name: 'Moshe Cummings II'
+                      email: marjolaine32@example.org
+                    -
+                      name: 'Dejuan Grant'
+                      email: carmen40@example.org
+                    -
+                      name: 'Prof. Karlee Kirlin IV'
+                      email: alice18@example.org
+                    -
+                      name: 'Dusty Feest V'
+                      email: kayley.williamson@example.net
+                    -
+                      name: 'Ms. Melba Nikolaus MD'
+                      email: pkling@example.com
+                    -
+                      name: 'Deon Quigley'
+                      email: chaya62@example.org
+                    -
+                      name: 'Stanford Renner'
+                      email: cordia90@example.net
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        name: 'Robb Batz'
+                        email: torp.anabelle@example.org
+                      -
+                        name: 'Willie Abernathy'
+                        email: fern.tremblay@example.org
+                      -
+                        name: 'Miss Phoebe Gerhold'
+                        email: maggio.raquel@example.org
+                      -
+                        name: 'Moshe Cummings II'
+                        email: marjolaine32@example.org
+                      -
+                        name: 'Dejuan Grant'
+                        email: carmen40@example.org
+                      -
+                        name: 'Prof. Karlee Kirlin IV'
+                        email: alice18@example.org
+                      -
+                        name: 'Dusty Feest V'
+                        email: kayley.williamson@example.net
+                      -
+                        name: 'Ms. Melba Nikolaus MD'
+                        email: pkling@example.com
+                      -
+                        name: 'Deon Quigley'
+                        email: chaya62@example.org
+                      -
+                        name: 'Stanford Renner'
+                        email: cordia90@example.net
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/users/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/users/{id}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"id\" = $1\n                      ^ (SQL: select * from \"plots\" where \"id\" = 1)"
+                properties:
+                  message:
+                    type: string
+                    example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"id\" = $1\n                      ^ (SQL: select * from \"plots\" where \"id\" = 1)"
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/users/{user}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: user
+        description: 'The user.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/planets:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: LightPink
+                    -
+                      id: 2
+                      name: PaleGreen
+                    -
+                      id: 3
+                      name: MintCream
+                    -
+                      id: 4
+                      name: LightSalmon
+                    -
+                      id: 5
+                      name: LightBlue
+                    -
+                      id: 6
+                      name: Lavender
+                    -
+                      id: 7
+                      name: Snow
+                    -
+                      id: 8
+                      name: BlueViolet
+                    -
+                      id: 9
+                      name: GhostWhite
+                    -
+                      id: 10
+                      name: Black
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: LightPink
+                      -
+                        id: 2
+                        name: PaleGreen
+                      -
+                        id: 3
+                        name: MintCream
+                      -
+                        id: 4
+                        name: LightSalmon
+                      -
+                        id: 5
+                        name: LightBlue
+                      -
+                        id: 6
+                        name: Lavender
+                      -
+                        id: 7
+                        name: Snow
+                      -
+                        id: 8
+                        name: BlueViolet
+                      -
+                        id: 9
+                        name: GhostWhite
+                      -
+                        id: 10
+                        name: Black
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/planets/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/planets/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the planet.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/planets/{planet_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: planet_id
+        description: 'The ID of the planet.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/resources:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    type: Oil
+                  -
+                    id: 2
+                    type: Gold
+                  -
+                    id: 3
+                    type: Steel
+                  -
+                    id: 4
+                    type: Diamonds
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/resources/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/resources/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the resource.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/resources/{resource_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: resource_id
+        description: 'The ID of the resource.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/buildings:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      type: 'Steel factory'
+                      price: '100'
+                    -
+                      id: 2
+                      type: 'Oil Refinery'
+                      price: '200'
+                    -
+                      id: 3
+                      type: 'Gold Mine'
+                      price: '300'
+                    -
+                      id: 4
+                      type: 'Tech Lab Facility'
+                      price: '500'
+                    -
+                      id: 5
+                      type: 'Diamond mine'
+                      price: '1000'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        type: 'Steel factory'
+                        price: '100'
+                      -
+                        id: 2
+                        type: 'Oil Refinery'
+                        price: '200'
+                      -
+                        id: 3
+                        type: 'Gold Mine'
+                        price: '300'
+                      -
+                        id: 4
+                        type: 'Tech Lab Facility'
+                        price: '500'
+                      -
+                        id: 5
+                        type: 'Diamond mine'
+                        price: '1000'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/buildings/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/buildings/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the building.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/buildings/{building_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: building_id
+        description: 'The ID of the building.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/regions:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      user_id: 1
+                      name: sunt
+                      continent_id: 6
+                      longitude: '644849'
+                      latitude: '6'
+                      price: '787'
+                    -
+                      id: 2
+                      user_id: 8
+                      name: facere
+                      continent_id: 1
+                      longitude: '3745'
+                      latitude: '6456763'
+                      price: '724'
+                    -
+                      id: 3
+                      user_id: 3
+                      name: voluptatibus
+                      continent_id: 4
+                      longitude: '435'
+                      latitude: '62981696'
+                      price: '330'
+                    -
+                      id: 4
+                      user_id: null
+                      name: est
+                      continent_id: 1
+                      longitude: '5793'
+                      latitude: '4'
+                      price: '159'
+                    -
+                      id: 5
+                      user_id: 8
+                      name: voluptatem
+                      continent_id: 7
+                      longitude: '485'
+                      latitude: '80748620'
+                      price: '135'
+                    -
+                      id: 6
+                      user_id: 2
+                      name: velit
+                      continent_id: 8
+                      longitude: '8'
+                      latitude: '1203739'
+                      price: '366'
+                    -
+                      id: 7
+                      user_id: 2
+                      name: eveniet
+                      continent_id: 3
+                      longitude: '43'
+                      latitude: '7842'
+                      price: '929'
+                    -
+                      id: 8
+                      user_id: 3
+                      name: nostrum
+                      continent_id: 9
+                      longitude: '499'
+                      latitude: '512717'
+                      price: '740'
+                    -
+                      id: 9
+                      user_id: 8
+                      name: sapiente
+                      continent_id: 6
+                      longitude: '99656596'
+                      latitude: '6827'
+                      price: '621'
+                    -
+                      id: 10
+                      user_id: 3
+                      name: pariatur
+                      continent_id: 6
+                      longitude: '7'
+                      latitude: '354830'
+                      price: '20'
+                    -
+                      id: 11
+                      user_id: 8
+                      name: vitae
+                      continent_id: 2
+                      longitude: '363347'
+                      latitude: '52217'
+                      price: '663'
+                    -
+                      id: 12
+                      user_id: null
+                      name: iste
+                      continent_id: 4
+                      longitude: '2'
+                      latitude: '86641'
+                      price: '686'
+                    -
+                      id: 13
+                      user_id: 3
+                      name: reiciendis
+                      continent_id: 8
+                      longitude: '22841977'
+                      latitude: '4'
+                      price: '190'
+                    -
+                      id: 14
+                      user_id: null
+                      name: qui
+                      continent_id: 1
+                      longitude: '387108936'
+                      latitude: '1146'
+                      price: '413'
+                    -
+                      id: 15
+                      user_id: 2
+                      name: non
+                      continent_id: 6
+                      longitude: '7203'
+                      latitude: '7812116'
+                      price: '330'
+                    -
+                      id: 16
+                      user_id: 1
+                      name: iste
+                      continent_id: 5
+                      longitude: '48962563'
+                      latitude: '487391'
+                      price: '780'
+                    -
+                      id: 17
+                      user_id: 2
+                      name: facilis
+                      continent_id: 7
+                      longitude: '79760163'
+                      latitude: '40945911'
+                      price: '898'
+                    -
+                      id: 18
+                      user_id: null
+                      name: et
+                      continent_id: 6
+                      longitude: '358531603'
+                      latitude: '47655183'
+                      price: '948'
+                    -
+                      id: 19
+                      user_id: null
+                      name: beatae
+                      continent_id: 7
+                      longitude: '20379'
+                      latitude: '833825'
+                      price: '786'
+                    -
+                      id: 20
+                      user_id: 8
+                      name: ut
+                      continent_id: 2
+                      longitude: '68551'
+                      latitude: '3'
+                      price: '296'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        user_id: 1
+                        name: sunt
+                        continent_id: 6
+                        longitude: '644849'
+                        latitude: '6'
+                        price: '787'
+                      -
+                        id: 2
+                        user_id: 8
+                        name: facere
+                        continent_id: 1
+                        longitude: '3745'
+                        latitude: '6456763'
+                        price: '724'
+                      -
+                        id: 3
+                        user_id: 3
+                        name: voluptatibus
+                        continent_id: 4
+                        longitude: '435'
+                        latitude: '62981696'
+                        price: '330'
+                      -
+                        id: 4
+                        user_id: null
+                        name: est
+                        continent_id: 1
+                        longitude: '5793'
+                        latitude: '4'
+                        price: '159'
+                      -
+                        id: 5
+                        user_id: 8
+                        name: voluptatem
+                        continent_id: 7
+                        longitude: '485'
+                        latitude: '80748620'
+                        price: '135'
+                      -
+                        id: 6
+                        user_id: 2
+                        name: velit
+                        continent_id: 8
+                        longitude: '8'
+                        latitude: '1203739'
+                        price: '366'
+                      -
+                        id: 7
+                        user_id: 2
+                        name: eveniet
+                        continent_id: 3
+                        longitude: '43'
+                        latitude: '7842'
+                        price: '929'
+                      -
+                        id: 8
+                        user_id: 3
+                        name: nostrum
+                        continent_id: 9
+                        longitude: '499'
+                        latitude: '512717'
+                        price: '740'
+                      -
+                        id: 9
+                        user_id: 8
+                        name: sapiente
+                        continent_id: 6
+                        longitude: '99656596'
+                        latitude: '6827'
+                        price: '621'
+                      -
+                        id: 10
+                        user_id: 3
+                        name: pariatur
+                        continent_id: 6
+                        longitude: '7'
+                        latitude: '354830'
+                        price: '20'
+                      -
+                        id: 11
+                        user_id: 8
+                        name: vitae
+                        continent_id: 2
+                        longitude: '363347'
+                        latitude: '52217'
+                        price: '663'
+                      -
+                        id: 12
+                        user_id: null
+                        name: iste
+                        continent_id: 4
+                        longitude: '2'
+                        latitude: '86641'
+                        price: '686'
+                      -
+                        id: 13
+                        user_id: 3
+                        name: reiciendis
+                        continent_id: 8
+                        longitude: '22841977'
+                        latitude: '4'
+                        price: '190'
+                      -
+                        id: 14
+                        user_id: null
+                        name: qui
+                        continent_id: 1
+                        longitude: '387108936'
+                        latitude: '1146'
+                        price: '413'
+                      -
+                        id: 15
+                        user_id: 2
+                        name: non
+                        continent_id: 6
+                        longitude: '7203'
+                        latitude: '7812116'
+                        price: '330'
+                      -
+                        id: 16
+                        user_id: 1
+                        name: iste
+                        continent_id: 5
+                        longitude: '48962563'
+                        latitude: '487391'
+                        price: '780'
+                      -
+                        id: 17
+                        user_id: 2
+                        name: facilis
+                        continent_id: 7
+                        longitude: '79760163'
+                        latitude: '40945911'
+                        price: '898'
+                      -
+                        id: 18
+                        user_id: null
+                        name: et
+                        continent_id: 6
+                        longitude: '358531603'
+                        latitude: '47655183'
+                        price: '948'
+                      -
+                        id: 19
+                        user_id: null
+                        name: beatae
+                        continent_id: 7
+                        longitude: '20379'
+                        latitude: '833825'
+                        price: '786'
+                      -
+                        id: 20
+                        user_id: 8
+                        name: ut
+                        continent_id: 2
+                        longitude: '68551'
+                        latitude: '3'
+                        price: '296'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/regions/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/regions/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"region_id\" = $1\n                      ^ (SQL: select * from \"plots\" where \"region_id\" = 1)"
+                properties:
+                  message:
+                    type: string
+                    example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"region_id\" = $1\n                      ^ (SQL: select * from \"plots\" where \"region_id\" = 1)"
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the region.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/regions/{region_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: region_id
+        description: 'The ID of the region.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/continents:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: Barton
+                      planet_id: 1
+                      longitude: '7038'
+                      latitude: '38807779'
+                    -
+                      id: 2
+                      name: Kuhic
+                      planet_id: 1
+                      longitude: '14'
+                      latitude: '160'
+                    -
+                      id: 3
+                      name: Towne
+                      planet_id: 1
+                      longitude: '5966'
+                      latitude: '88393'
+                    -
+                      id: 4
+                      name: Schaden
+                      planet_id: 6
+                      longitude: '294'
+                      latitude: '4739005'
+                    -
+                      id: 5
+                      name: Fahey
+                      planet_id: 10
+                      longitude: '60425'
+                      latitude: '97348060'
+                    -
+                      id: 6
+                      name: Orn
+                      planet_id: 3
+                      longitude: '75'
+                      latitude: '5501'
+                    -
+                      id: 7
+                      name: Daugherty
+                      planet_id: 2
+                      longitude: '764089283'
+                      latitude: '27734662'
+                    -
+                      id: 8
+                      name: Hand
+                      planet_id: 9
+                      longitude: '46'
+                      latitude: '862'
+                    -
+                      id: 9
+                      name: McLaughlin
+                      planet_id: 2
+                      longitude: '7'
+                      latitude: '93721'
+                    -
+                      id: 10
+                      name: Ebert
+                      planet_id: 10
+                      longitude: '53712'
+                      latitude: '485354'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: Barton
+                        planet_id: 1
+                        longitude: '7038'
+                        latitude: '38807779'
+                      -
+                        id: 2
+                        name: Kuhic
+                        planet_id: 1
+                        longitude: '14'
+                        latitude: '160'
+                      -
+                        id: 3
+                        name: Towne
+                        planet_id: 1
+                        longitude: '5966'
+                        latitude: '88393'
+                      -
+                        id: 4
+                        name: Schaden
+                        planet_id: 6
+                        longitude: '294'
+                        latitude: '4739005'
+                      -
+                        id: 5
+                        name: Fahey
+                        planet_id: 10
+                        longitude: '60425'
+                        latitude: '97348060'
+                      -
+                        id: 6
+                        name: Orn
+                        planet_id: 3
+                        longitude: '75'
+                        latitude: '5501'
+                      -
+                        id: 7
+                        name: Daugherty
+                        planet_id: 2
+                        longitude: '764089283'
+                        latitude: '27734662'
+                      -
+                        id: 8
+                        name: Hand
+                        planet_id: 9
+                        longitude: '46'
+                        latitude: '862'
+                      -
+                        id: 9
+                        name: McLaughlin
+                        planet_id: 2
+                        longitude: '7'
+                        latitude: '93721'
+                      -
+                        id: 10
+                        name: Ebert
+                        planet_id: 10
+                        longitude: '53712'
+                        latitude: '485354'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/continents/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/continents/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the continent.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/continents/{continent_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: continent_id
+        description: 'The ID of the continent.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/res_map:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    resource_id: 2
+                    region_id: 19
+                    short_storage_value: '111'
+                    overall_storage_value: '207'
+                    total_count: 253
+                    mining_level: 1
+                  -
+                    id: 2
+                    resource_id: 1
+                    region_id: 16
+                    short_storage_value: '378'
+                    overall_storage_value: '154'
+                    total_count: 300
+                    mining_level: 3
+                  -
+                    id: 3
+                    resource_id: 2
+                    region_id: 20
+                    short_storage_value: '276'
+                    overall_storage_value: '437'
+                    total_count: 20
+                    mining_level: 1
+                  -
+                    id: 4
+                    resource_id: 1
+                    region_id: 8
+                    short_storage_value: '359'
+                    overall_storage_value: '207'
+                    total_count: 188
+                    mining_level: 1
+                  -
+                    id: 5
+                    resource_id: 1
+                    region_id: 2
+                    short_storage_value: '324'
+                    overall_storage_value: '92'
+                    total_count: 184
+                    mining_level: 9
+                  -
+                    id: 6
+                    resource_id: 1
+                    region_id: 14
+                    short_storage_value: '370'
+                    overall_storage_value: '135'
+                    total_count: 121
+                    mining_level: 7
+                  -
+                    id: 7
+                    resource_id: 4
+                    region_id: 11
+                    short_storage_value: '269'
+                    overall_storage_value: '194'
+                    total_count: 46
+                    mining_level: 1
+                  -
+                    id: 8
+                    resource_id: 3
+                    region_id: 1
+                    short_storage_value: '172'
+                    overall_storage_value: '453'
+                    total_count: 232
+                    mining_level: 10
+                  -
+                    id: 9
+                    resource_id: 1
+                    region_id: 11
+                    short_storage_value: '383'
+                    overall_storage_value: '361'
+                    total_count: 114
+                    mining_level: 3
+                  -
+                    id: 10
+                    resource_id: 1
+                    region_id: 17
+                    short_storage_value: '129'
+                    overall_storage_value: '225'
+                    total_count: 305
+                    mining_level: 8
+                  -
+                    id: 11
+                    resource_id: 1
+                    region_id: 17
+                    short_storage_value: '149'
+                    overall_storage_value: '412'
+                    total_count: 328
+                    mining_level: 5
+                  -
+                    id: 12
+                    resource_id: 3
+                    region_id: 7
+                    short_storage_value: '270'
+                    overall_storage_value: '52'
+                    total_count: 368
+                    mining_level: 8
+                  -
+                    id: 13
+                    resource_id: 1
+                    region_id: 7
+                    short_storage_value: '482'
+                    overall_storage_value: '347'
+                    total_count: 338
+                    mining_level: 1
+                  -
+                    id: 14
+                    resource_id: 1
+                    region_id: 4
+                    short_storage_value: '157'
+                    overall_storage_value: '110'
+                    total_count: 390
+                    mining_level: 10
+                  -
+                    id: 15
+                    resource_id: 4
+                    region_id: 20
+                    short_storage_value: '35'
+                    overall_storage_value: '263'
+                    total_count: 373
+                    mining_level: 5
+                  -
+                    id: 16
+                    resource_id: 4
+                    region_id: 16
+                    short_storage_value: '10'
+                    overall_storage_value: '8'
+                    total_count: 220
+                    mining_level: 7
+                  -
+                    id: 17
+                    resource_id: 4
+                    region_id: 1
+                    short_storage_value: '478'
+                    overall_storage_value: '338'
+                    total_count: 77
+                    mining_level: 4
+                  -
+                    id: 18
+                    resource_id: 1
+                    region_id: 18
+                    short_storage_value: '364'
+                    overall_storage_value: '248'
+                    total_count: 106
+                    mining_level: 3
+                  -
+                    id: 19
+                    resource_id: 1
+                    region_id: 12
+                    short_storage_value: '143'
+                    overall_storage_value: '278'
+                    total_count: 152
+                    mining_level: 2
+                  -
+                    id: 20
+                    resource_id: 3
+                    region_id: 9
+                    short_storage_value: '171'
+                    overall_storage_value: '112'
+                    total_count: 357
+                    mining_level: 1
+                  -
+                    id: 21
+                    resource_id: 3
+                    region_id: 7
+                    short_storage_value: '413'
+                    overall_storage_value: '76'
+                    total_count: 263
+                    mining_level: 9
+                  -
+                    id: 22
+                    resource_id: 4
+                    region_id: 14
+                    short_storage_value: '341'
+                    overall_storage_value: '3'
+                    total_count: 442
+                    mining_level: 6
+                  -
+                    id: 23
+                    resource_id: 3
+                    region_id: 1
+                    short_storage_value: '343'
+                    overall_storage_value: '399'
+                    total_count: 482
+                    mining_level: 6
+                  -
+                    id: 24
+                    resource_id: 1
+                    region_id: 19
+                    short_storage_value: '122'
+                    overall_storage_value: '126'
+                    total_count: 390
+                    mining_level: 4
+                  -
+                    id: 25
+                    resource_id: 2
+                    region_id: 15
+                    short_storage_value: '472'
+                    overall_storage_value: '52'
+                    total_count: 4
+                    mining_level: 7
+                  -
+                    id: 26
+                    resource_id: 4
+                    region_id: 16
+                    short_storage_value: '152'
+                    overall_storage_value: '138'
+                    total_count: 162
+                    mining_level: 7
+                  -
+                    id: 27
+                    resource_id: 1
+                    region_id: 19
+                    short_storage_value: '102'
+                    overall_storage_value: '18'
+                    total_count: 249
+                    mining_level: 4
+                  -
+                    id: 28
+                    resource_id: 4
+                    region_id: 10
+                    short_storage_value: '382'
+                    overall_storage_value: '137'
+                    total_count: 470
+                    mining_level: 4
+                  -
+                    id: 29
+                    resource_id: 2
+                    region_id: 9
+                    short_storage_value: '21'
+                    overall_storage_value: '30'
+                    total_count: 268
+                    mining_level: 5
+                  -
+                    id: 30
+                    resource_id: 4
+                    region_id: 5
+                    short_storage_value: '271'
+                    overall_storage_value: '268'
+                    total_count: 205
+                    mining_level: 9
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/res_map/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/res_map/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the res map.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/res_map/{res_map}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: res_map
+        description: ''
+        example: itaque
+        required: true
+        schema:
+          type: string
+  /api/buildings_map:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    building_id: 1
+                    region_id: 1
+                  -
+                    id: 2
+                    building_id: 1
+                    region_id: 12
+                  -
+                    id: 3
+                    building_id: 1
+                    region_id: 10
+                  -
+                    id: 4
+                    building_id: 1
+                    region_id: 2
+                  -
+                    id: 5
+                    building_id: 4
+                    region_id: 20
+                  -
+                    id: 6
+                    building_id: 3
+                    region_id: 8
+                  -
+                    id: 7
+                    building_id: 1
+                    region_id: 3
+                  -
+                    id: 8
+                    building_id: 2
+                    region_id: 15
+                  -
+                    id: 9
+                    building_id: 5
+                    region_id: 7
+                  -
+                    id: 10
+                    building_id: 2
+                    region_id: 15
+                  -
+                    id: 11
+                    building_id: 2
+                    region_id: 14
+                  -
+                    id: 12
+                    building_id: 5
+                    region_id: 5
+                  -
+                    id: 13
+                    building_id: 4
+                    region_id: 2
+                  -
+                    id: 14
+                    building_id: 1
+                    region_id: 11
+                  -
+                    id: 15
+                    building_id: 4
+                    region_id: 17
+                  -
+                    id: 16
+                    building_id: 1
+                    region_id: 12
+                  -
+                    id: 17
+                    building_id: 5
+                    region_id: 9
+                  -
+                    id: 18
+                    building_id: 1
+                    region_id: 1
+                  -
+                    id: 19
+                    building_id: 3
+                    region_id: 20
+                  -
+                    id: 20
+                    building_id: 5
+                    region_id: 9
+                  -
+                    id: 21
+                    building_id: 4
+                    region_id: 4
+                  -
+                    id: 22
+                    building_id: 2
+                    region_id: 15
+                  -
+                    id: 23
+                    building_id: 4
+                    region_id: 3
+                  -
+                    id: 24
+                    building_id: 5
+                    region_id: 5
+                  -
+                    id: 25
+                    building_id: 2
+                    region_id: 4
+                  -
+                    id: 26
+                    building_id: 1
+                    region_id: 4
+                  -
+                    id: 27
+                    building_id: 2
+                    region_id: 15
+                  -
+                    id: 28
+                    building_id: 2
+                    region_id: 19
+                  -
+                    id: 29
+                    building_id: 2
+                    region_id: 2
+                  -
+                    id: 30
+                    building_id: 4
+                    region_id: 12
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/buildings_map/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/buildings_map/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the buildings map.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/buildings_map/{buildings_map}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: buildings_map
+        description: ''
+        example: adipisci
+        required: true
+        schema:
+          type: string
+  /api/workers_map:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    worker_id: 4
+                    region_id: 13
+                    mood: 10
+                    salary: '47612'
+                    total_count: 199
+                  -
+                    id: 2
+                    worker_id: 2
+                    region_id: 14
+                    mood: 40
+                    salary: '46429'
+                    total_count: 2984
+                  -
+                    id: 3
+                    worker_id: 3
+                    region_id: 15
+                    mood: 77
+                    salary: '44375'
+                    total_count: 2481
+                  -
+                    id: 4
+                    worker_id: 2
+                    region_id: 19
+                    mood: 12
+                    salary: '27629'
+                    total_count: 1448
+                  -
+                    id: 5
+                    worker_id: 3
+                    region_id: 11
+                    mood: 44
+                    salary: '32314'
+                    total_count: 1637
+                  -
+                    id: 6
+                    worker_id: 1
+                    region_id: 20
+                    mood: 75
+                    salary: '27632'
+                    total_count: 3430
+                  -
+                    id: 7
+                    worker_id: 1
+                    region_id: 14
+                    mood: 27
+                    salary: '41065'
+                    total_count: 242
+                  -
+                    id: 8
+                    worker_id: 1
+                    region_id: 15
+                    mood: 10
+                    salary: '20722'
+                    total_count: 4810
+                  -
+                    id: 9
+                    worker_id: 4
+                    region_id: 12
+                    mood: 39
+                    salary: '54369'
+                    total_count: 77
+                  -
+                    id: 10
+                    worker_id: 4
+                    region_id: 2
+                    mood: 18
+                    salary: '20806'
+                    total_count: 1
+                  -
+                    id: 11
+                    worker_id: 2
+                    region_id: 15
+                    mood: 87
+                    salary: '31050'
+                    total_count: 2170
+                  -
+                    id: 12
+                    worker_id: 3
+                    region_id: 17
+                    mood: 95
+                    salary: '20389'
+                    total_count: 4403
+                  -
+                    id: 13
+                    worker_id: 2
+                    region_id: 18
+                    mood: 81
+                    salary: '32449'
+                    total_count: 4487
+                  -
+                    id: 14
+                    worker_id: 3
+                    region_id: 17
+                    mood: 61
+                    salary: '37384'
+                    total_count: 2538
+                  -
+                    id: 15
+                    worker_id: 2
+                    region_id: 20
+                    mood: 99
+                    salary: '45359'
+                    total_count: 1526
+                  -
+                    id: 16
+                    worker_id: 1
+                    region_id: 17
+                    mood: 90
+                    salary: '41564'
+                    total_count: 3182
+                  -
+                    id: 17
+                    worker_id: 2
+                    region_id: 10
+                    mood: 49
+                    salary: '35222'
+                    total_count: 2320
+                  -
+                    id: 18
+                    worker_id: 4
+                    region_id: 17
+                    mood: 5
+                    salary: '43435'
+                    total_count: 2003
+                  -
+                    id: 19
+                    worker_id: 1
+                    region_id: 18
+                    mood: 10
+                    salary: '55084'
+                    total_count: 1475
+                  -
+                    id: 20
+                    worker_id: 4
+                    region_id: 3
+                    mood: 24
+                    salary: '35898'
+                    total_count: 3772
+                  -
+                    id: 21
+                    worker_id: 1
+                    region_id: 15
+                    mood: 38
+                    salary: '55060'
+                    total_count: 4326
+                  -
+                    id: 22
+                    worker_id: 4
+                    region_id: 15
+                    mood: 41
+                    salary: '53535'
+                    total_count: 1671
+                  -
+                    id: 23
+                    worker_id: 4
+                    region_id: 12
+                    mood: 91
+                    salary: '33947'
+                    total_count: 888
+                  -
+                    id: 24
+                    worker_id: 1
+                    region_id: 1
+                    mood: 8
+                    salary: '22069'
+                    total_count: 577
+                  -
+                    id: 25
+                    worker_id: 3
+                    region_id: 20
+                    mood: 94
+                    salary: '25970'
+                    total_count: 2850
+                  -
+                    id: 26
+                    worker_id: 2
+                    region_id: 6
+                    mood: 58
+                    salary: '45751'
+                    total_count: 1871
+                  -
+                    id: 27
+                    worker_id: 3
+                    region_id: 15
+                    mood: 56
+                    salary: '58303'
+                    total_count: 4044
+                  -
+                    id: 28
+                    worker_id: 2
+                    region_id: 20
+                    mood: 66
+                    salary: '43782'
+                    total_count: 4098
+                  -
+                    id: 29
+                    worker_id: 1
+                    region_id: 12
+                    mood: 28
+                    salary: '41461'
+                    total_count: 69
+                  -
+                    id: 30
+                    worker_id: 3
+                    region_id: 18
+                    mood: 14
+                    salary: '43247'
+                    total_count: 3687
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/workers_map/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/workers_map/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the workers map.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/workers_map/{workers_map}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: workers_map
+        description: ''
+        example: et
+        required: true
+        schema:
+          type: string
+  /api/items:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Debitis Dolore'
+                      slot: engine
+                      is_nft: false
+                      rarity: 5
+                      image: /tmp/fakerd7VW5Z
+                      user_id: 9
+                      primary_max_dollars: 114537
+                      primary_critical_step_chance: '0.0734'
+                      primary_critical_step_force: '0.0243'
+                      primary_dollars_per_step: '4193'
+                      secondary_max_dollars: 40489
+                      secondary_critical_step_chance: '0.0177'
+                      secondary_critical_step_force: '0.0031'
+                      secondary_dollars_per_step: '2322'
+                    -
+                      id: 2
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Distinctio Sint'
+                      slot: analyzer
+                      is_nft: true
+                      rarity: 7
+                      image: /tmp/fakerftdyCT
+                      user_id: 9
+                      primary_max_dollars: 143057
+                      primary_critical_step_chance: '0.1186'
+                      primary_critical_step_force: '0.0183'
+                      primary_dollars_per_step: '5998'
+                      secondary_max_dollars: 39469
+                      secondary_critical_step_chance: '0.0099'
+                      secondary_critical_step_force: '0.0031'
+                      secondary_dollars_per_step: '832'
+                    -
+                      id: 3
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Corrupti Dolorum'
+                      slot: engine
+                      is_nft: false
+                      rarity: 3
+                      image: /tmp/fakerrzuhOj
+                      user_id: 2
+                      primary_max_dollars: 100425
+                      primary_critical_step_chance: '0.1463'
+                      primary_critical_step_force: '0.0129'
+                      primary_dollars_per_step: '6431'
+                      secondary_max_dollars: 16959
+                      secondary_critical_step_chance: '0.0341'
+                      secondary_critical_step_force: '0.005'
+                      secondary_dollars_per_step: '658'
+                    -
+                      id: 4
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Quia Autem'
+                      slot: analyzer
+                      is_nft: false
+                      rarity: 2
+                      image: /tmp/fakerzUxw3Y
+                      user_id: 6
+                      primary_max_dollars: 211589
+                      primary_critical_step_chance: '0.1082'
+                      primary_critical_step_force: '0.0133'
+                      primary_dollars_per_step: '2215'
+                      secondary_max_dollars: 31081
+                      secondary_critical_step_chance: '0.0303'
+                      secondary_critical_step_force: '0.0048'
+                      secondary_dollars_per_step: '734'
+                    -
+                      id: 5
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Esse Necessitatibus'
+                      slot: scanner
+                      is_nft: false
+                      rarity: 9
+                      image: /tmp/fakereoTuFg
+                      user_id: 8
+                      primary_max_dollars: 20091
+                      primary_critical_step_chance: '0.1132'
+                      primary_critical_step_force: '0.0176'
+                      primary_dollars_per_step: '13655'
+                      secondary_max_dollars: 3429
+                      secondary_critical_step_chance: '0.0169'
+                      secondary_critical_step_force: '0.0033'
+                      secondary_dollars_per_step: '1122'
+                    -
+                      id: 6
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Quo Quibusdam'
+                      slot: analyzer
+                      is_nft: false
+                      rarity: 3
+                      image: /tmp/fakernIso5I
+                      user_id: 6
+                      primary_max_dollars: 31011
+                      primary_critical_step_chance: '0.1107'
+                      primary_critical_step_force: '0.0134'
+                      primary_dollars_per_step: '7338'
+                      secondary_max_dollars: 17817
+                      secondary_critical_step_chance: '0.0316'
+                      secondary_critical_step_force: '0.0047'
+                      secondary_dollars_per_step: '1059'
+                    -
+                      id: 7
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Modi Nulla'
+                      slot: scanner
+                      is_nft: false
+                      rarity: 3
+                      image: /tmp/fakernnaFgU
+                      user_id: 6
+                      primary_max_dollars: 135897
+                      primary_critical_step_chance: '0.0411'
+                      primary_critical_step_force: '0.0231'
+                      primary_dollars_per_step: '8381'
+                      secondary_max_dollars: 859
+                      secondary_critical_step_chance: '0.0035'
+                      secondary_critical_step_force: '0.0056'
+                      secondary_dollars_per_step: '2286'
+                    -
+                      id: 8
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Perspiciatis Autem'
+                      slot: engine
+                      is_nft: false
+                      rarity: 8
+                      image: /tmp/fakerffzjWp
+                      user_id: 7
+                      primary_max_dollars: 74740
+                      primary_critical_step_chance: '0.0875'
+                      primary_critical_step_force: '0.0252'
+                      primary_dollars_per_step: '10649'
+                      secondary_max_dollars: 9881
+                      secondary_critical_step_chance: '0.0183'
+                      secondary_critical_step_force: '0.0052'
+                      secondary_dollars_per_step: '1725'
+                    -
+                      id: 9
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Sunt Sint'
+                      slot: scanner
+                      is_nft: false
+                      rarity: 4
+                      image: /tmp/faker6NqqQm
+                      user_id: 1
+                      primary_max_dollars: 135828
+                      primary_critical_step_chance: '0.0346'
+                      primary_critical_step_force: '0.0268'
+                      primary_dollars_per_step: '6909'
+                      secondary_max_dollars: 10072
+                      secondary_critical_step_chance: '0.037'
+                      secondary_critical_step_force: '0.0046'
+                      secondary_dollars_per_step: '1840'
+                    -
+                      id: 10
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Molestiae Quaerat'
+                      slot: engine
+                      is_nft: false
+                      rarity: 4
+                      image: /tmp/fakerBQCIyv
+                      user_id: 5
+                      primary_max_dollars: 85121
+                      primary_critical_step_chance: '0.1381'
+                      primary_critical_step_force: '0.0124'
+                      primary_dollars_per_step: '12873'
+                      secondary_max_dollars: 12746
+                      secondary_critical_step_chance: '0.0055'
+                      secondary_critical_step_force: '0.0051'
+                      secondary_dollars_per_step: '825'
+                    -
+                      id: 11
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Commodi Quia'
+                      slot: storage
+                      is_nft: false
+                      rarity: 10
+                      image: /tmp/fakerVRPtj3
+                      user_id: 9
+                      primary_max_dollars: 182401
+                      primary_critical_step_chance: '0.1411'
+                      primary_critical_step_force: '0.0149'
+                      primary_dollars_per_step: '11766'
+                      secondary_max_dollars: 4277
+                      secondary_critical_step_chance: '0.0041'
+                      secondary_critical_step_force: '0.0041'
+                      secondary_dollars_per_step: '882'
+                    -
+                      id: 12
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Tempore Aspernatur'
+                      slot: engine
+                      is_nft: false
+                      rarity: 6
+                      image: /tmp/fakerNGizZE
+                      user_id: 2
+                      primary_max_dollars: 155432
+                      primary_critical_step_chance: '0.0085'
+                      primary_critical_step_force: '0.0225'
+                      primary_dollars_per_step: '12190'
+                      secondary_max_dollars: 20816
+                      secondary_critical_step_chance: '0.0245'
+                      secondary_critical_step_force: '0.005'
+                      secondary_dollars_per_step: '1298'
+                    -
+                      id: 13
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Qui Aliquid'
+                      slot: scanner
+                      is_nft: false
+                      rarity: 8
+                      image: /tmp/fakergXQhGd
+                      user_id: 1
+                      primary_max_dollars: 180087
+                      primary_critical_step_chance: '0.0545'
+                      primary_critical_step_force: '0.0195'
+                      primary_dollars_per_step: '11166'
+                      secondary_max_dollars: 32189
+                      secondary_critical_step_chance: '0.037'
+                      secondary_critical_step_force: '0.0037'
+                      secondary_dollars_per_step: '1289'
+                    -
+                      id: 14
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Ducimus Sint'
+                      slot: scanner
+                      is_nft: false
+                      rarity: 5
+                      image: /tmp/fakerQmkd7T
+                      user_id: 2
+                      primary_max_dollars: 165179
+                      primary_critical_step_chance: '0.1162'
+                      primary_critical_step_force: '0.0113'
+                      primary_dollars_per_step: '11637'
+                      secondary_max_dollars: 15919
+                      secondary_critical_step_chance: '0.0255'
+                      secondary_critical_step_force: '0.0056'
+                      secondary_dollars_per_step: '1841'
+                    -
+                      id: 15
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Aspernatur Rerum'
+                      slot: storage
+                      is_nft: false
+                      rarity: 6
+                      image: /tmp/fakerGKaLG8
+                      user_id: 1
+                      primary_max_dollars: 106795
+                      primary_critical_step_chance: '0.1423'
+                      primary_critical_step_force: '0.0139'
+                      primary_dollars_per_step: '5735'
+                      secondary_max_dollars: 27650
+                      secondary_critical_step_chance: '0.0189'
+                      secondary_critical_step_force: '0.0031'
+                      secondary_dollars_per_step: '2839'
+                    -
+                      id: 16
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Quia Placeat'
+                      slot: analyzer
+                      is_nft: false
+                      rarity: 1
+                      image: /tmp/fakerCw498u
+                      user_id: 9
+                      primary_max_dollars: 210987
+                      primary_critical_step_chance: '0.0245'
+                      primary_critical_step_force: '0.0128'
+                      primary_dollars_per_step: '6300'
+                      secondary_max_dollars: 40601
+                      secondary_critical_step_chance: '0.0329'
+                      secondary_critical_step_force: '0.0027'
+                      secondary_dollars_per_step: '2531'
+                    -
+                      id: 17
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Eum Et'
+                      slot: engine
+                      is_nft: false
+                      rarity: 1
+                      image: /tmp/fakerMjWEAr
+                      user_id: 6
+                      primary_max_dollars: 144432
+                      primary_critical_step_chance: '0.0878'
+                      primary_critical_step_force: '0.0289'
+                      primary_dollars_per_step: '3478'
+                      secondary_max_dollars: 33682
+                      secondary_critical_step_chance: '0.034'
+                      secondary_critical_step_force: '0.0053'
+                      secondary_dollars_per_step: '1735'
+                    -
+                      id: 18
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Voluptatem Autem'
+                      slot: analyzer
+                      is_nft: false
+                      rarity: 9
+                      image: /tmp/fakerLPPpgO
+                      user_id: 6
+                      primary_max_dollars: 179969
+                      primary_critical_step_chance: '0.1814'
+                      primary_critical_step_force: '0.0193'
+                      primary_dollars_per_step: '3942'
+                      secondary_max_dollars: 9977
+                      secondary_critical_step_chance: '0.0242'
+                      secondary_critical_step_force: '0.0053'
+                      secondary_dollars_per_step: '350'
+                    -
+                      id: 19
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Doloremque Qui'
+                      slot: storage
+                      is_nft: false
+                      rarity: 9
+                      image: /tmp/fakerUTkV0y
+                      user_id: 6
+                      primary_max_dollars: 66894
+                      primary_critical_step_chance: '0.1359'
+                      primary_critical_step_force: '0.0179'
+                      primary_dollars_per_step: '11848'
+                      secondary_max_dollars: 6047
+                      secondary_critical_step_chance: '0.0165'
+                      secondary_critical_step_force: '0.0034'
+                      secondary_dollars_per_step: '1174'
+                    -
+                      id: 20
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: 'Dignissimos Amet'
+                      slot: analyzer
+                      is_nft: false
+                      rarity: 4
+                      image: /tmp/fakerA6Wsc1
+                      user_id: 3
+                      primary_max_dollars: 11147
+                      primary_critical_step_chance: '0.0491'
+                      primary_critical_step_force: '0.0205'
+                      primary_dollars_per_step: '11010'
+                      secondary_max_dollars: 3609
+                      secondary_critical_step_chance: '0.0047'
+                      secondary_critical_step_force: '0.0038'
+                      secondary_dollars_per_step: '2742'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Debitis Dolore'
+                        slot: engine
+                        is_nft: false
+                        rarity: 5
+                        image: /tmp/fakerd7VW5Z
+                        user_id: 9
+                        primary_max_dollars: 114537
+                        primary_critical_step_chance: '0.0734'
+                        primary_critical_step_force: '0.0243'
+                        primary_dollars_per_step: '4193'
+                        secondary_max_dollars: 40489
+                        secondary_critical_step_chance: '0.0177'
+                        secondary_critical_step_force: '0.0031'
+                        secondary_dollars_per_step: '2322'
+                      -
+                        id: 2
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Distinctio Sint'
+                        slot: analyzer
+                        is_nft: true
+                        rarity: 7
+                        image: /tmp/fakerftdyCT
+                        user_id: 9
+                        primary_max_dollars: 143057
+                        primary_critical_step_chance: '0.1186'
+                        primary_critical_step_force: '0.0183'
+                        primary_dollars_per_step: '5998'
+                        secondary_max_dollars: 39469
+                        secondary_critical_step_chance: '0.0099'
+                        secondary_critical_step_force: '0.0031'
+                        secondary_dollars_per_step: '832'
+                      -
+                        id: 3
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Corrupti Dolorum'
+                        slot: engine
+                        is_nft: false
+                        rarity: 3
+                        image: /tmp/fakerrzuhOj
+                        user_id: 2
+                        primary_max_dollars: 100425
+                        primary_critical_step_chance: '0.1463'
+                        primary_critical_step_force: '0.0129'
+                        primary_dollars_per_step: '6431'
+                        secondary_max_dollars: 16959
+                        secondary_critical_step_chance: '0.0341'
+                        secondary_critical_step_force: '0.005'
+                        secondary_dollars_per_step: '658'
+                      -
+                        id: 4
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Quia Autem'
+                        slot: analyzer
+                        is_nft: false
+                        rarity: 2
+                        image: /tmp/fakerzUxw3Y
+                        user_id: 6
+                        primary_max_dollars: 211589
+                        primary_critical_step_chance: '0.1082'
+                        primary_critical_step_force: '0.0133'
+                        primary_dollars_per_step: '2215'
+                        secondary_max_dollars: 31081
+                        secondary_critical_step_chance: '0.0303'
+                        secondary_critical_step_force: '0.0048'
+                        secondary_dollars_per_step: '734'
+                      -
+                        id: 5
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Esse Necessitatibus'
+                        slot: scanner
+                        is_nft: false
+                        rarity: 9
+                        image: /tmp/fakereoTuFg
+                        user_id: 8
+                        primary_max_dollars: 20091
+                        primary_critical_step_chance: '0.1132'
+                        primary_critical_step_force: '0.0176'
+                        primary_dollars_per_step: '13655'
+                        secondary_max_dollars: 3429
+                        secondary_critical_step_chance: '0.0169'
+                        secondary_critical_step_force: '0.0033'
+                        secondary_dollars_per_step: '1122'
+                      -
+                        id: 6
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Quo Quibusdam'
+                        slot: analyzer
+                        is_nft: false
+                        rarity: 3
+                        image: /tmp/fakernIso5I
+                        user_id: 6
+                        primary_max_dollars: 31011
+                        primary_critical_step_chance: '0.1107'
+                        primary_critical_step_force: '0.0134'
+                        primary_dollars_per_step: '7338'
+                        secondary_max_dollars: 17817
+                        secondary_critical_step_chance: '0.0316'
+                        secondary_critical_step_force: '0.0047'
+                        secondary_dollars_per_step: '1059'
+                      -
+                        id: 7
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Modi Nulla'
+                        slot: scanner
+                        is_nft: false
+                        rarity: 3
+                        image: /tmp/fakernnaFgU
+                        user_id: 6
+                        primary_max_dollars: 135897
+                        primary_critical_step_chance: '0.0411'
+                        primary_critical_step_force: '0.0231'
+                        primary_dollars_per_step: '8381'
+                        secondary_max_dollars: 859
+                        secondary_critical_step_chance: '0.0035'
+                        secondary_critical_step_force: '0.0056'
+                        secondary_dollars_per_step: '2286'
+                      -
+                        id: 8
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Perspiciatis Autem'
+                        slot: engine
+                        is_nft: false
+                        rarity: 8
+                        image: /tmp/fakerffzjWp
+                        user_id: 7
+                        primary_max_dollars: 74740
+                        primary_critical_step_chance: '0.0875'
+                        primary_critical_step_force: '0.0252'
+                        primary_dollars_per_step: '10649'
+                        secondary_max_dollars: 9881
+                        secondary_critical_step_chance: '0.0183'
+                        secondary_critical_step_force: '0.0052'
+                        secondary_dollars_per_step: '1725'
+                      -
+                        id: 9
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Sunt Sint'
+                        slot: scanner
+                        is_nft: false
+                        rarity: 4
+                        image: /tmp/faker6NqqQm
+                        user_id: 1
+                        primary_max_dollars: 135828
+                        primary_critical_step_chance: '0.0346'
+                        primary_critical_step_force: '0.0268'
+                        primary_dollars_per_step: '6909'
+                        secondary_max_dollars: 10072
+                        secondary_critical_step_chance: '0.037'
+                        secondary_critical_step_force: '0.0046'
+                        secondary_dollars_per_step: '1840'
+                      -
+                        id: 10
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Molestiae Quaerat'
+                        slot: engine
+                        is_nft: false
+                        rarity: 4
+                        image: /tmp/fakerBQCIyv
+                        user_id: 5
+                        primary_max_dollars: 85121
+                        primary_critical_step_chance: '0.1381'
+                        primary_critical_step_force: '0.0124'
+                        primary_dollars_per_step: '12873'
+                        secondary_max_dollars: 12746
+                        secondary_critical_step_chance: '0.0055'
+                        secondary_critical_step_force: '0.0051'
+                        secondary_dollars_per_step: '825'
+                      -
+                        id: 11
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Commodi Quia'
+                        slot: storage
+                        is_nft: false
+                        rarity: 10
+                        image: /tmp/fakerVRPtj3
+                        user_id: 9
+                        primary_max_dollars: 182401
+                        primary_critical_step_chance: '0.1411'
+                        primary_critical_step_force: '0.0149'
+                        primary_dollars_per_step: '11766'
+                        secondary_max_dollars: 4277
+                        secondary_critical_step_chance: '0.0041'
+                        secondary_critical_step_force: '0.0041'
+                        secondary_dollars_per_step: '882'
+                      -
+                        id: 12
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Tempore Aspernatur'
+                        slot: engine
+                        is_nft: false
+                        rarity: 6
+                        image: /tmp/fakerNGizZE
+                        user_id: 2
+                        primary_max_dollars: 155432
+                        primary_critical_step_chance: '0.0085'
+                        primary_critical_step_force: '0.0225'
+                        primary_dollars_per_step: '12190'
+                        secondary_max_dollars: 20816
+                        secondary_critical_step_chance: '0.0245'
+                        secondary_critical_step_force: '0.005'
+                        secondary_dollars_per_step: '1298'
+                      -
+                        id: 13
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Qui Aliquid'
+                        slot: scanner
+                        is_nft: false
+                        rarity: 8
+                        image: /tmp/fakergXQhGd
+                        user_id: 1
+                        primary_max_dollars: 180087
+                        primary_critical_step_chance: '0.0545'
+                        primary_critical_step_force: '0.0195'
+                        primary_dollars_per_step: '11166'
+                        secondary_max_dollars: 32189
+                        secondary_critical_step_chance: '0.037'
+                        secondary_critical_step_force: '0.0037'
+                        secondary_dollars_per_step: '1289'
+                      -
+                        id: 14
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Ducimus Sint'
+                        slot: scanner
+                        is_nft: false
+                        rarity: 5
+                        image: /tmp/fakerQmkd7T
+                        user_id: 2
+                        primary_max_dollars: 165179
+                        primary_critical_step_chance: '0.1162'
+                        primary_critical_step_force: '0.0113'
+                        primary_dollars_per_step: '11637'
+                        secondary_max_dollars: 15919
+                        secondary_critical_step_chance: '0.0255'
+                        secondary_critical_step_force: '0.0056'
+                        secondary_dollars_per_step: '1841'
+                      -
+                        id: 15
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Aspernatur Rerum'
+                        slot: storage
+                        is_nft: false
+                        rarity: 6
+                        image: /tmp/fakerGKaLG8
+                        user_id: 1
+                        primary_max_dollars: 106795
+                        primary_critical_step_chance: '0.1423'
+                        primary_critical_step_force: '0.0139'
+                        primary_dollars_per_step: '5735'
+                        secondary_max_dollars: 27650
+                        secondary_critical_step_chance: '0.0189'
+                        secondary_critical_step_force: '0.0031'
+                        secondary_dollars_per_step: '2839'
+                      -
+                        id: 16
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Quia Placeat'
+                        slot: analyzer
+                        is_nft: false
+                        rarity: 1
+                        image: /tmp/fakerCw498u
+                        user_id: 9
+                        primary_max_dollars: 210987
+                        primary_critical_step_chance: '0.0245'
+                        primary_critical_step_force: '0.0128'
+                        primary_dollars_per_step: '6300'
+                        secondary_max_dollars: 40601
+                        secondary_critical_step_chance: '0.0329'
+                        secondary_critical_step_force: '0.0027'
+                        secondary_dollars_per_step: '2531'
+                      -
+                        id: 17
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Eum Et'
+                        slot: engine
+                        is_nft: false
+                        rarity: 1
+                        image: /tmp/fakerMjWEAr
+                        user_id: 6
+                        primary_max_dollars: 144432
+                        primary_critical_step_chance: '0.0878'
+                        primary_critical_step_force: '0.0289'
+                        primary_dollars_per_step: '3478'
+                        secondary_max_dollars: 33682
+                        secondary_critical_step_chance: '0.034'
+                        secondary_critical_step_force: '0.0053'
+                        secondary_dollars_per_step: '1735'
+                      -
+                        id: 18
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Voluptatem Autem'
+                        slot: analyzer
+                        is_nft: false
+                        rarity: 9
+                        image: /tmp/fakerLPPpgO
+                        user_id: 6
+                        primary_max_dollars: 179969
+                        primary_critical_step_chance: '0.1814'
+                        primary_critical_step_force: '0.0193'
+                        primary_dollars_per_step: '3942'
+                        secondary_max_dollars: 9977
+                        secondary_critical_step_chance: '0.0242'
+                        secondary_critical_step_force: '0.0053'
+                        secondary_dollars_per_step: '350'
+                      -
+                        id: 19
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Doloremque Qui'
+                        slot: storage
+                        is_nft: false
+                        rarity: 9
+                        image: /tmp/fakerUTkV0y
+                        user_id: 6
+                        primary_max_dollars: 66894
+                        primary_critical_step_chance: '0.1359'
+                        primary_critical_step_force: '0.0179'
+                        primary_dollars_per_step: '11848'
+                        secondary_max_dollars: 6047
+                        secondary_critical_step_chance: '0.0165'
+                        secondary_critical_step_force: '0.0034'
+                        secondary_dollars_per_step: '1174'
+                      -
+                        id: 20
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: 'Dignissimos Amet'
+                        slot: analyzer
+                        is_nft: false
+                        rarity: 4
+                        image: /tmp/fakerA6Wsc1
+                        user_id: 3
+                        primary_max_dollars: 11147
+                        primary_critical_step_chance: '0.0491'
+                        primary_critical_step_force: '0.0205'
+                        primary_dollars_per_step: '11010'
+                        secondary_max_dollars: 3609
+                        secondary_critical_step_chance: '0.0047'
+                        secondary_critical_step_force: '0.0038'
+                        secondary_dollars_per_step: '2742'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/items/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/items/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the item.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/items/{item_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: item_id
+        description: 'The ID of the item.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/drones:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: Faza
+                      user_id: 1
+                      engine_slot_item_id: null
+                      storage_slot_item_id: 15
+                      analyzer_slot_item_id: null
+                      scanner_slot_item_id: 9
+                    -
+                      id: 2
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: Hobaguva
+                      user_id: 2
+                      engine_slot_item_id: 3
+                      storage_slot_item_id: null
+                      analyzer_slot_item_id: null
+                      scanner_slot_item_id: 14
+                    -
+                      id: 3
+                      created_at: '2022-08-23T08:13:12.000000Z'
+                      updated_at: '2022-08-23T08:13:12.000000Z'
+                      name: Pise
+                      user_id: 3
+                      engine_slot_item_id: null
+                      storage_slot_item_id: null
+                      analyzer_slot_item_id: 20
+                      scanner_slot_item_id: null
+                    -
+                      id: 4
+                      created_at: '2022-08-23T08:13:13.000000Z'
+                      updated_at: '2022-08-23T08:13:13.000000Z'
+                      name: Yi
+                      user_id: 4
+                      engine_slot_item_id: null
+                      storage_slot_item_id: null
+                      analyzer_slot_item_id: null
+                      scanner_slot_item_id: null
+                    -
+                      id: 5
+                      created_at: '2022-08-23T08:13:13.000000Z'
+                      updated_at: '2022-08-23T08:13:13.000000Z'
+                      name: Madi
+                      user_id: 5
+                      engine_slot_item_id: 10
+                      storage_slot_item_id: null
+                      analyzer_slot_item_id: null
+                      scanner_slot_item_id: null
+                    -
+                      id: 6
+                      created_at: '2022-08-23T08:13:13.000000Z'
+                      updated_at: '2022-08-23T08:13:13.000000Z'
+                      name: Samu
+                      user_id: 6
+                      engine_slot_item_id: 17
+                      storage_slot_item_id: 19
+                      analyzer_slot_item_id: 4
+                      scanner_slot_item_id: 7
+                    -
+                      id: 7
+                      created_at: '2022-08-23T08:13:13.000000Z'
+                      updated_at: '2022-08-23T08:13:13.000000Z'
+                      name: Pocanaco
+                      user_id: 7
+                      engine_slot_item_id: 8
+                      storage_slot_item_id: null
+                      analyzer_slot_item_id: null
+                      scanner_slot_item_id: null
+                    -
+                      id: 8
+                      created_at: '2022-08-23T08:13:13.000000Z'
+                      updated_at: '2022-08-23T08:13:13.000000Z'
+                      name: Jucoca
+                      user_id: 8
+                      engine_slot_item_id: null
+                      storage_slot_item_id: null
+                      analyzer_slot_item_id: null
+                      scanner_slot_item_id: 5
+                    -
+                      id: 9
+                      created_at: '2022-08-23T08:13:13.000000Z'
+                      updated_at: '2022-08-23T08:13:13.000000Z'
+                      name: Nefinusa
+                      user_id: 9
+                      engine_slot_item_id: 1
+                      storage_slot_item_id: 11
+                      analyzer_slot_item_id: 2
+                      scanner_slot_item_id: null
+                    -
+                      id: 10
+                      created_at: '2022-08-23T08:13:13.000000Z'
+                      updated_at: '2022-08-23T08:13:13.000000Z'
+                      name: Fonenesu
+                      user_id: 10
+                      engine_slot_item_id: null
+                      storage_slot_item_id: null
+                      analyzer_slot_item_id: null
+                      scanner_slot_item_id: null
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: Faza
+                        user_id: 1
+                        engine_slot_item_id: null
+                        storage_slot_item_id: 15
+                        analyzer_slot_item_id: null
+                        scanner_slot_item_id: 9
+                      -
+                        id: 2
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: Hobaguva
+                        user_id: 2
+                        engine_slot_item_id: 3
+                        storage_slot_item_id: null
+                        analyzer_slot_item_id: null
+                        scanner_slot_item_id: 14
+                      -
+                        id: 3
+                        created_at: '2022-08-23T08:13:12.000000Z'
+                        updated_at: '2022-08-23T08:13:12.000000Z'
+                        name: Pise
+                        user_id: 3
+                        engine_slot_item_id: null
+                        storage_slot_item_id: null
+                        analyzer_slot_item_id: 20
+                        scanner_slot_item_id: null
+                      -
+                        id: 4
+                        created_at: '2022-08-23T08:13:13.000000Z'
+                        updated_at: '2022-08-23T08:13:13.000000Z'
+                        name: Yi
+                        user_id: 4
+                        engine_slot_item_id: null
+                        storage_slot_item_id: null
+                        analyzer_slot_item_id: null
+                        scanner_slot_item_id: null
+                      -
+                        id: 5
+                        created_at: '2022-08-23T08:13:13.000000Z'
+                        updated_at: '2022-08-23T08:13:13.000000Z'
+                        name: Madi
+                        user_id: 5
+                        engine_slot_item_id: 10
+                        storage_slot_item_id: null
+                        analyzer_slot_item_id: null
+                        scanner_slot_item_id: null
+                      -
+                        id: 6
+                        created_at: '2022-08-23T08:13:13.000000Z'
+                        updated_at: '2022-08-23T08:13:13.000000Z'
+                        name: Samu
+                        user_id: 6
+                        engine_slot_item_id: 17
+                        storage_slot_item_id: 19
+                        analyzer_slot_item_id: 4
+                        scanner_slot_item_id: 7
+                      -
+                        id: 7
+                        created_at: '2022-08-23T08:13:13.000000Z'
+                        updated_at: '2022-08-23T08:13:13.000000Z'
+                        name: Pocanaco
+                        user_id: 7
+                        engine_slot_item_id: 8
+                        storage_slot_item_id: null
+                        analyzer_slot_item_id: null
+                        scanner_slot_item_id: null
+                      -
+                        id: 8
+                        created_at: '2022-08-23T08:13:13.000000Z'
+                        updated_at: '2022-08-23T08:13:13.000000Z'
+                        name: Jucoca
+                        user_id: 8
+                        engine_slot_item_id: null
+                        storage_slot_item_id: null
+                        analyzer_slot_item_id: null
+                        scanner_slot_item_id: 5
+                      -
+                        id: 9
+                        created_at: '2022-08-23T08:13:13.000000Z'
+                        updated_at: '2022-08-23T08:13:13.000000Z'
+                        name: Nefinusa
+                        user_id: 9
+                        engine_slot_item_id: 1
+                        storage_slot_item_id: 11
+                        analyzer_slot_item_id: 2
+                        scanner_slot_item_id: null
+                      -
+                        id: 10
+                        created_at: '2022-08-23T08:13:13.000000Z'
+                        updated_at: '2022-08-23T08:13:13.000000Z'
+                        name: Fonenesu
+                        user_id: 10
+                        engine_slot_item_id: null
+                        storage_slot_item_id: null
+                        analyzer_slot_item_id: null
+                        scanner_slot_item_id: null
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/drones/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/drones/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the drone.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/drones/{drone_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: drone_id
+        description: 'The ID of the drone.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/auctions:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"auctions\" does not exist\nLINE 1: select * from \"auctions\"\n                      ^ (SQL: select * from \"auctions\")"
+                properties:
+                  message:
+                    type: string
+                    example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"auctions\" does not exist\nLINE 1: select * from \"auctions\"\n                      ^ (SQL: select * from \"auctions\")"
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/auctions/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/auctions/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"auctions\" does not exist\nLINE 1: select * from \"auctions\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"auctions\" where \"id\" = 1 limit 1)"
+                properties:
+                  message:
+                    type: string
+                    example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"auctions\" does not exist\nLINE 1: select * from \"auctions\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"auctions\" where \"id\" = 1 limit 1)"
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the auction.'
+        example: 11
+        required: true
+        schema:
+          type: integer
+  '/api/auctions/{auction_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"auctions\" does not exist\nLINE 1: select * from \"auctions\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"auctions\" where \"id\" = 1 limit 1)"
+                properties:
+                  message:
+                    type: string
+                    example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"auctions\" does not exist\nLINE 1: select * from \"auctions\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"auctions\" where \"id\" = 1 limit 1)"
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: auction_id
+        description: 'The ID of the auction.'
+        example: 17
+        required: true
+        schema:
+          type: integer
+  /api/plots:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/plots/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  '/api/plots/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"plots\" where \"id\" = 1 limit 1)"
+                properties:
+                  message:
+                    type: string
+                    example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"plots\" where \"id\" = 1 limit 1)"
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the plot.'
+        example: 3
+        required: true
+        schema:
+          type: integer
+  '/api/plots/{plot_id}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"plots\" where \"id\" = 1 limit 1)"
+                properties:
+                  message:
+                    type: string
+                    example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"plots\" where \"id\" = 1 limit 1)"
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: plot_id
+        description: 'The ID of the plot.'
+        example: 13
+        required: true
+        schema:
+          type: integer
+  /api/buy_region:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/auctions/buy:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/auctions/store:
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/craft:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/energy_to_money:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('building_id');
             $table->foreign('building_id')->references('id')->on('buildings');
-            $table->foreignId('region_id')->constrained()->onDelete('cascade');
+            $table->foreignId('plot_id')->constrained()->onDelete('cascade');
         });
     }
 
