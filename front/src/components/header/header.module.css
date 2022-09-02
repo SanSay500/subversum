@@ -1,0 +1,143 @@
+.container {
+	padding: 3vw 0 8.5vw;
+	background-image: url(/src/img/mainPage/header/headerBgr.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.navContainer {
+	margin: 0 0 9vw;
+	padding: 0 2vw;
+	display: flex;
+	justify-content: space-between;
+}
+
+.navContainerLeft {
+	display: flex;
+	align-items: center;
+}
+/* menu */
+
+.btnMenu,
+.userMenu {
+	display: flex;
+	align-items: center;
+	font-size: 1.25vw;
+	line-height: 1.57vw;
+	background-color: #ffffff;
+}
+
+.btnMenu {
+	margin: 0 0 0 1vw;
+	padding: 0.25vw 0.6vw;
+	border-radius: 28px;
+	position: relative;
+}
+
+#menuToggle {
+	display: none;
+}
+.menuToggleLabel {
+	position: absolute;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	height: 100%;
+	width: 9.75vw;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.burgerMenu,
+.burgerMenu::before,
+.burgerMenu::after {
+	display: block;
+	background-color: #13424b;
+	height: 0.16vw;
+	width: 1.5vw;
+	transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+	border-radius: 15px;
+}
+.burgerMenu {
+	margin: 0 0 0 1vw;
+	position: relative;
+}
+.burgerMenu::before {
+	content: '';
+	position: absolute;
+	top: -0.4vw;
+}
+.burgerMenu::after {
+	content: '';
+	position: absolute;
+	bottom: -0.45vw;
+}
+#menuToggle:checked ~ .burgerMenu::before {
+	top: 0;
+	transform: rotate(315deg);
+}
+#menuToggle:checked ~ .burgerMenu {
+	background: #ffffff;
+}
+#menuToggle:checked ~ .burgerMenu::after {
+	bottom: 0;
+	transform: rotate(-315deg);
+}
+
+.navigation {
+	margin: 0 0 0 2vw;
+	display: flex;
+}
+
+.navigationItem {
+	white-space: nowrap;
+	overflow: hidden;
+	cursor: pointer;
+}
+.navigationItem + .navigationItem {
+	margin: 0 0 0 2.5vw;
+}
+
+/* user menu */
+
+.userMenuContainer {
+	display: flex;
+	align-items: center;
+}
+
+.userMenu {
+	margin: 0 -0.5vw 0 0;
+	padding: 0.25vw 2vw;
+	border-radius: 28px 0 0 28px;
+}
+
+.userMenuLogo {
+	height: 2.5vw;
+	cursor: pointer;
+}
+
+.content {
+	padding: 0 0 0 9vw;
+	width: 23.5vw;
+	color: #ffffff;
+}
+
+.text {
+	margin: 2vw 0 0;
+	font-size: 2vw;
+	line-height: 3vw;
+}
+
+.bgrBtm {
+	width: 100vw;
+	height: 20vw;
+	background-image: url(/src/img/mainPage/header/headerBgrBtm.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}

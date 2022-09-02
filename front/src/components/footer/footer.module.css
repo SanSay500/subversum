@@ -1,0 +1,78 @@
+.container {
+	padding: 3vw 9vw 1.5vw;
+}
+
+.navigation {
+	margin: 0 0 6vw;
+	display: grid;
+	grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+	grid-template-areas:
+		'nftList wallet logo play keyNumbers'
+		'account myNft logo learn events';
+	justify-items: center;
+	align-items: center;
+}
+
+.link {
+	font-size: 1.25vw;
+	line-height: 2vw;
+	color: #ffffff;
+	text-align: center;
+}
+.link:nth-child(1) {
+	grid-area: nftList;
+}
+.link:nth-child(2) {
+	grid-area: wallet;
+}
+.link:nth-child(3) {
+	grid-area: play;
+}
+.link:nth-child(4) {
+	grid-area: keyNumbers;
+}
+.link:nth-child(6) {
+	grid-area: account;
+}
+.link:nth-child(7) {
+	grid-area: myNft;
+}
+.link:nth-child(8) {
+	grid-area: learn;
+}
+.link:nth-child(9) {
+	grid-area: events;
+}
+
+.logo {
+	grid-area: logo;
+	max-width: 360px;
+}
+
+.socialNetworkContainer {
+	margin: 0 0 4vw;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.socialNetworkImg {
+	height: 2.5vw;
+}
+
+.footerBtm {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.text {
+	margin: 0;
+	font-size: 1.25vw;
+	line-height: 1vw;
+	color: #ffffff;
+}
+.text + .text {
+	margin: 20px 0 0;
+	font-size: 1vw;
+	color: rgba(255, 255, 255, 0.5);
+}

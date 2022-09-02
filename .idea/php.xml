@@ -127,6 +127,14 @@
       <path value="$PROJECT_DIR$/back/vendor/paragonie/constant_time_encoding" />
       <path value="$PROJECT_DIR$/back/vendor/laravel/fortify" />
       <path value="$PROJECT_DIR$/back/vendor/fruitcake/laravel-cors" />
+      <path value="$PROJECT_DIR$/back/vendor/knuckleswtf/scribe" />
+      <path value="$PROJECT_DIR$/back/vendor/shalvah/clara" />
+      <path value="$PROJECT_DIR$/back/vendor/shalvah/upgrader" />
+      <path value="$PROJECT_DIR$/back/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/back/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/back/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/back/vendor/mpociot/reflection-docblock" />
+      <path value="$PROJECT_DIR$/back/vendor/spatie/data-transfer-object" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

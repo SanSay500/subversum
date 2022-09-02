@@ -12,6 +12,14 @@
       <excludeFolder url="file://$MODULE_DIR$/back/storage/app" />
       <excludeFolder url="file://$MODULE_DIR$/back/storage/debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/back/storage/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/knuckleswtf/scribe" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/shalvah/clara" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/shalvah/upgrader" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/erusev/parsedown" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/var-exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/mpociot/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/spatie/data-transfer-object" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

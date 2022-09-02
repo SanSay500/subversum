@@ -1,0 +1,11 @@
+.bgr {
+	background: linear-gradient(
+		180deg,
+		#e9ef90 -2%,
+		#b2bd74 26.04%,
+		#7ab579 53.12%,
+		#53866c 78.12%,
+		#186357 96.6%
+	);
+	background-repeat: no-repeat;
+}

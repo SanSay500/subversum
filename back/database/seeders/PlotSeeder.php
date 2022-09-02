@@ -16,6 +16,6 @@ class PlotSeeder extends Seeder
      */
     public function run()
     {
-        Plot::factory(100000)->create();
+        Plot::factory(100)->create();
     }
 }

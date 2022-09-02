@@ -17,7 +17,7 @@ use App\Http\Resources\UserResource;
 class UserController extends Controller
 {
 
-    public function energy2money(Request $request){
+    public function energy_to_money(Request $request){
 
         $user = User::find($request->user_id);
         $dollars_earned = $request->energy_spent * $user->dollars_per_step;

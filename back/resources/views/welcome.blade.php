@@ -53,7 +53,7 @@ body:<br>
 передаем user_id и energy_spent<br>
 убавляет у игрока энергию на energy_spent<br>
 прибавляет денег по формуле dollars_per_step * energy_spent<br><br>
-<b>DOCS</b> - https://docs.google.com/document/d/1AZAn-bCe-AKj9hBlw-e1PKLLdPuje_q-9IxHhsPbi3k/edit#heading=h.9w2ke2uqclmd
+<a href="https://docs.google.com/document/d/1AZAn-bCe-AKj9hBlw-e1PKLLdPuje_q-9IxHhsPbi3k/edit#heading=h.9w2ke2uqclmd"><b>GAME DOCS</b></a>
 <br><br>
 <b>DATABASE MANAGMENT</b> - <a href="https://subversum.space/adminer">https://subversum.space/adminer </a><br>
 system: PostgreSQL <br>

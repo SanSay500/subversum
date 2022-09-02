@@ -37,6 +37,6 @@ Route::post('/buy_region',[\App\Http\Controllers\RegionController::class, 'buy']
 Route::post('/auctions/buy', [\App\Http\Controllers\AuctionController::class,'buy']);
 Route::post('/auctions/store', [\App\Http\Controllers\AuctionController::class, 'store']);
 Route::post('/craft', [\App\Http\Controllers\ItemController::class, 'craft']);
-Route::post('/energy_to_money', [\App\Http\Controllers\UserController::class,'energy2money']);
+Route::post('/energy_to_money', [\App\Http\Controllers\UserController::class,'energy_to_money']);
 
 

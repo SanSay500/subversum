@@ -1,0 +1,33 @@
+.title {
+	position: absolute;
+	width: 84vw;
+	top: -5vw;
+	left: 9vw;
+	text-align: center;
+}
+
+.info {
+	position: absolute;
+	width: 42.5vw;
+	top: 20vw;
+	left: 8.5vw;
+}
+
+.sevenPositionTextClick {
+	top: 38.5vw;
+	right: 18vw;
+}
+.sevenPositionTextMore {
+	top: 46.5vw;
+	right: 33vw;
+}
+
+.sevenPositionText {
+	top: 54vw;
+	right: 18.5vw;
+}
+
+.sevenPositionImg {
+	top: 26vw;
+	right: 12.5vw;
+}
