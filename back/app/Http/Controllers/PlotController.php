@@ -6,6 +6,8 @@ use App\Http\Requests\StorePlotRequest;
 use App\Http\Requests\UpdatePlotRequest;
 use App\Http\Resources\PlotResource;
 use App\Models\Plot;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class PlotController extends Controller
 {
@@ -44,12 +46,12 @@ class PlotController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Plot  $plot
-     * @return PlotResource
+     * @return JsonResource
      */
-    public function show(Plot $plot)
+    public function show_by_coord(Request $request)
     {
-//        dd($plot);
-        return new PlotResource($plot);
+        $plot_by_coord = Plot::where(['latitude'=>$request->lat, 'longitude'=>$request->long])->get();
+        return new JsonResource($plot_by_coord);
     }
 
     /**

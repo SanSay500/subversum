@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateRegionRequest;
 use App\Http\Resources\RegionResource;
 use App\Models\Region;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
@@ -23,7 +24,7 @@ class RegionController extends Controller
      */
     public function index()
     {
-        return new ResourceCollection(Region::get());
+        return new JsonResource(Region::all());
     }
 
     /**
@@ -55,7 +56,7 @@ class RegionController extends Controller
      */
     public function show(Region $region)
     {
-        return new RegionResource($region);
+          return new JsonResource($region->getRelationValue('plots'));
     }
 
     /**

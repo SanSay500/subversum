@@ -19,7 +19,7 @@ class ResourceMapFactory extends Factory
     {
         return [
             'resource_id' => random_int(1,3),
-            'plot_id' => random_int(1,Plot::count()),
+            'plot_id' => random_int(1,300000),
             'total_count' => random_int(1000,5000),
         ];
     }

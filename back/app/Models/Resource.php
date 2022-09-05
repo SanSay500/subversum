@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Resource extends Model
 {
     use HasFactory;
-    protected $fillable = ['type'];
+    protected $fillable = ['type', 'total_count'];
     public $timestamps = false;
 
 

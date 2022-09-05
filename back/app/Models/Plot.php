@@ -16,8 +16,12 @@ class Plot extends Model
         'longitude',
         'latitude',
         'price',
+        'water_count',
+        'terra_count',
+        'hydro_count',
     ];
     public $timestamps = false;
+    protected $hidden = ['created_at', 'updated_at'];
 
 
     public function users()

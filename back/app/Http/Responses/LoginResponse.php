@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Item;
 use App\Models\Drone;
 use App\Models\Plot;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 
 class LoginResponse implements LoginResponseContract
@@ -19,9 +20,10 @@ class LoginResponse implements LoginResponseContract
     {
         $user = User::where('email', $request->email)->first();
         $token = $user->createToken('api-token')->plainTextToken;
-        $user_plots = PlotResource::collection(Plot::where('id', $user->id)->get());
-        $user_items = ItemResource::collection(Item::where('id',$user->id)->get());
-        $user_drone = DroneResource::collection(Drone::where('id', $user->id)->get());
+
+        $user_plots = new JsonResource(Plot::where('id', $user->id)->get());
+        $user_items = new JsonResource(Item::where('id',$user->id)->get());
+        $user_drone = new JsonResource(Drone::where('id', $user->id)->get());
         return response(
             ['user' => $user, 'token'=> $token, 'plots' => $user_plots, 'items' => $user_items, 'drone'=>$user_drone]
         );

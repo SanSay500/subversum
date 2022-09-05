@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('region_id')->constrained()->onDelete('cascade');
             $table->float('longitude');
+            $table->integer('water_count');
+            $table->integer('terra_count');
+            $table->integer('hydro_count');
             $table->float('latitude');
             $table->float('price');
         });

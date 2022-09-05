@@ -30,9 +30,7 @@ Route::resource('drones',\App\Http\Controllers\DroneController::class);
 Route::resource('auctions',\App\Http\Controllers\AuctionController::class);
 Route::resource('plots',\App\Http\Controllers\PlotController::class);
 
-Route::get('/',function(){
-    return view ('welcome');
-});
+Route::post('/plots/info', [\App\Http\Controllers\PlotController::class,'show_by_coord']);
 Route::post('/buy_region',[\App\Http\Controllers\RegionController::class, 'buy']);
 Route::post('/auctions/buy', [\App\Http\Controllers\AuctionController::class,'buy']);
 Route::post('/auctions/store', [\App\Http\Controllers\AuctionController::class, 'store']);
@@ -40,3 +38,6 @@ Route::post('/craft', [\App\Http\Controllers\ItemController::class, 'craft']);
 Route::post('/energy_to_money', [\App\Http\Controllers\UserController::class,'energy_to_money']);
 
 
+Route::get('/',function(){
+    return view ('welcome');
+});

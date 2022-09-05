@@ -19,12 +19,7 @@ class PlotFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(),
-            'user_id' => $this->faker->boolean('1') ? random_int(1,User::count()) : NULL,
-            'region_id' => random_int(1,Region::count()),
-            'longitude' => $this->faker->randomNumber(),
-            'latitude' => $this->faker->randomNumber(),
-            'price' => random_int(10,1000),
+
         ];
     }
 }

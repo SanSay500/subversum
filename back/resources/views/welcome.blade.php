@@ -35,7 +35,11 @@ body:<br>
     email=lgrimes@example.net<br>
     password=password<br>
     password_confirmation=password<br><br>
-
+<b>/api/plots/info</b><br>
+POST<br>
+Body<br>
+long - int<br>
+lat - int<br>
 <b>/api/auctions/buy</b> - buy lot<br>
 body:<br>
     auction_id - id of auctions lot<br>

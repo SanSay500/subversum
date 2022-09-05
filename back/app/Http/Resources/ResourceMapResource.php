@@ -16,10 +16,7 @@ class ResourceMapResource extends JsonResource
     {
         return [
             'resource_id'=>$this->resource_id,
-            'short_storage_value'=>$this->short_storage_value,
-            'overall_storage_value'=>$this->overall_storage_value,
-            'total'=>$this->total_count,
-            'mining_level'=>$this->mining_level,
-        ];
+            'total_count'=>$this->total_count,
+            ];
     }
 }
