@@ -1,8 +1,28 @@
 <?php
 
 ?>
-<title>Api Subversum</title>
+<style>
+.container {
+display: flex;
+flex-direction: row;
+}
+.container-1{
+border: 2px solid lightblue;
+box-sizing: border-box;
+}
+.container-2{
+border: 2px solid lightblue;
+box-sizing: border-box;
+}
+.container-3{
+    border: 2px solid lightblue;
+    box-sizing: border-box;
+}
+</style>
 
+<title>Api Subversum</title>
+<div class="container">
+<div class="container-1">
 API GET calls (add to subversum.space/api):<br>
 /workers - tokenized <br>
 /planets<br>
@@ -19,8 +39,8 @@ API GET calls (add to subversum.space/api):<br>
 /users/1 - получить инфу по юзеру с айди 1<br>
 /regions/2 - информация с участками по региону с айди 2<br>
 /plots/2 - информация по участку с айди 2<br>
-
-<br>
+</div>
+<div class="container-2">
 POST methods<br>
 <b>/api/login</b><br>
 body:<br>
@@ -57,6 +77,16 @@ body:<br>
 передаем user_id и energy_spent<br>
 убавляет у игрока энергию на energy_spent<br>
 прибавляет денег по формуле dollars_per_step * energy_spent<br><br>
+<br>
+    <b>/api/buy_plot</b><br>
+    body:
+    user_id<br>
+    plot_id<br>
+    вычитаем у юзера кристалы = стоимости участка<br>
+    ставим участку user_id покупателя<br>
+    <br>
+</div>
+<div class="container-3">
 <a href="https://docs.google.com/document/d/1AZAn-bCe-AKj9hBlw-e1PKLLdPuje_q-9IxHhsPbi3k/edit#heading=h.9w2ke2uqclmd"><b>GAME DOCS</b></a>
 <br><br>
 <b>DATABASE MANAGMENT</b> - <a href="https://subversum.space/adminer">https://subversum.space/adminer </a><br>
@@ -66,6 +96,8 @@ username: sail<br>
 password: password<br>
 database: back<br><br>
 <br><br>
+</div>
+</div>
 Database structure <br>
 <img width="70%" height="90%" src="https://user-images.githubusercontent.com/30046232/187691247-124cf91f-2c57-434e-b7df-6eb5f7e0562f.png"></img>
 

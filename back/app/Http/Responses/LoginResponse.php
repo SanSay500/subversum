@@ -21,9 +21,9 @@ class LoginResponse implements LoginResponseContract
         $user = User::where('email', $request->email)->first();
         $token = $user->createToken('api-token')->plainTextToken;
 
-        $user_plots = new JsonResource(Plot::where('id', $user->id)->get());
-        $user_items = new JsonResource(Item::where('id',$user->id)->get());
-        $user_drone = new JsonResource(Drone::where('id', $user->id)->get());
+        $user_plots = new JsonResource(Plot::where('user_id', $user->id)->get());
+        $user_items = new JsonResource(Item::where('user_id',$user->id)->get());
+        $user_drone = new JsonResource(Drone::where('user_id', $user->id)->get());
         return response(
             ['user' => $user, 'token'=> $token, 'plots' => $user_plots, 'items' => $user_items, 'drone'=>$user_drone]
         );

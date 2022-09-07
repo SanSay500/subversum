@@ -29,9 +29,10 @@ Route::resource('items',\App\Http\Controllers\ItemController::class);
 Route::resource('drones',\App\Http\Controllers\DroneController::class);
 Route::resource('auctions',\App\Http\Controllers\AuctionController::class);
 Route::resource('plots',\App\Http\Controllers\PlotController::class);
+Route::resource('daily_events',\App\Http\Controllers\DailyEventsController::class);
 
 Route::post('/plots/info', [\App\Http\Controllers\PlotController::class,'show_by_coord']);
-Route::post('/buy_region',[\App\Http\Controllers\RegionController::class, 'buy']);
+Route::post('/buy_plot',[\App\Http\Controllers\PlotController::class, 'buy']);
 Route::post('/auctions/buy', [\App\Http\Controllers\AuctionController::class,'buy']);
 Route::post('/auctions/store', [\App\Http\Controllers\AuctionController::class, 'store']);
 Route::post('/craft', [\App\Http\Controllers\ItemController::class, 'craft']);

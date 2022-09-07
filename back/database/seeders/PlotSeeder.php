@@ -18,7 +18,6 @@ class PlotSeeder extends Seeder
      */
     public function run()
     {
-
         for ($i = 1; $i <= 100; $i++) {
             for ($j=1; $j<=1000; $j++) {
                 DB::table('plots')->insert(values: [
@@ -28,8 +27,8 @@ class PlotSeeder extends Seeder
                     'water_count' => 3000,
                     'terra_count' => 3000,
                     'hydro_count' => 3000,
-                    'longitude' => fake()->randomNumber(4),
-                    'latitude' => fake()->randomNumber(4),
+                    'longitude' => $i,
+                    'latitude' => $j,
                     'price' => random_int(10, 1000),
                 ]);
             }

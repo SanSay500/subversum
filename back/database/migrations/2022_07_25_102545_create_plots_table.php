@@ -19,11 +19,11 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null')->onUpdate('cascade');
             $table->string('name');
             $table->foreignId('region_id')->constrained()->onDelete('cascade');
-            $table->float('longitude');
+            $table->integer('longitude');
+            $table->integer('latitude');
             $table->integer('water_count');
             $table->integer('terra_count');
             $table->integer('hydro_count');
-            $table->float('latitude');
             $table->float('price');
         });
     }

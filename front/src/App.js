@@ -66,31 +66,18 @@ const Field = React.forwardRef(({label, type}, ref) => {
                 email: emailRef.current.value,
                 password: passwordRef.current.value,
             };
-          //  const json = JSON.stringify(dataLogin, null, 4);
-          //  console.log(json);
-
-            // axios.post('http://localhost:83/api/login', dataLogin)
-            // .then(function (response) {
-            //     console.log(response);
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            // });
-
-
-
-            // fetch('https://subversum.space/api/login', {
-            //     method: 'POST',
-            //     body: json,
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            // })
-            // .then((res) => res.json())
-            // .then((res) => {
-            //     setDataLogin(res.data);
-            //     setLogin(true);
-            // });
+            fetch('https://subversum.space/api/login', {
+                method: 'POST',
+                body: json,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                setDataLogin(res.data);
+                setLogin(true);
+            });
         };
 
         const logout = (e) => {

@@ -5,12 +5,34 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePlotRequest;
 use App\Http\Requests\UpdatePlotRequest;
 use App\Http\Resources\PlotResource;
+use App\Http\Resources\UserResource;
 use App\Models\Plot;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PlotController extends Controller
 {
+
+    /**
+     *
+     */
+    public function buy(Request $request)
+    {
+        $plot = Plot::find($request->plot_id);
+        $user = User::find($request->user_id);
+
+        $user->update([
+            'crystals'=>$user->crystals - $plot->price,
+        ]);
+        $plot->update([
+            'user_id'=> $request->user_id,
+        ]);
+
+        return response([$user, $plot], 200);
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +40,7 @@ class PlotController extends Controller
      */
     public function index()
     {
-
+        return new JsonResource(Plot::all());
     }
 
     /**
