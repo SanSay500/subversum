@@ -138,6 +138,7 @@ input[type='text']:focus {
 	clear: both;
 	display: table;
 }
+
 @media (max-width: 1400px) {
 	.container {
 		padding: 0 40px;
@@ -258,7 +259,7 @@ a.full_link {
 	cursor: pointer;
 	font-family: var(--hff);
 	letter-spacing: 1px;
-	font-size: 14px;
+	/* font-size: 14px; */
 	text-transform: uppercase;
 	display: -webkit-flex;
 	display: -moz-flex;
@@ -302,7 +303,7 @@ a.full_link {
 	height: 15px;
 	position: absolute;
 	right: 0;
-	top: 50%;
+	top: 47%;
 	margin-top: -7px;
 	margin-top: -7.5px;
 }
@@ -487,8 +488,8 @@ a.full_link {
 	height: 40px;
 	color: #aaa;
 	margin-left: -9px;
-	-webkit-animation: bottomArrow 1.5s infinite;
-	animation: bottomArrow 1.5s infinite;
+	-webkit-animation: bottomArrow 1s infinite;
+	animation: bottomArrow 1s infinite;
 	transition: all 0.3s ease;
 }
 .neoh_fn_down .icon:after {
@@ -778,6 +779,7 @@ a.full_link {
 	position: relative;
 	text-align: center;
 	letter-spacing: 0.5px;
+	cursor: pointer;
 }
 .neoh_fn_button .text {
 	white-space: nowrap;
@@ -836,6 +838,10 @@ a.full_link {
 }
 .neoh_fn_button:hover .icon:before {
 	height: 26px;
+}
+.register_btn {
+	padding: 0 20px;
+	font-size: 18px;
 }
 
 /* Divider */
@@ -1947,6 +1953,7 @@ a.full_link {
 	display: -ms-flex;
 	display: -o-flex;
 	display: flex;
+	align-items: center;
 	flex-wrap: wrap;
 }
 .neoh_fn_nav .nav_buttons a {
@@ -2013,11 +2020,11 @@ a.full_link {
 	cursor: pointer;
 }
 .nav_overlay.go {
-	transition: all 1s 0.3s cubic-bezier(0.02, 0.19, 0, 0.96);
+	transition: all 0.7s 0s cubic-bezier(0.02, 0.19, 0, 0.96);
 	transform: translateX(0%);
 }
 .neoh_fn_nav.go {
-	transition: all 1s 1.3s cubic-bezier(0.02, 0.19, 0, 0.96);
+	transition: all 0.7s 0.3s cubic-bezier(0.02, 0.19, 0, 0.96);
 	transform: translateX(0%);
 }
 .neoh_fn_nav .nav_buttons.ready,
@@ -2032,7 +2039,7 @@ a.full_link {
 .neoh_fn_pagetitle {
 	width: 100%;
 	position: relative;
-	padding: 244px 0 143px;
+	padding: 170px 0 100px;
 }
 .neoh_fn_pagetitle .bg_color {
 	background-color: rgba(0, 0, 0, 0.85);
@@ -2852,8 +2859,8 @@ a.full_link {
 }
 .neoh_fn_totop:hover .arrow {
 	top: 30px;
-	-webkit-animation: topArrow 1.5s infinite;
-	animation: topArrow 1.5s infinite;
+	-webkit-animation: topArrow 1s infinite;
+	animation: topArrow 1s infinite;
 }
 
 .neoh_fn_product_modal {
@@ -3157,6 +3164,13 @@ a.full_link {
 .neoh_fn_contact_page .info_list .email:hover {
 	color: #ccc;
 	border-bottom-color: #aaa;
+}
+#forgotPassword {
+	margin: 0;
+	cursor: pointer;
+}
+#forgotPassword:hover {
+	color: var(--mc);
 }
 
 /* Same Single Pages */

@@ -1,16 +1,14 @@
-console.log('login');
-
 const btnLogin = document.getElementById('btn_form');
 
-btnLogin.addEventListener('click', () => {
+const formSubmit = () => {
 	const inputEmail = document.getElementById('email');
 	const inputPassword = document.getElementById('password');
+	const errorMessage = document.getElementById('error');
 
 	const dataLogin = {
 		email: inputEmail.value,
 		password: inputPassword.value,
 	};
-
 	const dataJson = JSON.stringify(dataLogin, null, 4);
 
 	const token = btoa('subversuman:mW5ihMGs');
@@ -19,9 +17,9 @@ btnLogin.addEventListener('click', () => {
 		method: 'POST',
 		body: dataJson,
 		headers: {
-			'Authorization': 'Basic ' + token,
+			Authorization: 'Basic ' + token,
 			'Content-Type': 'application/json',
-			'Accept': 'application/json'
+			Accept: 'application/json',
 		},
 	})
 		.then((res) => res.json())
@@ -30,5 +28,10 @@ btnLogin.addEventListener('click', () => {
 			window.sessionStorage.setItem('name', data.user.name);
 		})
 		.then(() => window.location.assign('https://subversum.space/index.html#'))
-		.catch((res) => console.log('err' + res));
+		.catch((res) => (errorMessage.style.display = 'block'));
+};
+
+btnLogin.addEventListener('click', formSubmit);
+document.addEventListener('keyup', (e) => {
+	if (e.code === 'Enter') formSubmit();
 });
