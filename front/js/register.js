@@ -1,19 +1,25 @@
 const btnSend = document.getElementById('btn_form');
 
-const formSubmit = () => {
-	const inputName = document.getElementById('name');
-	const inputEmail = document.getElementById('email');
-	const inputPassword = document.getElementById('password');
-	const inputConfirmPassword = document.getElementById('confirmPassword');
+const inputName = document.getElementById('name');
+const inputEmail = document.getElementById('email');
+const inputPassword = document.getElementById('password');
+const inputConfirmPassword = document.getElementById('confirmPassword');
+const errorMessage = document.getElementById('error');
 
-	const dataReg = {
-		name: inputName.value,
-		email: inputEmail.value,
-		password: inputPassword.value,
-		password_confirmation: inputConfirmPassword.value,
-	};
+const dataReg = {
+	name: inputName.value,
+	email: inputEmail.value,
+	password: inputPassword.value,
+	password_confirmation: inputConfirmPassword.value,
+};
+
+const formSubmit = () => {
 	const token = btoa('subversuman:mW5ihMGs');
 	const dataJson = JSON.stringify(dataReg, null, 4);
+
+	if (inputPassword !== inputConfirmPassword) {
+		errorMessage.innerHTML = errorMessage.style.display = 'block';
+	}
 
 	fetch('https://subversum.space/api/register', {
 		method: 'POST',

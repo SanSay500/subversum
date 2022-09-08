@@ -95,16 +95,23 @@
 			<!-- Right Navigation -->
 			<div class="nav_overlay"></div>
 			<div class="neoh_fn_nav">
-				<div class="trigger is-active">
-					<div class="trigger_in">
-						<span class="text">Close</span>
-						<span class="hamb">
-							<span class="hamb_a"></span>
-							<span class="hamb_b"></span>
-							<span class="hamb_c"></span>
-						</span>
+				<div class="nav_header">
+					<a href="account.html" class="name">
+						<span class="text"></span>
+					</a>
+
+					<div class="trigger is-active">
+						<div class="trigger_in">
+							<span class="text">Close</span>
+							<span class="hamb">
+								<span class="hamb_a"></span>
+								<span class="hamb_b"></span>
+								<span class="hamb_c"></span>
+							</span>
+						</div>
 					</div>
 				</div>
+
 				<div class="nav_content">
 					<div class="nav_menu">
 						<ul>
@@ -112,14 +119,29 @@
 								<a href="index.html">Home</a>
 							</li>
 							<li class="menu-item"><a href="about.html">About</a></li>
+							<li class="menu-item"><a href="account.html">Account</a></li>
 							<li class="menu-item">
 								<a href="collection.html">Marketplace</a>
 							</li>
-							<li class="menu-item"><a href="blog.html">Blog</a></li>
 							<li class="menu-item"><a href="contact.html">Contact</a></li>
 						</ul>
 					</div>
+
 					<div class="nav_buttons">
+						<a class="login" href="login.html">
+							<span class="text">LOGIN</span>
+						</a>
+
+						<a href="register.html" class="neoh_fn_button register_btn">
+							<span class="text">REGISTER</span>
+						</a>
+
+						<a class="logout" href="#">
+							<span class="text">LOGOUT</span>
+						</a>
+					</div>
+
+					<!-- <div class="nav_buttons">
 						<a
 							href="https://opensea.io/"
 							class="neoh_fn_button"
@@ -128,7 +150,7 @@
 							<span class="icon"
 								><img src="svg/opensea.svg" alt="" class="fn__svg"
 							/></span>
-							<span class="text">Soon</span>
+							<span class="text">OpenSea</span>
 						</a>
 						<a
 							href="https://discord.com/"
@@ -140,7 +162,7 @@
 							/></span>
 							<span class="text">Discord</span>
 						</a>
-					</div>
+					</div> -->
 				</div>
 
 				<!-- Nav Footer -->
@@ -172,6 +194,18 @@
 								</li>
 								<li>
 									<a href="#"><i class="fn-icon-behance"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fn-icon-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fn-icon-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fn-icon-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fn-icon-twitter"></i></a>
 								</li>
 							</ul>
 						</div>
@@ -277,7 +311,7 @@
 									data-success="Your message has been received, We will contact you soon."
 								></div>
 								<div class="empty_notice">
-									<span>Error</span>
+									<span id="error">Error</span>
 								</div>
 							</form>
 						</div>

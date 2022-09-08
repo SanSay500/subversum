@@ -15,9 +15,6 @@ logoutArr.forEach((el) => {
 	el.style.display = 'none';
 });
 
-// btnName.style.display = 'none';
-// btnLogout.style.display = 'none';
-
 if (window.sessionStorage.id) {
 	registerArr.forEach((el) => {
 		el.style.display = 'none';
@@ -25,18 +22,14 @@ if (window.sessionStorage.id) {
 	loginArr.forEach((el) => {
 		el.style.display = 'none';
 	});
-	// btnRegister.style.display = 'none';
-	// btnLogin.style.display = 'none';
+
 	logoutArr.forEach((el) => {
 		el.style.display = 'block';
 	});
-	// btnLogout.style.display = 'block';
 	nameArr.forEach((el) => {
 		el.style.display = 'block';
 		el.children[0].innerHTML = window.sessionStorage.name.toUpperCase();
 	});
-	// btnName.style.display = 'block';
-	// btnName.children[0].innerHTML = window.sessionStorage.name.toUpperCase();
 }
 
 logoutArr.forEach((el) => {
