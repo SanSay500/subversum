@@ -1,19 +1,17 @@
 const nameCollection = document.getElementsByClassName('name');
 const registerCollection = document.getElementsByClassName('register_btn');
 const loginCollection = document.getElementsByClassName('login');
-const logoutCollection = document.getElementsByClassName('logout');
+const logoutBtn = document.getElementById('logout');
+const accountLink = document.getElementById('accountLink');
 
 const nameArr = Array.from(nameCollection);
 const registerArr = Array.from(registerCollection);
 const loginArr = Array.from(loginCollection);
-const logoutArr = Array.from(logoutCollection);
 
 nameArr.forEach((el) => {
 	el.style.display = 'none';
 });
-logoutArr.forEach((el) => {
-	el.style.display = 'none';
-});
+logoutBtn.style.display = 'none';
 
 if (window.sessionStorage.id) {
 	registerArr.forEach((el) => {
@@ -23,32 +21,30 @@ if (window.sessionStorage.id) {
 		el.style.display = 'none';
 	});
 
-	logoutArr.forEach((el) => {
-		el.style.display = 'block';
-	});
+	logoutBtn.style.display = 'block';
 	nameArr.forEach((el) => {
 		el.style.display = 'block';
 		el.children[0].innerHTML = window.sessionStorage.name.toUpperCase();
 	});
+
+	accountLink.href = 'account.html';
 }
 
-logoutArr.forEach((el) => {
-	el.addEventListener('click', () => {
-		window.sessionStorage.clear();
+logoutBtn.addEventListener('click', () => {
+	window.sessionStorage.clear();
 
-		const token = btoa('subversuman:mW5ihMGs');
+	const token = btoa('subversuman:mW5ihMGs');
 
-		axios('/api/logout', {
-			method: 'POST',
-			headers: {
-				Authorization: 'Basic ' + token,
-			},
+	axios('/api/logout', {
+		method: 'POST',
+		headers: {
+			Authorization: 'Basic ' + token,
+		},
+	})
+		.then((res) => {
+			window.location.reload();
 		})
-			.then((res) => {
-				window.location.reload();
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	});
+		.catch((error) => {
+			console.log(error);
+		});
 });

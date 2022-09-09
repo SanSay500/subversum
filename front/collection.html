@@ -102,7 +102,9 @@
 								<a href="index.html">Home</a>
 							</li>
 							<li class="menu-item"><a href="about.html">About</a></li>
-							<li class="menu-item"><a href="account.html">Account</a></li>
+							<li class="menu-item">
+								<a id="accountLink" href="login.html">Account</a>
+							</li>
 							<li class="menu-item">
 								<a href="collection.html">Marketplace</a>
 							</li>
@@ -119,7 +121,7 @@
 							<span class="text">REGISTER</span>
 						</a>
 
-						<a class="logout" href="#">
+						<a id="logout" href="#">
 							<span class="text">LOGOUT</span>
 						</a>
 					</div>
@@ -198,30 +200,42 @@
 			</div>
 			<!-- !Right Navigation -->
 
-	<!-- Header -->
-	<header class="neoh_fn_header">
-		<div class="container">
-			<div class="header_in">
-			
-				<div class="logo">
-					<a href="index.html"><img src="img/logo.png" alt=""></a>
-				</div>
-				
-				<div class="trigger">
-					<div class="trigger_in">
-						<span class="text">Menu</span>
-						<span class="hamb">
-							<span class="hamb_a"></span>
-							<span class="hamb_b"></span>
-							<span class="hamb_c"></span>
-						</span>
+			<!-- Header -->
+			<header class="neoh_fn_header">
+				<div class="container">
+					<div class="header_in">
+						<div class="logo">
+							<a href="index.html"><img src="img/logo.png" alt="" /></a>
+						</div>
+
+						<div class="right_block">
+							<a class="name" href="account.html">
+								<span class="text"></span>
+							</a>
+
+							<a class="login" href="login.html">
+								<span class="text">LOGIN</span>
+							</a>
+
+							<a href="register.html" class="neoh_fn_button register_btn">
+								<span class="text">REGISTER</span>
+							</a>
+
+							<div class="trigger">
+								<div class="trigger_in">
+									<span class="text">Menu</span>
+									<span class="hamb">
+										<span class="hamb_a"></span>
+										<span class="hamb_b"></span>
+										<span class="hamb_c"></span>
+									</span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				
-			</div>
-		</div>
-	</header>
-	<!-- !Header -->
+			</header>
+			<!-- !Header -->
 	
 
 	<!-- Content -->
@@ -679,6 +693,7 @@
 <!-- !Main -->
 
 <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
 <script type="text/javascript" src="js/indexAuth.js"></script>

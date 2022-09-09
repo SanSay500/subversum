@@ -1732,8 +1732,11 @@ a.full_link {
 	margin-left: -30px;
 }
 .neoh_fn_social_list li {
-	margin: 5px 0px 5px 25px;
-	padding: 0;
+	margin: 0 0 0 25px;
+	/* padding: 0; */
+}
+.neoh_fn_social_list li:first-child {
+	margin: 0;
 }
 .neoh_fn_social_list a {
 	color: var(--bc);

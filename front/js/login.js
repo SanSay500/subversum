@@ -1,13 +1,20 @@
 const btnLogin = document.getElementById('btn_form');
 
-const formSubmit = () => {
-	const inputEmail = document.getElementById('email');
-	const inputPassword = document.getElementById('password');
-	const errorMessage = document.getElementById('error');
+const inputEmail = document.getElementById('email');
+const inputPassword = document.getElementById('password');
+const errorMessage = document.getElementById('error');
 
+btnLogin.addEventListener('click', () => {
+	formSubmit(inputEmail, inputPassword, errorMessage);
+});
+document.addEventListener('keyup', (e) => {
+	if (e.code === 'Enter') formSubmit(inputEmail, inputPassword, errorMessage);
+});
+
+function formSubmit(email, password, error) {
 	const dataLogin = {
-		email: inputEmail.value,
-		password: inputPassword.value,
+		email: email.value,
+		password: password.value,
 	};
 	const dataJson = JSON.stringify(dataLogin, null, 4);
 
@@ -28,10 +35,7 @@ const formSubmit = () => {
 			window.sessionStorage.setItem('name', data.user.name);
 		})
 		.then(() => window.location.assign('https://subversum.space/index.html#'))
-		.catch((res) => (errorMessage.style.display = 'block'));
-};
-
-btnLogin.addEventListener('click', formSubmit);
-document.addEventListener('keyup', (e) => {
-	if (e.code === 'Enter') formSubmit();
-});
+		.catch((err) => {
+			error.style.display = 'block';
+		});
+}

@@ -119,7 +119,9 @@
 								<a href="index.html">Home</a>
 							</li>
 							<li class="menu-item"><a href="about.html">About</a></li>
-							<li class="menu-item"><a href="account.html">Account</a></li>
+							<li class="menu-item">
+								<a id="accountLink" href="login.html">Account</a>
+							</li>
 							<li class="menu-item">
 								<a href="collection.html">Marketplace</a>
 							</li>
@@ -135,34 +137,7 @@
 						<a href="register.html" class="neoh_fn_button register_btn">
 							<span class="text">REGISTER</span>
 						</a>
-
-						<a class="logout" href="#">
-							<span class="text">LOGOUT</span>
-						</a>
 					</div>
-
-					<!-- <div class="nav_buttons">
-						<a
-							href="https://opensea.io/"
-							class="neoh_fn_button"
-							target="_blank"
-						>
-							<span class="icon"
-								><img src="svg/opensea.svg" alt="" class="fn__svg"
-							/></span>
-							<span class="text">OpenSea</span>
-						</a>
-						<a
-							href="https://discord.com/"
-							class="neoh_fn_button"
-							target="_blank"
-						>
-							<span class="icon"
-								><img src="svg/discord.svg" alt="" class="fn__svg"
-							/></span>
-							<span class="text">Discord</span>
-						</a>
-					</div> -->
 				</div>
 
 				<!-- Nav Footer -->
@@ -223,14 +198,28 @@
 							<a href="index.html"><img src="img/logo.png" alt="" /></a>
 						</div>
 
-						<div class="trigger">
-							<div class="trigger_in">
-								<span class="text">Menu</span>
-								<span class="hamb">
-									<span class="hamb_a"></span>
-									<span class="hamb_b"></span>
-									<span class="hamb_c"></span>
-								</span>
+						<div class="right_block">
+							<a class="name" href="account.html">
+								<span class="text"></span>
+							</a>
+
+							<a class="login" href="login.html">
+								<span class="text">LOGIN</span>
+							</a>
+
+							<a href="register.html" class="neoh_fn_button register_btn">
+								<span class="text">REGISTER</span>
+							</a>
+
+							<div class="trigger">
+								<div class="trigger_in">
+									<span class="text">Menu</span>
+									<span class="hamb">
+										<span class="hamb_a"></span>
+										<span class="hamb_b"></span>
+										<span class="hamb_c"></span>
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -306,12 +295,8 @@
 									</ul>
 								</div>
 
-								<div
-									class="returnmessage"
-									data-success="Your message has been received, We will contact you soon."
-								></div>
-								<div class="empty_notice">
-									<span id="error">Error</span>
+								<div id="error" class="empty_notice">
+									<span>Error</span>
 								</div>
 							</form>
 						</div>
@@ -429,6 +414,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/plugins.js"></script>
+		<script type="text/javascript" src="js/indexAuth.js"></script>
 		<script type="text/javascript" src="js/register.js"></script>
 		<!--[if lt IE 10]>
 			<script type="text/javascript" src="js/ie8.js"></script>
