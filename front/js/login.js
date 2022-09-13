@@ -20,6 +20,15 @@ function formSubmit(email, password, error) {
 
 	const token = btoa('subversuman:mW5ihMGs');
 
+	fetch('https://subversum.space/api/logout', {
+		method: 'POST',
+		headers: {
+			Authorization: 'Basic ' + token,
+			'Content-Type': 'application/json',
+			Accept: 'application/json',
+		}
+	})
+
 	fetch('https://subversum.space/api/login', {
 		method: 'POST',
 		body: dataJson,
