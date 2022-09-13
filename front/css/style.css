@@ -219,6 +219,11 @@ a.full_link {
 	flex-direction: column;
 	min-height: 100vh;
 }
+.forgot_password_main {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
 /*------------------------------------------------------------------*/
 /*	xx) Header
 /*------------------------------------------------------------------*/
@@ -233,6 +238,10 @@ a.full_link {
 	left: 0;
 	right: 0;
 	transition: all 0.3s ease;
+}
+.forgot_password_header {
+	position: sticky;
+	z-index: 0;
 }
 .neoh_fn_header.fixer {
 	background-color: #111;
@@ -839,7 +848,8 @@ a.full_link {
 .neoh_fn_button:hover .icon:before {
 	height: 26px;
 }
-.register_btn {
+.register_btn,
+.btn_buy {
 	padding: 0 20px;
 	font-size: 18px;
 }
@@ -2946,6 +2956,9 @@ a.full_link {
 	-o-flex-direction: row;
 	flex-direction: row;
 	flex-wrap: wrap;
+}
+.flexEnd {
+	justify-content: flex-end;
 }
 .neoh_fn_product_modal .buttons a {
 	margin: 5px 20px 5px 0;
