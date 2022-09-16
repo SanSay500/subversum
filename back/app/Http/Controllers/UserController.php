@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Resources\DroneResource;
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\PlotResource;
+use App\Models\DailyEvents;
 use App\Models\Drone;
 use App\Models\Item;
 use App\Models\Plot;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
 use App\Models\Region;
 use App\Http\Resources\UserResource;
@@ -17,17 +19,52 @@ use App\Http\Resources\UserResource;
 class UserController extends Controller
 {
 
-    public function energy_to_money(Request $request){
+    public function load()
+    {
+       dd(auth('api')->user());
+    }
+
+    public function rewarded(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $event = DailyEvents::find($request->event_id);
+
+        $user->events_done = $user->events_done  ? $user->events_done . ',' . $event->id : $event->id;
+        $user->save();
+
+        return $user;
+
+    }
+
+
+    public function count_steps(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $user->update([
+        'steps' => $user->steps + $request->steps,
+    ]);
+       return $user;
+    }
+
+    public function energy_to_money(Request $request)
+    {
 
         $user = User::find($request->user_id);
-        $dollars_earned = $request->energy_spent * $user->dollars_per_step;
+        $dollars_earned = $request->energy_spent_in_game * $user->dollars_per_step;
+//
+//        $user->update([
+//            'energy' => $user->energy - $request->energy_spent,
+//            'dollars_count' => $user->dollars_count + $dollars_earned,
+//        ]);
 
+        $energy_spent_in_game = $user->energy - ($user->energy - $request->energy_spent_in_game) - $user->energy_spent_a_day;
+       //dd($energy_spent_in_game,$user->energy_spent_a_day);
         $user->update([
-            'energy' => $user->energy - $request->energy_spent,
+            'energy_spent_a_day' => $user->energy_spent_a_day + $energy_spent_in_game,
             'dollars_count' => $user->dollars_count + $dollars_earned,
         ]);
 
-        return response($user,250);
+        return response($user, 250);
     }
 
     /**
@@ -37,7 +74,7 @@ class UserController extends Controller
      */
     public function index()
     {
-       return User::all();
+        return User::all();
     }
 
     /**
@@ -53,7 +90,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -61,21 +98,26 @@ class UserController extends Controller
         //
     }
 
+    public function get_plots(User $user){
+
+        $user_plots = new JsonResource(Plot::where('user_id', $user->id)->get());
+        return $user_plots;
+    }
 
     public function show(User $user)
     {
-        $user_plots = PlotResource::collection(Plot::where('id', $user->id)->get());
-        $user_items = ItemResource::collection(Item::where('id',$user->id)->get());
-        $user_drone = DroneResource::collection(Drone::where('id', $user->id)->get());
+        $user_plots = new JsonResource(Plot::where('user_id', $user->id)->get());
+        $user_items = ItemResource::collection(Item::where('user_id', $user->id)->get());
+        $user_drone = DroneResource::collection(Drone::where('user_id', $user->id)->get());
         return response(
-            ['user' => $user, 'plots' => $user_plots, 'items' => $user_items, 'drone'=>$user_drone]
+            ['user' => $user, 'plots' => $user_plots, 'items' => $user_items, 'drone' => $user_drone]
         );
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -86,8 +128,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,7 +140,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

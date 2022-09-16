@@ -24,7 +24,7 @@ class PlotSeeder extends Seeder
                     'name' => fake()->word(),
                     'user_id' => fake()->boolean('1') ? random_int(1, User::count()) : NULL,
                     'region_id' => $i,
-                    'water_count' => 3000,
+                    'air_count' => 3000,
                     'terra_count' => 3000,
                     'hydro_count' => 3000,
                     'longitude' => $i,

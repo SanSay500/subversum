@@ -15,6 +15,10 @@ class BuildingMapResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'building' => Building::find($this->building_id),
+            'params' => [ 'volume' => $this->volume, 'storage'=>$this->storage, 'speed'=>$this->speed],
+        ];
+
     }
 }

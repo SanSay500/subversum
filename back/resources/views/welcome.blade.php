@@ -39,6 +39,17 @@ API GET calls (add to subversum.space/api):<br>
 /users/1 - получить инфу по юзеру с айди 1<br>
 /regions/2 - информация с участками по региону с айди 2<br>
 /plots/2 - информация по участку с айди 2<br>
+/users/{user_id}/get_plots - получить участки юзера<br>
+    <br>
+    <a href="https://docs.google.com/document/d/1AZAn-bCe-AKj9hBlw-e1PKLLdPuje_q-9IxHhsPbi3k/edit#heading=h.9w2ke2uqclmd"><b>GAME DOCS</b></a>
+    <br><br>
+    <a href="https://subversum.space/adminer"><b>DATABASE MANAGMENT</b></a><br>
+    system: PostgreSQL <br>
+    server: pgsql<br>
+    username: sail<br>
+    password: password<br>
+    database: back<br><br>
+    <br><br>
 </div>
 <div class="container-2">
 POST methods<br>
@@ -59,7 +70,7 @@ body:<br>
 POST<br>
 Body<br>
 long - int<br>
-lat - int<br>
+lat - int<br><br>
 <b>/api/auctions/buy</b> - buy lot<br>
 body:<br>
     auction_id - id of auctions lot<br>
@@ -72,32 +83,48 @@ body:<br>
    res_quantity - quantity of resource<br>
    lot_price - price of lot<br>
 <br>
+
+    <b>/api/auctions/store_plot</b> - store plot<br>
+    body:<br>
+    user_id - id of seller<br>
+    plot_id id of plot<br>
+    lot_price - price of lot<br>
+    <br>
+
+    <b>api/users/count_steps</b><br>
+    body:<br>
+    user_id - int<br>
+    steps - int<br>
+    прибавить к шагам пользователя steps<br>
 <br>
 <b>api/energy_to_money</b><br>
-передаем user_id и energy_spent<br>
-убавляет у игрока энергию на energy_spent<br>
+передаем user_id и energy_spent_in_game<br>
+прибавляет игроку energy_spent_a_day<br>
 прибавляет денег по формуле dollars_per_step * energy_spent<br><br>
 <br>
-    <b>/api/buy_plot</b><br>
+<b>/api/buy_plot</b><br>
     body:
     user_id<br>
-    plot_id<br>
+    long<br>
+    lat<br>
     вычитаем у юзера кристалы = стоимости участка<br>
     ставим участку user_id покупателя<br>
     <br>
+    <br>
+<b>/api/generate_item</b><br>
+    body:
+    user_id<br>
+    создаем у юзера предмет<br>
+    <br>
 </div>
 <div class="container-3">
-<a href="https://docs.google.com/document/d/1AZAn-bCe-AKj9hBlw-e1PKLLdPuje_q-9IxHhsPbi3k/edit#heading=h.9w2ke2uqclmd"><b>GAME DOCS</b></a>
-<br><br>
-<b>DATABASE MANAGMENT</b> - <a href="https://subversum.space/adminer">https://subversum.space/adminer </a><br>
-system: PostgreSQL <br>
-server: pgsql<br>
-username: sail<br>
-password: password<br>
-database: back<br><br>
-<br><br>
+ <b>api/users/rewarded</b><br>
+    user_id<br>
+    event_id<br>
+    записываем айди выполненного эвента юзеру в базу<br>
+    в полночь это поле у всех обнуляется<br>
 </div>
 </div>
 Database structure <br>
-<img width="70%" height="90%" src="https://user-images.githubusercontent.com/30046232/187691247-124cf91f-2c57-434e-b7df-6eb5f7e0562f.png"></img>
+<img width="70%" height="90%" src="/img/auctions.png"></img>
 

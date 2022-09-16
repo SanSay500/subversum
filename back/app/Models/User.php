@@ -31,6 +31,8 @@ class User extends Authenticatable
         'critical_step_force',
         'dollars_per_step',
         'max_dollars',
+        'steps',
+        'energy_spent_a_day',
     ];
 
     /**
@@ -57,15 +59,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
     public function regions()
     {
         return $this->hasMany(Region::class);
     }
 
-    public function auctionStoreCalculations(User $user, $resource_name){
-//        $user->update([
-//            $resource_name.'_count'=>
-//        ]);
-    }
 
 }

@@ -18,15 +18,30 @@ class BuildingSeeder extends Seeder
     {
         DB::table('buildings')->truncate();
         $buildings = [
-            ['Terra Station', 100],
-            ['Air Station', 200],
-            ['Hydro Station', 300],
+            ['Main', 'Terra Station', 1, 100],
+            ['Main', 'Air Station', 2, 200],
+            ['Main', 'Hydro Station', 3, 300],
+            ['Infrastructure', 'Terra Storage', 1, 10],
+            ['Infrastructure', 'Eco Generator', 2, 10],
+            ['Infrastructure', 'Extractor', 3, 10],
+            ['Infrastructure', 'Hydro Storage', 1, 10],
+            ['Infrastructure', 'Water Purifier', 2, 10],
+            ['Infrastructure', 'Hydro-Pump', 3, 10],
+            ['Infrastructure', 'Air Storage', 1, 10],
+            ['Infrastructure', 'Air Filter', 2, 10],
+            ['Infrastructure', 'Air Compressor', 3, 10],
+
         ];
-        foreach ($buildings as $building) {
-            DB::table('buildings')->insert(values: [
-                'type' => $building[0],
-                'price' => $building[1],
-            ]);
+        for ($i=1; $i<=10; $i++) {
+            foreach ($buildings as $building) {
+                DB::table('buildings')->insert(values: [
+                    'type' => $building[0],
+                    'name' => $building[1],
+                    'code' => $building[2],
+                    'level' => $i,
+                    'price' => $building[2]*$i,
+                ]);
+            }
         }
     }
 }

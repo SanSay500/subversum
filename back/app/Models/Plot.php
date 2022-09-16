@@ -16,7 +16,7 @@ class Plot extends Model
         'longitude',
         'latitude',
         'price',
-        'water_count',
+        'air_count',
         'terra_count',
         'hydro_count',
     ];

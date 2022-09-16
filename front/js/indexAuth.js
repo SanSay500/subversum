@@ -2,7 +2,7 @@ const nameCollection = document.getElementsByClassName('name');
 const registerCollection = document.getElementsByClassName('register_btn');
 const loginCollection = document.getElementsByClassName('login');
 const logoutBtn = document.getElementById('logout');
-const accountLink = document.getElementById('accountLink');
+const btnBuy = document.getElementById('btn_buy');
 
 const nameArr = Array.from(nameCollection);
 const registerArr = Array.from(registerCollection);
@@ -27,7 +27,8 @@ if (window.sessionStorage.id) {
 		el.children[0].innerHTML = window.sessionStorage.name.toUpperCase();
 	});
 
-	accountLink.href = 'account.html';
+	btnBuy.href =
+		'https://commerce.coinbase.com/checkout/0ce5367a-5179-41da-8d3c-6e7e80624715';
 }
 
 logoutBtn.addEventListener('click', () => {

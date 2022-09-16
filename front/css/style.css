@@ -257,6 +257,9 @@ a.full_link {
 	-ms-align-items: center;
 	align-items: center;
 }
+.logo {
+	height: 50px;
+}
 .neoh_fn_header .right_block {
 	display: flex;
 	align-items: center;
@@ -396,7 +399,7 @@ a.full_link {
 	z-index: 10;
 }
 .neoh_fn_hero .bg_color {
-	background-color: rgba(0, 0, 0, 0.85);
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* -->> Home Kenburns Colors */
@@ -778,7 +781,7 @@ a.full_link {
 	max-width: 100%;
 	text-decoration: none;
 	color: var(--bc);
-	font-size: 16px;
+	/* font-size: 16px; */
 	text-transform: uppercase;
 	font-family: var(--hff);
 	border: 2px solid var(--extra-color);
@@ -803,11 +806,15 @@ a.full_link {
 	width: 100%;
 	line-height: 66px;
 }
+.neoh_fn_button.unfull {
+	width: 50%;
+	line-height: 66px;
+}
 .neoh_fn_button .icon {
 	display: block;
 	position: absolute;
 	left: 14px;
-	top: 50%;
+	top: 30%;
 	margin-top: -11px;
 }
 .neoh_fn_button .icon:after {
@@ -816,7 +823,7 @@ a.full_link {
 	height: 26px;
 	background-color: var(--extra-color);
 	left: 100%;
-	margin-left: 14px;
+	margin-left: 4px;
 	top: 50%;
 	margin-top: -13px;
 	position: absolute;
@@ -827,15 +834,15 @@ a.full_link {
 	height: 0;
 	background-color: var(--mc);
 	left: 100%;
-	margin-left: 14px;
-	top: -2px;
+	margin-left: 4px;
+	top: 7px;
 	position: absolute;
 	z-index: 3;
 	transition: all 0.3s ease;
 }
 .neoh_fn_button .fn__svg {
-	width: 22px;
-	height: 22px;
+	width: 40px;
+	height: 40px;
 	display: block;
 }
 .neoh_fn_button:hover {
@@ -993,6 +1000,9 @@ a.full_link {
 /* Drops List Shortcode */
 #drop .neoh_fn_drops {
 	margin-bottom: 143px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .neoh_fn_drops ul {
 	display: -webkit-flex;
@@ -1009,11 +1019,16 @@ a.full_link {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
-	margin-left: -40px;
+	/* margin-left: -40px; */
+	width: 100%;
+}
+.market {
+	justify-content: center;
 }
 .neoh_fn_drops li {
-	width: 33.3333%;
-	padding-left: 40px;
+	/* width: 33.3333%; */
+	/* padding-left: 40px; */
+	width: 50%;
 	margin-bottom: 40px;
 }
 .neoh_fn_drops .item {
@@ -4671,7 +4686,7 @@ a.full_link {
 	margin-bottom: 50px;
 }
 #nft-single-content {
-	padding-bottom: 110px;
+	/* padding-bottom: 110px; */
 }
 .qnt {
 	margin: 0;

@@ -26,4 +26,6 @@ class Item extends Model
         'secondary_critical_step_force',
         'secondary_dollars_per_step',
     ];
+
+    public $timestamps = false;
 }

@@ -33,6 +33,9 @@ class UserFactory extends Factory
             'max_dollars' => 3000,
             'energy' => 100,
             'crystals' => 1,
+            'steps' => 0,
+            'level' => random_int(1, 10),
+            'exp' => 5.55,
         ];
     }
 

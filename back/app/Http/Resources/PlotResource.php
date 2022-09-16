@@ -15,11 +15,8 @@ class PlotResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'=>$this->id,
-            'name'=>$this->name,
             'buildings' => BuildingMapResource::collection($this->buildings_map),
             'workers' => WorkerMapResource::collection($this->workers_map),
-            'resources' => ResourceMapResource::collection($this->resources_map),
         ];
     }
 }

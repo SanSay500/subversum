@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('buildings_map', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('building_id');
-            $table->foreign('building_id')->references('id')->on('buildings');
+            $table->foreignId('building_id')->constrained()->onDelete('cascade');
             $table->foreignId('plot_id')->constrained()->onDelete('cascade');
+//            $table->integer('level')->default(1);
+            $table->integer('volume')->default(1);
+            $table->integer('storage')->default(1);
+            $table->integer('speed')->default(1);
         });
     }
 

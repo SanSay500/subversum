@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('region_id')->constrained()->onDelete('cascade');
             $table->integer('longitude');
             $table->integer('latitude');
-            $table->integer('water_count');
+            $table->integer('air_count');
             $table->integer('terra_count');
             $table->integer('hydro_count');
             $table->float('price');

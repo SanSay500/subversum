@@ -31,6 +31,20 @@ class AuctionController extends Controller
         //
     }
 
+    public function store_plot(StoreAuctionRequest $request)
+    {
+        $user=User::find($request->user_id);
+
+        Auction::create([
+            'user_id' => $request->user_id,
+            'plot_id' => $request->plot_id,
+            'lot_price' => $request->lot_price,
+            'lot_status' => 'Active',
+        ]);
+        return response ('New lot created!');
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *

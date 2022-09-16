@@ -6,10 +6,12 @@ use App\Http\Requests\StorePlotRequest;
 use App\Http\Requests\UpdatePlotRequest;
 use App\Http\Resources\PlotResource;
 use App\Http\Resources\UserResource;
+use App\Models\BuildingMap;
 use App\Models\Plot;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\DB;
 
 class PlotController extends Controller
 {
@@ -19,14 +21,16 @@ class PlotController extends Controller
      */
     public function buy(Request $request)
     {
-        $plot = Plot::find($request->plot_id);
-        $user = User::find($request->user_id);
+        $plot = Plot::where('longitude', '=', $request->long)
+            ->where('latitude', '=', $request->lat)->first();
+
+        $plot->update([
+            'user_id' => $request->user_id,
+        ]);
+        $user = User::where('id', $request->user_id)->first();
 
         $user->update([
-            'crystals'=>$user->crystals - $plot->price,
-        ]);
-        $plot->update([
-            'user_id'=> $request->user_id,
+            'crystals' => $user->crystals - $plot->price,
         ]);
 
         return response([$user, $plot], 200);
@@ -56,7 +60,7 @@ class PlotController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePlotRequest  $request
+     * @param \App\Http\Requests\StorePlotRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StorePlotRequest $request)
@@ -67,22 +71,67 @@ class PlotController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Plot  $plot
+     * @param \App\Models\Plot $plot
      * @return JsonResource
      */
     public function show_by_coord(Request $request)
     {
-        $plot_by_coord = Plot::where(['latitude'=>$request->lat, 'longitude'=>$request->long])->get();
+        $plot_by_coord = Plot::where(['latitude' => $request->lat, 'longitude' => $request->long])->get();
         return new JsonResource($plot_by_coord);
+    }
+
+
+    public function show(Plot $plot)
+    {
+        $main_building = [];
+        $add_buildings = [];
+        $all_buildings = BuildingMap::select('type', 'name', 'level', 'code', 'volume', 'storage', 'speed')
+            ->where('plot_id', $plot->id)
+            ->join('buildings', 'buildings_map.building_id', '=', 'buildings.id')
+            ->get()->toArray();
+//        dd($all_buildings);
+        foreach ($all_buildings as $record) {
+//            dd($record);
+            if ($record['type'] == 'Main') {
+                $main_building['type'] = $record['code'];
+                $main_building['level'] = $record['level'];
+                $main_building['params']['volume'] = $record['volume'];
+                $main_building['params']['storage'] = $record['storage'];
+                $main_building['params']['speed'] = $record['speed'];
+            } else {
+                $add_buildings[] = [
+                    'type' => $record['code'],
+                    'level' => $record['level'],
+                ];
+            }
+        }
+            if (empty($add_buildings)) {
+                $add_buildings[1] = [
+                    'type' =>1,
+                    'level' =>0,
+                ];
+                $add_buildings[2] = [
+                    'type' =>2,
+                    'level' =>0,
+                ];
+                $add_buildings[3] = [
+                    'type' =>3,
+                    'level' =>0,
+                ];
+            }
+
+//        dd($main_building, $additional_building);
+        return new JsonResource(['MainBuilding' => $main_building, 'AdditionalBuilding' => $add_buildings]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Plot  $plot
+     * @param \App\Models\Plot $plot
      * @return \Illuminate\Http\Response
      */
-    public function edit(Plot $plot)
+    public
+    function edit(Plot $plot)
     {
         //
     }
@@ -90,11 +139,12 @@ class PlotController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePlotRequest  $request
-     * @param  \App\Models\Plot  $plot
+     * @param \App\Http\Requests\UpdatePlotRequest $request
+     * @param \App\Models\Plot $plot
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePlotRequest $request, Plot $plot)
+    public
+    function update(UpdatePlotRequest $request, Plot $plot)
     {
         //
     }
@@ -102,10 +152,11 @@ class PlotController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Plot  $plot
+     * @param \App\Models\Plot $plot
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plot $plot)
+    public
+    function destroy(Plot $plot)
     {
         //
     }

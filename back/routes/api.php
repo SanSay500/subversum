@@ -35,8 +35,15 @@ Route::post('/plots/info', [\App\Http\Controllers\PlotController::class,'show_by
 Route::post('/buy_plot',[\App\Http\Controllers\PlotController::class, 'buy']);
 Route::post('/auctions/buy', [\App\Http\Controllers\AuctionController::class,'buy']);
 Route::post('/auctions/store', [\App\Http\Controllers\AuctionController::class, 'store']);
+Route::post('/auctions/store_plot', [\App\Http\Controllers\AuctionController::class, 'store_plot']);
 Route::post('/craft', [\App\Http\Controllers\ItemController::class, 'craft']);
+Route::post('/generate_item', [\App\Http\Controllers\ItemController::class, 'generate_item']);
 Route::post('/energy_to_money', [\App\Http\Controllers\UserController::class,'energy_to_money']);
+Route::post('/load', [\App\Http\Controllers\UserController::class,'load'])->middleware(['auth:sanctum']);
+Route::post('/users/count_steps', [\App\Http\Controllers\UserController::class,'count_steps']);
+Route::post('/users/rewarded', [\App\Http\Controllers\UserController::class,'rewarded']);
+Route::get('/users/{user}/get_plots', [\App\Http\Controllers\UserController::class,'get_plots']);
+
 
 
 Route::get('/',function(){

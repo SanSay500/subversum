@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name_of_level');
             $table->integer('count_of_steps');
-            $table->boolean('wasRewarded')->default(false);
         });
     }
 

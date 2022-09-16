@@ -22,7 +22,6 @@ class DailyEventsSeeder extends Seeder
             DB::table('daily_events')->insert(values:[
                 'name_of_level'=>$name_of_level[$i],
                 'count_of_steps'=>$count_of_steps[$i],
-                'wasRewarded' => false,
             ]);
         }
     }

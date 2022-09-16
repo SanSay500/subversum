@@ -14,6 +14,30 @@ use Faker\Factory as Faker;
 class ItemController extends Controller
 {
 
+    public function generate_item(Request $request)
+    {
+        $user_level=User::where('id', $request->user_id)->value('level');
+        $faker = Faker::create();
+        $item = Item::create([
+            'name' => ucfirst($faker->word()).' '.ucfirst($faker->word()),
+            'slot' => $faker->randomElement(['aiChip','scanner','core', 'data_storage', '']),
+            'for_drone' => $faker->boolean(70),
+            'is_nft' => $faker->boolean(10),
+            'rarity' => ($user_level == 1 || $user_level == 10) ? $user_level : Faker::create()->randomElement([$user_level, $user_level, $user_level, $user_level, $user_level, $user_level, $user_level, $user_level, $user_level-1,$user_level+1]),
+            'user_id' => $request->user_id,
+            'primary_max_dollars' => random_int(1500,224000),
+            'image' => $faker->filePath(),
+            'primary_critical_step_chance' => round($this->randomFloat(0.002, 0.20),4),
+            'primary_critical_step_force' => round($this->randomFloat(0.011, 0.029),4),
+            'primary_dollars_per_step' => random_int(1500, 15000),
+            'secondary_max_dollars' =>random_int(300,44800),
+            'secondary_critical_step_chance' => round($this->randomFloat(0.0004, 0.04),4),
+            'secondary_critical_step_force' => round($this->randomFloat(0.0022, 0.0058),4),
+            'secondary_dollars_per_step' =>random_int(300, 3000),
+        ]);
+        return $item;
+    }
+
     protected function randomFloat($min = 0, $max = 1): array|float|int
     {
         return $min + mt_rand() / mt_getrandmax() * ($max - $min);
