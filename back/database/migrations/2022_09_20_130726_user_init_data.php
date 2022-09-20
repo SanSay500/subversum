@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('user_init_data', function (Blueprint $table) {
           $table->id();
-          $table->text('plot_init_data');
+          $table->json('plot_init_data');
           $table->foreignId('user_id')->constrained()->onDelete('cascade');
+          $table->foreignId('plot_id')->constrained()->onDelete('cascade');
         });
     }
 

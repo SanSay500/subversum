@@ -19,17 +19,20 @@ class PlotController extends Controller
     public function save(Request $request)
     {
         DB::table('user_init_data')->insert(values:[
-            'plot_init_data'=>serialize(preg_replace('/\s+/', '', ($request->init_data))),
+            'plot_init_data'=>$request->init_data,
             'user_id'=>$request->user_id,
+            'plot_id'=>$request->plot_id,
         ]);
+        return response('done!');
     }
 
     public function initialize(Request $request)
     {
         $plot_data = DB::table('user_init_data')
             ->where('user_id',$request->user_id)
+            ->where('plot_id',$request->plot_id)
             ->value('plot_init_data');
-        return unserialize($plot_data);
+        return $plot_data;
     }
 
     public function buy(Request $request)
