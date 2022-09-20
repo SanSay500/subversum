@@ -182,8 +182,8 @@ return [
 
     'try_it_out' => [
         /**
-         * Add a Try It Out button to your endpoints so consumers can test endpoints right from their browser.
-         * Don't forget to enable CORS headers for your endpoints.
+         * Add a Try It Out button to your  so consumers can test  right from their browser.
+         * Don't forget to enable CORS headers for your .
          */
         'enabled' => true,
 
@@ -209,13 +209,13 @@ return [
      */
     'auth' => [
         /*
-         * Set this to true if any endpoints in your API use authentication.
+         * Set this to true if any  in your API use authentication.
          */
         'enabled' => false,
 
         /*
          * Set this to true if your API should be authenticated by default. If so, you must also set `enabled` (above) to true.
-         * You can then use @unauthenticated or @authenticated on individual endpoints to change their status from the default.
+         * You can then use @unauthenticated or @authenticated on individual  to change their status from the default.
          */
         'default' => false,
 
@@ -307,9 +307,9 @@ INTRO
     ],
 
     /*
-     * Endpoints which don't have a @group will be placed in this default group.
+     *  which don't have a @group will be placed in this default group.
      */
-    'default_group' => 'Endpoints',
+    'default_group' => '',
 
     /*
      * Custom logo path. This will be used as the value of the src attribute for the <img> tag,

@@ -21,9 +21,10 @@ class BuildingMapFactory extends Factory
     {
 
         return [
-//            'building_id'=>Building::where('id',fake()->randomElement([1,2,3,13,14,15,25,26,27]))->value('id'),//Building::where('id',fake()->randomElement([4,5,6,7,8,9,16,17,18,20,28,29,30,45,57,46]))->value('id'),
-            'building_id'=>Building::where('id',fake()->randomElement([4,5,6,7,8,9,16,17,18,20,28,29,30,45,57,46]))->value('id'),
-            'plot_id'=>random_int(1,30),
+          'building_id'=>Building::where('id',random_int(1,120))->value('id'),
+//            'building_id' => Building::where('id', fake()->randomElement([4, 5, 6, 7, 8, 9, 16, 17, 18, 20, 28, 29, 30, 45, 57, 46]))->value('id'),
+            'level' => random_int(0, 10),
+            'plot_id' => random_int(1, 30),
         ];
     }
 }

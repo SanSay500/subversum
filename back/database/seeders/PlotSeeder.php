@@ -33,6 +33,5 @@ class PlotSeeder extends Seeder
                 ]);
             }
 }
-//        Plot::factory(100000)->create();
     }
 }

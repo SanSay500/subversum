@@ -40,6 +40,7 @@ API GET calls (add to subversum.space/api):<br>
 /regions/2 - информация с участками по региону с айди 2<br>
 /plots/2 - информация по участку с айди 2<br>
 /users/{user_id}/get_plots - получить участки юзера<br>
+/auctions/show/{source} - source может быть - items, resources, plots
     <br>
     <a href="https://docs.google.com/document/d/1AZAn-bCe-AKj9hBlw-e1PKLLdPuje_q-9IxHhsPbi3k/edit#heading=h.9w2ke2uqclmd"><b>GAME DOCS</b></a>
     <br><br>
@@ -75,22 +76,20 @@ lat - int<br><br>
 body:<br>
     auction_id - id of auctions lot<br>
     user_id - buyer id<br>
+    в зависимости от того, какой лот выбран для покупки<br>
+    происходит покупка участка или предмета или ресурса
 <br>
-<b>/api/auctions/store</b> - store lot<br>
-body:<br>
-   user_id - id of seller<br>
-   resource_id id of resource<br>
-   res_quantity - quantity of resource<br>
-   lot_price - price of lot<br>
-<br>
-
-    <b>/api/auctions/store_plot</b> - store plot<br>
+    <b>/api/auctions/store</b> - store lot<br>
     body:<br>
     user_id - id of seller<br>
+    resource_id of resource<br>
+    res_quantity - quantity of resource<br>
     plot_id id of plot<br>
+    item_id id of item<br>
     lot_price - price of lot<br>
+    создаётся лот аукциона в зависимости от<br>
+    переданных в запросе параметров
     <br>
-
     <b>api/users/count_steps</b><br>
     body:<br>
     user_id - int<br>
@@ -118,12 +117,30 @@ body:<br>
     <br>
 </div>
 <div class="container-3">
- <b>api/users/rewarded</b><br>
+<b>api/users/rewarded</b><br>
     user_id<br>
     event_id<br>
     записываем айди выполненного эвента юзеру в базу<br>
-    в полночь это поле у всех обнуляется<br>
+    в полночь это поле у всех обнуляется<br><br>
+<b>api/plots/build</b><br>
+    plot_id<br>
+    building_type<br>
+    строим на участке с plot_id здание типа building_type<br><br>
+<b>api/plots/upgrade_building</b><br>
+plot_id<br>
+type<br>
+building - enum [Infrastructure, Main]<br>
+улучшаем здание с типом type вида Main - главное<br>
+infrastructure - дополнительное<br>
+    <b>api/plots/save</b><br>
+    user_id<br>
+    init_data<br>
+сохраняет json init_data в базу с user_id<br>
+    <b>api/plots/load</b><br>
+    user_id<br>
+    достаёт из базы json init_data для user_id<br>
 </div>
+
 </div>
 Database structure <br>
 <img width="70%" height="90%" src="/img/auctions.png"></img>

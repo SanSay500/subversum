@@ -21,15 +21,15 @@ class BuildingSeeder extends Seeder
             ['Main', 'Terra Station', 1, 100],
             ['Main', 'Air Station', 2, 200],
             ['Main', 'Hydro Station', 3, 300],
-            ['Infrastructure', 'Terra Storage', 1, 10],
-            ['Infrastructure', 'Eco Generator', 2, 10],
-            ['Infrastructure', 'Extractor', 3, 10],
-            ['Infrastructure', 'Hydro Storage', 1, 10],
-            ['Infrastructure', 'Water Purifier', 2, 10],
-            ['Infrastructure', 'Hydro-Pump', 3, 10],
-            ['Infrastructure', 'Air Storage', 1, 10],
-            ['Infrastructure', 'Air Filter', 2, 10],
-            ['Infrastructure', 'Air Compressor', 3, 10],
+            ['Infrastructure', 'Terra Storage', 11, 10],
+            ['Infrastructure', 'Eco Generator', 12, 10],
+            ['Infrastructure', 'Extractor', 13, 10],
+            ['Infrastructure', 'Hydro Storage', 21, 10],
+            ['Infrastructure', 'Water Purifier', 22, 10],
+            ['Infrastructure', 'Hydro-Pump', 23, 10],
+            ['Infrastructure', 'Air Storage', 31, 10],
+            ['Infrastructure', 'Air Filter', 32, 10],
+            ['Infrastructure', 'Air Compressor', 33, 10],
 
         ];
         for ($i=1; $i<=10; $i++) {
@@ -39,7 +39,7 @@ class BuildingSeeder extends Seeder
                     'name' => $building[1],
                     'code' => $building[2],
                     'level' => $i,
-                    'price' => $building[2]*$i,
+                    'price' => $building[3]*$i,
                 ]);
             }
         }

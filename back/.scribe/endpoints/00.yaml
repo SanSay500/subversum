@@ -1,6 +1,6 @@
-name: Endpoints
+name:
 description: ''
-endpoints:
+:
   -
     httpMethods:
       - POST

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('building_id')->constrained()->onDelete('cascade');
             $table->foreignId('plot_id')->constrained()->onDelete('cascade');
-//            $table->integer('level')->default(1);
+            $table->integer('level')->default(0);
             $table->integer('volume')->default(1);
             $table->integer('storage')->default(1);
             $table->integer('speed')->default(1);

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BuildingMap extends Model
 {
     use HasFactory;
+    protected $fillable=['building_id', 'level', 'plot_id', 'volume', 'storage', 'speed'];
     public $timestamps = false;
     protected $table = "buildings_map";
 
@@ -16,8 +17,8 @@ class BuildingMap extends Model
         return $this->belongsTo(Region::class);
     }
 
-    public function buildings()
+    public function building()
     {
-        return $this->hasOne(Building::class);
+        return $this->hasOne(Building::class,'building_id','id');
     }
 }

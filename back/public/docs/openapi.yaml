@@ -28,7 +28,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       requestBody:
         required: true
         content:
@@ -69,7 +69,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/forgot-password:
     post:
@@ -92,7 +92,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/reset-password:
     post:
@@ -115,7 +115,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       requestBody:
         required: true
         content:
@@ -156,7 +156,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   '/api/email/verify/{id}/{hash}':
     get:
@@ -191,7 +191,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -231,7 +231,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/user/confirmed-password-status:
     get:
@@ -266,7 +266,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - Endpoints
+        -
       security: []
   /api/user/confirm-password:
     post:
@@ -289,7 +289,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/workers:
     get:
@@ -324,7 +324,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -346,7 +346,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/workers/create:
     get:
@@ -381,7 +381,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - Endpoints
+        -
       security: []
   '/api/workers/{id}':
     get:
@@ -416,7 +416,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -438,7 +438,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -460,7 +460,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -504,7 +504,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -610,7 +610,7 @@ paths:
                     items:
                       type: object
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -632,7 +632,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/users/create:
     get:
@@ -662,7 +662,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/users/{id}':
     get:
@@ -697,7 +697,7 @@ paths:
                     type: string
                     example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"id\" = $1\n                      ^ (SQL: select * from \"plots\" where \"id\" = 1)"
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -719,7 +719,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -741,7 +741,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -780,7 +780,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -886,7 +886,7 @@ paths:
                     items:
                       type: object
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -908,7 +908,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/planets/create:
     get:
@@ -938,7 +938,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/planets/{id}':
     get:
@@ -968,7 +968,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -990,7 +990,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -1012,7 +1012,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -1051,7 +1051,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -1104,7 +1104,7 @@ paths:
                     id: 4
                     type: Diamonds
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -1126,7 +1126,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/resources/create:
     get:
@@ -1156,7 +1156,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/resources/{id}':
     get:
@@ -1186,7 +1186,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -1208,7 +1208,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -1230,7 +1230,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -1269,7 +1269,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -1355,7 +1355,7 @@ paths:
                     items:
                       type: object
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -1377,7 +1377,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/buildings/create:
     get:
@@ -1407,7 +1407,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/buildings/{id}':
     get:
@@ -1437,7 +1437,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -1459,7 +1459,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -1481,7 +1481,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -1520,7 +1520,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -1886,7 +1886,7 @@ paths:
                     items:
                       type: object
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -1908,7 +1908,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/regions/create:
     get:
@@ -1938,7 +1938,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/regions/{id}':
     get:
@@ -1973,7 +1973,7 @@ paths:
                     type: string
                     example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"region_id\" = $1\n                      ^ (SQL: select * from \"plots\" where \"region_id\" = 1)"
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -1995,7 +1995,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -2017,7 +2017,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -2056,7 +2056,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -2222,7 +2222,7 @@ paths:
                     items:
                       type: object
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -2244,7 +2244,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/continents/create:
     get:
@@ -2274,7 +2274,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/continents/{id}':
     get:
@@ -2304,7 +2304,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -2326,7 +2326,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -2348,7 +2348,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -2387,7 +2387,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -2668,7 +2668,7 @@ paths:
                     total_count: 205
                     mining_level: 9
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -2690,7 +2690,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/res_map/create:
     get:
@@ -2720,7 +2720,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/res_map/{id}':
     get:
@@ -2750,7 +2750,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -2772,7 +2772,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -2794,7 +2794,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -2833,7 +2833,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -2994,7 +2994,7 @@ paths:
                     building_id: 4
                     region_id: 12
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -3016,7 +3016,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/buildings_map/create:
     get:
@@ -3046,7 +3046,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/buildings_map/{id}':
     get:
@@ -3076,7 +3076,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -3098,7 +3098,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -3120,7 +3120,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -3159,7 +3159,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -3410,7 +3410,7 @@ paths:
                     salary: '43247'
                     total_count: 3687
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -3432,7 +3432,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/workers_map/create:
     get:
@@ -3462,7 +3462,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/workers_map/{id}':
     get:
@@ -3492,7 +3492,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -3514,7 +3514,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -3536,7 +3536,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -3575,7 +3575,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -4341,7 +4341,7 @@ paths:
                     items:
                       type: object
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -4363,7 +4363,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/items/create:
     get:
@@ -4393,7 +4393,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/items/{id}':
     get:
@@ -4423,7 +4423,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -4445,7 +4445,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -4467,7 +4467,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -4506,7 +4506,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -4752,7 +4752,7 @@ paths:
                     items:
                       type: object
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -4774,7 +4774,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/drones/create:
     get:
@@ -4804,7 +4804,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/drones/{id}':
     get:
@@ -4834,7 +4834,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -4856,7 +4856,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -4878,7 +4878,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -4917,7 +4917,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -4961,7 +4961,7 @@ paths:
                     type: string
                     example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"auctions\" does not exist\nLINE 1: select * from \"auctions\"\n                      ^ (SQL: select * from \"auctions\")"
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -4983,7 +4983,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/auctions/create:
     get:
@@ -5013,7 +5013,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/auctions/{id}':
     get:
@@ -5048,7 +5048,7 @@ paths:
                     type: string
                     example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"auctions\" does not exist\nLINE 1: select * from \"auctions\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"auctions\" where \"id\" = 1 limit 1)"
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -5070,7 +5070,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -5092,7 +5092,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -5136,7 +5136,7 @@ paths:
                     type: string
                     example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"auctions\" does not exist\nLINE 1: select * from \"auctions\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"auctions\" where \"id\" = 1 limit 1)"
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -5175,7 +5175,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
     post:
       summary: 'Store a newly created resource in storage.'
@@ -5197,7 +5197,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/plots/create:
     get:
@@ -5227,7 +5227,7 @@ paths:
                 type: string
                 example: ''
       tags:
-        - Endpoints
+        -
       security: []
   '/api/plots/{id}':
     get:
@@ -5262,7 +5262,7 @@ paths:
                     type: string
                     example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"plots\" where \"id\" = 1 limit 1)"
       tags:
-        - Endpoints
+        -
       security: []
     put:
       summary: 'Update the specified resource in storage.'
@@ -5284,7 +5284,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     delete:
       summary: 'Remove the specified resource from storage.'
@@ -5306,7 +5306,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -5350,7 +5350,7 @@ paths:
                     type: string
                     example: "SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation \"plots\" does not exist\nLINE 1: select * from \"plots\" where \"id\" = $1 limit 1\n                      ^ (SQL: select * from \"plots\" where \"id\" = 1 limit 1)"
       tags:
-        - Endpoints
+        -
       security: []
     parameters:
       -
@@ -5382,7 +5382,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/auctions/buy:
     post:
@@ -5405,7 +5405,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/auctions/store:
     post:
@@ -5428,7 +5428,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/craft:
     post:
@@ -5451,7 +5451,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
   /api/energy_to_money:
     post:
@@ -5474,9 +5474,9 @@ paths:
             type: string
       responses: {  }
       tags:
-        - Endpoints
+        -
       security: []
 tags:
   -
-    name: Endpoints
+    name:
     description: ''

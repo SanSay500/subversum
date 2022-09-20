@@ -21,7 +21,12 @@ class UserController extends Controller
 
     public function load()
     {
-       dd(auth('api')->user());
+        $user = auth('sanctum')->user();
+        $user_items = new JsonResource(Item::where('user_id', $user->id)->get());
+        $user_drone = new JsonResource(Drone::where('user_id', $user->id)->get());
+        return response(
+            ['user' => $user, 'items' => $user_items, 'drone' => $user_drone]
+        );
     }
 
     public function rewarded(Request $request)
@@ -29,21 +34,19 @@ class UserController extends Controller
         $user = User::find($request->user_id);
         $event = DailyEvents::find($request->event_id);
 
-        $user->events_done = $user->events_done  ? $user->events_done . ',' . $event->id : $event->id;
+        $user->events_done = $user->events_done ? $user->events_done . ',' . $event->id : $event->id;
         $user->save();
 
         return $user;
-
     }
-
 
     public function count_steps(Request $request)
     {
         $user = User::find($request->user_id);
         $user->update([
-        'steps' => $user->steps + $request->steps,
-    ]);
-       return $user;
+            'steps' => $user->steps + $request->steps,
+        ]);
+        return $user;
     }
 
     public function energy_to_money(Request $request)
@@ -58,7 +61,7 @@ class UserController extends Controller
 //        ]);
 
         $energy_spent_in_game = $user->energy - ($user->energy - $request->energy_spent_in_game) - $user->energy_spent_a_day;
-       //dd($energy_spent_in_game,$user->energy_spent_a_day);
+        //dd($energy_spent_in_game,$user->energy_spent_a_day);
         $user->update([
             'energy_spent_a_day' => $user->energy_spent_a_day + $energy_spent_in_game,
             'dollars_count' => $user->dollars_count + $dollars_earned,
@@ -98,7 +101,8 @@ class UserController extends Controller
         //
     }
 
-    public function get_plots(User $user){
+    public function get_plots(User $user)
+    {
 
         $user_plots = new JsonResource(Plot::where('user_id', $user->id)->get());
         return $user_plots;

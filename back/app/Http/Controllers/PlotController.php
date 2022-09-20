@@ -16,9 +16,22 @@ use Illuminate\Support\Facades\DB;
 class PlotController extends Controller
 {
 
-    /**
-     *
-     */
+    public function save(Request $request)
+    {
+        DB::table('user_init_data')->insert(values:[
+            'plot_init_data'=>serialize(preg_replace('/\s+/', '', ($request->init_data))),
+            'user_id'=>$request->user_id,
+        ]);
+    }
+
+    public function initialize(Request $request)
+    {
+        $plot_data = DB::table('user_init_data')
+            ->where('user_id',$request->user_id)
+            ->value('plot_init_data');
+        return unserialize($plot_data);
+    }
+
     public function buy(Request $request)
     {
         $plot = Plot::where('longitude', '=', $request->long)
@@ -80,18 +93,16 @@ class PlotController extends Controller
         return new JsonResource($plot_by_coord);
     }
 
-
     public function show(Plot $plot)
     {
         $main_building = [];
         $add_buildings = [];
-        $all_buildings = BuildingMap::select('type', 'name', 'level', 'code', 'volume', 'storage', 'speed')
+        $all_buildings = BuildingMap::select('type', 'name', 'buildings_map.level as level', 'code', 'volume', 'storage', 'speed')
             ->where('plot_id', $plot->id)
             ->join('buildings', 'buildings_map.building_id', '=', 'buildings.id')
             ->get()->toArray();
-//        dd($all_buildings);
+
         foreach ($all_buildings as $record) {
-//            dd($record);
             if ($record['type'] == 'Main') {
                 $main_building['type'] = $record['code'];
                 $main_building['level'] = $record['level'];
@@ -105,22 +116,44 @@ class PlotController extends Controller
                 ];
             }
         }
-            if (empty($add_buildings)) {
+        if (empty($main_building)) {
+            $main_building['type'] = 1;
+            $main_building['level'] = 0;
+            $main_building['params']['volume'] = 1;
+            $main_building['params']['storage'] = 1;
+            $main_building['params']['speed'] = 1;
+        }
+        $additional_buildings_count = count($add_buildings);
+        switch ($additional_buildings_count) {
+            case 0:
                 $add_buildings[1] = [
-                    'type' =>1,
-                    'level' =>0,
+                    'type' => 1,
+                    'level' => 0,
                 ];
                 $add_buildings[2] = [
-                    'type' =>2,
-                    'level' =>0,
+                    'type' => 2,
+                    'level' => 0,
                 ];
                 $add_buildings[3] = [
-                    'type' =>3,
-                    'level' =>0,
+                    'type' => 3,
+                    'level' => 0,
                 ];
-            }
+            case 1:
+                $add_buildings[2] = [
+                    'type' => 2,
+                    'level' => 0,
+                ];
+                $add_buildings[3] = [
+                    'type' => 3,
+                    'level' => 0,
+                ];
+            case 2:
+                $add_buildings[3] = [
+                    'type' => 3,
+                    'level' => 0,
+                ];
+        }
 
-//        dd($main_building, $additional_building);
         return new JsonResource(['MainBuilding' => $main_building, 'AdditionalBuilding' => $add_buildings]);
     }
 
