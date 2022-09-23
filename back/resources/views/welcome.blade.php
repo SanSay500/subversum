@@ -40,7 +40,8 @@ API GET calls (add to subversum.space/api):<br>
 /regions/2 - информация с участками по региону с айди 2<br>
 /plots/2 - информация по участку с айди 2<br>
 /users/{user_id}/get_plots - получить участки юзера<br>
-/auctions/show/{source} - source может быть - items, resources, plots
+/auctions/show/{source} - source может быть - items, resources, plots<br>
+/items/user/1 - показать предметы юзера с айди 1<br>
     <br>
     <a href="https://docs.google.com/document/d/1AZAn-bCe-AKj9hBlw-e1PKLLdPuje_q-9IxHhsPbi3k/edit#heading=h.9w2ke2uqclmd"><b>GAME DOCS</b></a>
     <br><br>
@@ -77,8 +78,10 @@ body:<br>
     auction_id - id of auctions lot<br>
     user_id - buyer id<br>
     в зависимости от того, какой лот выбран для покупки<br>
-    происходит покупка участка или предмета или ресурса
+    происходит покупка участка или предмета или ресурса<br>
+    статус лота меняется на Sold
 <br>
+    /auctions/show/{source}
     <b>/api/auctions/store</b> - store lot<br>
     body:<br>
     user_id - id of seller<br>
@@ -97,8 +100,8 @@ body:<br>
     прибавить к шагам пользователя steps<br>
 <br>
 <b>api/energy_to_money</b><br>
-передаем user_id и energy_spent_in_game<br>
-прибавляет игроку energy_spent_a_day<br>
+передаем user_id и energy_spent<br>
+убавляет игроку energy<br>
 прибавляет денег по формуле dollars_per_step * energy_spent<br><br>
 <br>
 <b>/api/buy_plot</b><br>
@@ -132,12 +135,19 @@ type<br>
 building - enum [Infrastructure, Main]<br>
 улучшаем здание с типом type вида Main - главное<br>
 infrastructure - дополнительное<br>
+    <b>api/plots/destroy</b><br>
+    plot_id<br>
+    type<br>
+    building - enum [Infrastructure, Main]<br>
+    сносим на участке с plot_id здание типа building_type<br><br>
     <b>api/plots/save</b><br>
     user_id<br>
+    plot_id<br>
     init_data<br>
 сохраняет json init_data в базу с user_id<br>
-    <b>api/plots/load</b><br>
+    <b>api/plots/init</b><br>
     user_id<br>
+    plot_id<br>
     достаёт из базы json init_data для user_id<br>
 </div>
 

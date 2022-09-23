@@ -9,11 +9,16 @@ use App\Http\Resources\ItemResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Faker\Factory as Faker;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 
 class ItemController extends Controller
 {
 
+    public function user_items(User $user)
+    {
+        return new JsonResource(Item::where('user_id',$user->id)->get());
+    }
     public function generate_item(Request $request)
     {
         $user_level=User::where('id', $request->user_id)->value('level');

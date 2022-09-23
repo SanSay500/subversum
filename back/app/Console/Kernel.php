@@ -11,17 +11,16 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
             DB::table('users')->update([
-            'steps'=> 0,
-            ]);
-            DB::table('users')->update([
-                'events_done'=>'',
+                'steps' => 0,
+                'events_done' => '',
+                'updated_at' => date("F j, Y, g:i a"),
             ]);
         })->daily();
     }
@@ -33,7 +32,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

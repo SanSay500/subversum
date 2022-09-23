@@ -1445,6 +1445,7 @@ a.full_link {
 	-ms-flex-direction: row;
 	-o-flex-direction: row;
 	flex-direction: row;
+	justify-content: center;
 	flex-wrap: wrap;
 	margin: 0;
 	padding: 0;
@@ -5477,7 +5478,27 @@ a.full_link {
 	.neoh_fn_nft_cats li {
 		width: 100%;
 	}
+	.header_in  .login {
+		display: none;
+	}
+	.header_in .register_btn{
+		display: none;
+	}
 	.neoh_fn_mintbox .mint_list li {
 		width: 100%;
 	}
+}
+
+@media (max-width: 380px) {
+	.neoh_fn_social_list img{
+		max-width: 80%;
+	}
+	.neoh_fn_social_list ul {
+		margin-left: -15px;
+	}
+	.neoh_fn_social_list li {
+		margin: 0 0 0 10px;
+		/* padding: 0; */
+	}
+
 }

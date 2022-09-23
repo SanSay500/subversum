@@ -31,6 +31,7 @@ Route::resource('buildings',\App\Http\Controllers\BuildingController::class);
 Route::resource('buildings_map',\App\Http\Controllers\BuildingMapController::class);
 Route::post('plots/upgrade_building',[\App\Http\Controllers\BuildingMapController::class, 'upgrade_building']);
 Route::post('plots/build',[\App\Http\Controllers\BuildingMapController::class, 'build']);
+Route::post('plots/destroy',[\App\Http\Controllers\BuildingMapController::class, 'destroy']);
 
 
 //PLOT
@@ -49,13 +50,14 @@ Route::get('/auctions/show/{source}',[\App\Http\Controllers\AuctionController::c
 
 //ITEM
 Route::post('/craft', [\App\Http\Controllers\ItemController::class, 'craft']);
+Route::get('/items/user/{user}', [\App\Http\Controllers\ItemController::class, 'user_items']);
 Route::post('/generate_item', [\App\Http\Controllers\ItemController::class, 'generate_item']);
 Route::resource('items',\App\Http\Controllers\ItemController::class);
 
 
 //USER
 Route::post('/energy_to_money', [\App\Http\Controllers\UserController::class,'energy_to_money']);
-Route::post('/load', [\App\Http\Controllers\UserController::class,'load'])->middleware(['auth:sanctum']);
+Route::get('/load', [\App\Http\Controllers\UserController::class,'load'])->middleware(['auth:sanctum']);
 Route::post('/users/count_steps', [\App\Http\Controllers\UserController::class,'count_steps'])->middleware(['throttle:steps']);
 Route::post('/users/rewarded', [\App\Http\Controllers\UserController::class,'rewarded']);
 Route::get('/users/{user}/get_plots', [\App\Http\Controllers\UserController::class,'get_plots']);

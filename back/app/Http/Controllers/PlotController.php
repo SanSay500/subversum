@@ -9,6 +9,7 @@ use App\Http\Resources\UserResource;
 use App\Models\BuildingMap;
 use App\Models\Plot;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +33,7 @@ class PlotController extends Controller
             ->where('user_id',$request->user_id)
             ->where('plot_id',$request->plot_id)
             ->value('plot_init_data');
-        return $plot_data;
+        return response($plot_data);
     }
 
     public function buy(Request $request)

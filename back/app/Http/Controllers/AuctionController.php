@@ -18,11 +18,17 @@ class AuctionController extends Controller
     {
         switch ($source) {
             case 'items':
-                return AuctionResource::collection(Auction::where('item_id', '<>', null)->get());
+                return AuctionResource::collection(Auction::where('item_id', '<>', null)
+                    ->where('lot_status', 'Active')
+                    ->get());
             case 'resources':
-                return AuctionResource::collection(Auction::where('resource_id', '<>', null)->get());
+                return AuctionResource::collection(Auction::where('resource_id', '<>', null)
+                    ->where('lot_status', 'Active')
+                    ->get());
             case 'plots':
-                return AuctionResource::collection(Auction::where('plot_id', '<>', null)->get());
+                return AuctionResource::collection(Auction::where('plot_id', '<>', null)
+                    ->where('lot_status', 'Active')
+                    ->get());
         }
     }
 
@@ -54,9 +60,10 @@ class AuctionController extends Controller
      */
     public function store(StoreAuctionRequest $request)
     {
+        $user = User::find($request->user_id);
+
         if ($request->resource_id <> 0) {
             $resource = Resource::find($request->resource_id)->type;
-            $user = User::find($request->user_id);
             $res_user = $resource . '_count';
             $user->update([
                 $res_user => $user->$res_user - $request->res_quantity,
@@ -69,20 +76,30 @@ class AuctionController extends Controller
                 'lot_status' => 'Active',
             ]);
         }
-        if ($request->item_id <> 0) {
+
+        if ($request->plot_id <> 0) {
+            $plot = Plot::find($request->plot_id);
             Auction::create([
                 'user_id' => $request->user_id,
                 'plot_id' => $request->plot_id,
                 'lot_price' => $request->lot_price,
                 'lot_status' => 'Active',
             ]);
+            $plot->update([
+                 'user_id'=>null,
+            ]);
         }
-        if ($request->plot_id <> 0) {
+
+        if ($request->item_id <> 0) {
+            $item = Item::find($request->item_id);
             Auction::create([
                 'user_id' => $request->user_id,
                 'item_id' => $request->item_id,
                 'lot_price' => $request->lot_price,
                 'lot_status' => 'Active',
+            ]);
+            $item->update([
+               'user_id'=>null,
             ]);
         }
 
@@ -144,7 +161,7 @@ class AuctionController extends Controller
         $auction = Auction::find($request->auction_id);
         $buyer = User::find($request->user_id);
         $seller = User::find($auction->user_id);
-
+//        dd($auction, $buyer, $seller);
         if ($buyer->dollars_count < $auction->lot_price) return response('You have no enough money! Work harder!', 210);
 
         if ($auction->resource_id <> 0) {
@@ -158,37 +175,38 @@ class AuctionController extends Controller
                 'dollars_count' => $seller->dollars_count + $auction->lot_price,
             ]);
             $auction->update([
-                'status' => 'Sold',
+                'lot_status' => 'Sold',
             ]);
         }
         if ($auction->item_id <> 0) {
-            $item = Item::find($request->item_id);
+            $item = Item::find($auction->item_id);
+//            dd($item, $buyer, $seller, $auction);
             $buyer->update([
                 'dollars_count' => $buyer->dollars_count - $auction->lot_price,
             ]);
             $item->update([
-                'user_id' => $buyer_id,
+                'user_id' => $buyer->id,
             ]);
             $seller->update([
                 'dollars_count' => $seller->dollars_count + $auction->lot_price,
             ]);
             $auction->update([
-                'status' => 'Sold',
+                'lot_status' => 'Sold',
             ]);
         }
         if ($auction->plot_id <> 0) {
-            $plot = Plot::find($request->plot_id);
+            $plot = Plot::find($auction->plot_id);
             $buyer->update([
                 'dollars_count' => $buyer->dollars_count - $auction->lot_price,
             ]);
             $plot->update([
-                'user_id' => $buyer_id,
+                'user_id' => $buyer->id,
             ]);
             $seller->update([
                 'dollars_count' => $seller->dollars_count + $auction->lot_price,
             ]);
             $auction->update([
-                'status' => 'Sold',
+                'lot_status' => 'Sold',
             ]);
         }
 

@@ -51,23 +51,15 @@ class UserController extends Controller
 
     public function energy_to_money(Request $request)
     {
-
         $user = User::find($request->user_id);
-        $dollars_earned = $request->energy_spent_in_game * $user->dollars_per_step;
-//
-//        $user->update([
-//            'energy' => $user->energy - $request->energy_spent,
-//            'dollars_count' => $user->dollars_count + $dollars_earned,
-//        ]);
+        $dollars_earned = $request->energy_spent * $user->dollars_per_step;
 
-        $energy_spent_in_game = $user->energy - ($user->energy - $request->energy_spent_in_game) - $user->energy_spent_a_day;
-        //dd($energy_spent_in_game,$user->energy_spent_a_day);
         $user->update([
-            'energy_spent_a_day' => $user->energy_spent_a_day + $energy_spent_in_game,
+            'energy' => $user->energy - $request->energy_spent,
             'dollars_count' => $user->dollars_count + $dollars_earned,
         ]);
 
-        return response($user, 250);
+        return response($user);
     }
 
     /**

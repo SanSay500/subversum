@@ -35,7 +35,7 @@ return new class extends Migration
             $table->integer('level')->default(1);
             $table->float('exp')->nullable();
             $table->string('events_done')->nullable();
-            $table->integer('energy_spent_a_day')->nullable();
+//            $table->integer('energy_spent_a_day')->nullable();
         });
     }
 
