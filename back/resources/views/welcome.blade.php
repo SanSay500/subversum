@@ -81,7 +81,6 @@ body:<br>
     происходит покупка участка или предмета или ресурса<br>
     статус лота меняется на Sold
 <br>
-    /auctions/show/{source}
     <b>/api/auctions/store</b> - store lot<br>
     body:<br>
     user_id - id of seller<br>

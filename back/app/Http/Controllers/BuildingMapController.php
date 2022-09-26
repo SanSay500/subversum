@@ -16,25 +16,23 @@ class BuildingMapController extends Controller
 
     public function destroy(Request $request)
     {
-        $building = DB::table('buildings_map as bm')
-            ->where('bm.plot_id', $request->plot_id)
-            ->join('buildings as b', 'bm.building_id', 'b.id')
-            ->where('b.code', $request->type)
-            ->where('b.type', $request->building);
+        $building = DB::table('buildings_map')
+            ->where('plot_id', $request->plot_id)
+            ->where('code', $request->type)
+            ->where('type', $request->building);
 
-        $building->update(['bm.level' => 0]);
+        $building->update(['level' => 0]);
 
 //      dd($building->get());
 
         $main_building = [];
         $add_buildings = [];
-        $all_buildings = BuildingMap::select('type', 'name', 'buildings_map.level as level', 'code', 'volume', 'storage', 'speed')
-            ->where('plot_id', $request->plot_id)
-            ->join('buildings', 'buildings_map.building_id', '=', 'buildings.id')
+        $all_buildings = BuildingMap::where('plot_id', $request->plot_id)
             ->get()->toArray();
 
         foreach ($all_buildings as $record) {
             if ($record['type'] == 'Main') {
+                $main_building['id'] = $record['id'];
                 $main_building['type'] = $record['code'];
                 $main_building['level'] = $record['level'];
                 $main_building['params']['volume'] = $record['volume'];
@@ -42,12 +40,14 @@ class BuildingMapController extends Controller
                 $main_building['params']['speed'] = $record['speed'];
             } else {
                 $add_buildings[] = [
+                    'id' => $record['id'],
                     'type' => $record['code'],
                     'level' => $record['level'],
                 ];
             }
         }
         if (empty($main_building)) {
+            $main_building['id'] = $record['id'];
             $main_building['type'] = 1;
             $main_building['level'] = 0;
             $main_building['params']['volume'] = 1;
@@ -58,28 +58,34 @@ class BuildingMapController extends Controller
         switch ($additional_buildings_count) {
             case 0:
                 $add_buildings[1] = [
+                    'id'=> 0,
                     'type' => 1,
                     'level' => 0,
                 ];
                 $add_buildings[2] = [
+                    'id'=> 0,
                     'type' => 2,
                     'level' => 0,
                 ];
                 $add_buildings[3] = [
+                    'id'=> 0,
                     'type' => 3,
                     'level' => 0,
                 ];
             case 1:
                 $add_buildings[2] = [
+                    'id'=> 0,
                     'type' => 2,
                     'level' => 0,
                 ];
                 $add_buildings[3] = [
+                    'id'=> 0,
                     'type' => 3,
                     'level' => 0,
                 ];
             case 2:
                 $add_buildings[3] = [
+                    'id'=> 0,
                     'type' => 3,
                     'level' => 0,
                 ];
@@ -89,68 +95,162 @@ class BuildingMapController extends Controller
 
     public function build(Request $request)
     {
-        if ($request->building_type > 10) {
-            $additional_building = DB::table('buildings_map as bm')
-                ->where('bm.plot_id', $request->plot_id)
-                ->join('buildings as b', 'bm.building_id', '=', 'b.id')
-                ->where('b.code', '=', $request->building_type);
-
-//        dd($additional_building->get());
-
-            if (!$additional_building->exists()) {
-                $additional_building->insert([
-                    'building_id' => Building::where('code', $request->building_type)->where('level', 1)->value('id'),
-                    'plot_id' => $request->plot_id,
-                    'level' => 1,
-                ]);
-            } else {
-                $additional_building->update([
-                    'building_id' => Building::where('code', $request->building_type)->where('level', 1)->value('id'),
-                    'plot_id' => $request->plot_id,
-                    'level' => 1,
+//BUILDING ADDON
+        if ($request->building_id !=0) {
+            if ($request->building_type > 10) {
+                BuildingMap::find($request->building_id)->update([
+                    'name' => Building::where('code', $request->building_type)->value('name'),
+                    'code' => $request->building_type,
+                    'type' => Building::where('code', $request->building_type)->value('type')
                 ]);
             }
+        } else {
+            BuildingMap::create([
+                'plot_id' => $request->plot_id,
+                'level' => 1,
+                'name' => Building::where('code', $request->building_type)->value('name'),
+                'code' => $request->building_type,
+                'type' => Building::where('code', $request->building_type)->value('type')
+            ]);
         }
-
-
-        if ($request->building_type < 10) {
-        $main_building = DB::table('buildings_map as bm')
-            ->where('bm.plot_id', $request->plot_id)
-            ->join('buildings as b', 'bm.building_id', '=', 'b.id')
-            ->where('b.type', '=', 'Main');
-
-//        dd($main_building->exists());
-
-            if (!$main_building->exists()) {
-                $main_building->insert([
-                    'building_id' => Building::where('code', $request->building_type)->where('level', 1)->value('id'),
-                    'plot_id' => $request->plot_id,
+//BUILDING MAIN
+        if ($request->building_id !=0) {
+            if ($request->building_type < 4) {
+                BuildingMap::find($request->building_id)->update([
                     'level' => 1,
                     'storage' => 1,
                     'volume' => 1,
                     'speed' => 1,
-                ]);
-            } else {
-                $main_building->update([
-                    'building_id' => Building::where('code', $request->building_type)->where('level', 1)->value('id'),
-                    'plot_id' => $request->plot_id,
-                    'level' => 1,
-                    'storage' => 1,
-                    'volume' => 1,
-                    'speed' => 1,
+                    'name' => Building::where('code', $request->building_type)->value('name'),
+                    'code' => $request->building_type,
+                    'type' => Building::where('code', $request->building_type)->value('type'),
+                    'parent_code' => BuildingMap::where('type', 'Main')->value('code'),
                 ]);
             }
+        } else {
+            BuildingMap::create([
+                'level' => 1,
+                'storage' => 1,
+                'volume' => 1,
+                'speed' => 1,
+                'plot_id' => $request->plot_id,
+                'name' => Building::where('code', $request->building_type)->value('name'),
+                'code' => $request->building_type,
+                'type' => Building::where('code', $request->building_type)->value('type'),
+                'parent_code' => BuildingMap::where('type', 'Main')->value('code'),
+            ]);
         }
+
+//        //check what do we build main or add
+//        if ($request->building_type > 10) {
+//            $additional_building = DB::table('buildings_map')
+//                ->where('plot_id', $request->plot_id)
+//                ->where('type', '=', 'Infrastructure');
+//
+////        dd($additional_building->get());
+//
+//        //check if we building new or update existing with level = 0
+//            if ($additional_building->count() < 3) {
+//                $additional_building->insert([
+//                    'plot_id' => $request->plot_id,
+//                    'level' => 1,
+//                    'name' => Building::where('code', $request->building_type)->value('name'),
+//                    'code' => $request->building_type,
+//                    'type' => Building::where('code', $request->building_type)->value('type'),
+//                    'parent_code' => BuildingMap::where('type','Main')->value('code'),
+//                ]);
+//            } else {
+//                BuildingMap::where('id',$request->building_id)->update([
+//                    'level' => 1,
+//                    'name' => Building::where('code', $request->building_type)->value('name'),
+//                    'code' => $request->building_type,
+//                    'type' => Building::where('code', $request->building_type)->value('type')
+//                ]);
+//            }
+//        }
+//
+//        //same for main building
+//        if ($request->building_type < 10) {
+//        $main_building = DB::table('buildings_map')
+//            ->where('plot_id', $request->plot_id)
+//            ->where('type', '=', 'Main');
+//
+//        //        dd($main_building->exists());
+//
+//            if (!$main_building->exists()) {
+//                $main_building->insert([
+//                    'plot_id' => $request->plot_id,
+//                    'level' => 1,
+//                    'storage' => 1,
+//                    'volume' => 1,
+//                    'speed' => 1,
+//                    'name' => Building::where('code', $request->building_type)->value('name'),
+//                    'code' => $request->building_type,
+//                    'type' => Building::where('code', $request->building_type)->value('type')
+//                ]);
+//            } else {
+//                $main_building->update([
+//                    'level' => 1,
+//                    'storage' => 1,
+//                    'volume' => 1,
+//                    'speed' => 1,
+//                    'name' => Building::where('code', $request->building_type)->value('name'),
+//                    'code' => $request->building_type,
+//                    'type' => Building::where('code', $request->building_type)->value('type')
+//                ]);
+//
+
+//        $additional_buildings_for_update_type = DB::table('buildings_map as bm')
+//        ->where('bm.plot_id', $request->plot_id)
+//        ->where('b.type', '=', 'Infrastructure');
+
+//        ->update([
+
+//            'building_id' => $request->building_type == 1 && $i == 1 ? 15
+//                : ($request->building_type == 1 && $i == 2 ? 16
+//                    : ($request->building_type == 1 && $i == 3 ? 17 : ''))
+
+//        ]);
+
+//            dd($additional_buildings_for_update_type);
+//
+//                switch ($request->building_type) {
+//                    case 1:
+//                        foreach ($additional_buildings_for_update_type as $ab) {
+//                            for ($i=4; $i<=6; $i++) {
+//                            dd($ab);
+//                            $ab
+//                                ->update(['id' => 15]);
+//                            }
+//
+//                        break;
+//                    case 2:
+//                        foreach ($additional_buildings_for_update_type as $ab) {
+//                            for ($i=7; $i<=9; $i++) {
+//                                $ab->update([
+//                                    'bm.id' => $i
+//                                ]);
+//                            }
+//                        }
+//                        break;
+//                    case 3:
+//                        foreach ($additional_buildings_for_update_type as $ab) {
+//                            for ($i=10; $i<=12; $i++) {
+//                                $ab->update([
+//                                    'bm.id' => $i
+//                                ]);
+//                            }
+//                        }
+//                        break;
+
+//                }
 
         $main_building = [];
         $additional_buildings = [];
-        $all_buildings = BuildingMap::select('type', 'name', 'buildings_map.level as level', 'code', 'volume', 'storage', 'speed')
-            ->where('plot_id', $request->plot_id)
-            ->join('buildings', 'buildings_map.building_id', '=', 'buildings.id')
-            ->orderBy('code')
+        $all_buildings = BuildingMap::where('plot_id', $request->plot_id)
             ->get()->toArray();
 //        dd($all_buildings);
-        foreach ($all_buildings as &$record) {
+        foreach ($all_buildings as $record) {
             if ($record['type'] == 'Main') {
                 $main_building['type'] = $record['code'];
                 $main_building['level'] = $record['level'];
@@ -158,13 +258,8 @@ class BuildingMapController extends Controller
                 $main_building['params']['storage'] = $record['storage'];
                 $main_building['params']['speed'] = $record['speed'];
             } else {
-                $record['type'] = isset($main_building['type']) ?
-                    intval(substr_replace(strval($record['code']), $main_building['type'], 0, 1))
-                    : 11;
                 $additional_buildings[] = [
-                    'type' => isset($main_building['type']) ?
-                        intval(substr_replace(strval($record['code']), $main_building['type'], 0, 1))
-                        : 11,
+                    'type' => $record['code'],
                     'level' => $record['level'],
                 ];
             }

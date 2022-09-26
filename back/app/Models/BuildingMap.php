@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BuildingMap extends Model
 {
     use HasFactory;
-    protected $fillable=['building_id', 'level', 'plot_id', 'volume', 'storage', 'speed'];
+    protected $fillable=['building_id', 'level', 'plot_id', 'volume', 'storage', 'speed', 'parent_code', 'type', 'code', 'name'];
     public $timestamps = false;
     protected $table = "buildings_map";
 

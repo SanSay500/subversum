@@ -99,15 +99,18 @@ class PlotController extends Controller
 
     public function show(Plot $plot)
     {
+
+        //$buildings = BuildingMap::where('plot_id', $plot->id)->get();
+
+//
         $main_building = [];
         $add_buildings = [];
-        $all_buildings = BuildingMap::select('type', 'name', 'buildings_map.level as level', 'code', 'volume', 'storage', 'speed')
-            ->where('plot_id', $plot->id)
-            ->join('buildings', 'buildings_map.building_id', '=', 'buildings.id')
+        $all_buildings = BuildingMap::where('plot_id', $plot->id)
             ->get()->toArray();
-
+//
         foreach ($all_buildings as $record) {
             if ($record['type'] == 'Main') {
+                $main_building['id'] = $record['id'];
                 $main_building['type'] = $record['code'];
                 $main_building['level'] = $record['level'];
                 $main_building['params']['volume'] = $record['volume'];
@@ -115,12 +118,14 @@ class PlotController extends Controller
                 $main_building['params']['speed'] = $record['speed'];
             } else {
                 $add_buildings[] = [
+                    'id' => $record['id'],
                     'type' => $record['code'],
                     'level' => $record['level'],
                 ];
             }
         }
         if (empty($main_building)) {
+            $main_building['id'] = 0;
             $main_building['type'] = 1;
             $main_building['level'] = 0;
             $main_building['params']['volume'] = 1;
@@ -131,28 +136,34 @@ class PlotController extends Controller
         switch ($additional_buildings_count) {
             case 0:
                 $add_buildings[1] = [
+                    'id'=> 0,
                     'type' => 1,
                     'level' => 0,
                 ];
                 $add_buildings[2] = [
+                    'id'=> 0,
                     'type' => 2,
                     'level' => 0,
                 ];
                 $add_buildings[3] = [
+                    'id'=> 0,
                     'type' => 3,
                     'level' => 0,
                 ];
             case 1:
                 $add_buildings[2] = [
+                    'id'=> 0,
                     'type' => 2,
                     'level' => 0,
                 ];
                 $add_buildings[3] = [
+                    'id'=> 0,
                     'type' => 3,
                     'level' => 0,
                 ];
             case 2:
                 $add_buildings[3] = [
+                    'id'=> 0,
                     'type' => 3,
                     'level' => 0,
                 ];
